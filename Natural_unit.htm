@@ -1,0 +1,186 @@
+<html>
+   <title>Natural unit</title>
+
+   <style type="text/css">
+		<!--
+		.style1 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044;}
+		.style2 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044; background-color:#000033; border-bottom:6px solid #111166; border-radius:5px; align; padding-top:5px; padding-bottom:5px}
+		.style3 {font-size: 40px; font-weight: bold; text-decoration:underline; font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px #000000;}
+		.button1 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044; background-color:#000033; border-radius:20px; align; padding-top:5px; padding-bottom:7px;)
+		-->
+   </style>
+<body background="Natural_unit/bg.jpg"> 
+   <div>
+   <br>
+     <div align="center">
+       <span class="style3">Natural unit &harr; MKSA unit </span>
+      </div>
+	  <br>
+	  <br>
+	  <br>
+     <form metdod="" action="">
+		<table border="0"  align="center" widtd="800">
+			<tr>
+				<td >&nbsp;</td>
+				<td align="center"><span class="style2">&nbsp;&nbsp;&nbsp; Natural Unit &nbsp;&nbsp;&nbsp;</span></td>
+				<td align="center"><span class="style2">&nbsp;&nbsp;&nbsp; MKSA Unit &nbsp;&nbsp;&nbsp;</span></td>
+			</tr>
+			<tr height="5">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><span class="style1">Length</span></td>
+				<td><span class="style1">
+			    <input name="lengthn" size="15" onChange=
+				"document.forms[0].lengthsi.value=(eval(lengthn.value)*1.9732705e-7).toExponential(4);"
+				type="text"> 
+			    1/eV</span></td>
+				<td><span class="style1">= 
+			    <input name="lengthsi" size="15" onChange=
+				"document.forms[0].lengthn.value=(eval(lengthsi.value)/1.9732705e-7).toExponential(4);"
+				type="text"> 
+			    m</span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Mass</span></td>
+				<td><span class="style1">
+			    <input name="massn" size="15" onChange=
+				"document.forms[0].masssi.value=(eval(massn.value)*1.7826627e-36).toExponential(4);"
+				type="text"> 
+			    eV</span></td>
+				<td><span class="style1">= 
+			    <input name="masssi" size="15" onChange=
+				"document.forms[0].massn.value=(eval(masssi.value)/1.7826627e-36).toExponential(4);"
+				type="text"> 
+			    kg	</span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Time</span></td>
+				<td><span class="style1">
+			    <input name="tin" size="15" onChange=
+				"document.forms[0].tisi.value=(eval(tin.value)*6.582122e-16).toExponential(4);"
+				type="text"> 
+			    1/eV</span></td>
+				<td><span class="style1">= 
+			    <input name="tisi" size="15" onChange=
+				"document.forms[0].tin.value=(eval(tisi.value)/6.582122e-16).toExponential(4);"
+				type="text"> 
+			    s </span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Frequency</span></td>
+				<td><span class="style1">
+			    <input name="frn" size="15" onChange=
+				"document.forms[0].frsi.value=(eval(frn.value)*1.5192669e15).toExponential(4);"
+				type="text"> 
+			    eV</span></td>
+				<td><span class="style1">= 
+			    <input name="frsi" size="15" onChange=
+				"document.forms[0].frn.value=(eval(frsi.value)/1.5192669e15).toExponential(4);"
+				type="text"> 
+			    Hz	</span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Force</span></td>
+				<td><span class="style1">
+			    <input name="forn" size="15" onChange=
+				"document.forms[0].forsi.value=(eval(forn.value)*8.1194003e-13).toExponential(4);"
+				type="text"> 
+			    eV<sup>2</sup></span></td>
+				<td><span class="style1">= 
+			    <input name="forsi" size="15" onChange=
+				"document.forms[0].forn.value=(eval(forsi.value)/8.1194003e-13).toExponential(4);"
+				type="text"> 
+			    N </span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Energy</span></td>
+				<td><span class="style1">
+			    <input name="energyn" size="15" onChange=
+				"document.forms[0].energysi.value=(eval(energyn.value)*1.6021773e-19).toExponential(4);"
+				type="text"> 
+			    eV</span></td>
+				<td><span class="style1">= 
+			    <input name="energysi" size="15" onChange=
+				"document.forms[0].energyn.value=(eval(energysi.value)/1.6021773e-19).toExponential(4);"
+				type="text"> 
+			    J </span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Energy Density (&epsilon;)</span></td>
+				<td><span class="style1">
+			    <input name="nrgdn" size="15" onChange=
+				"document.forms[0].nrgdsi.value=(eval(nrgdn.value)*1.6021773e-19/1.9732705e-7/1.9732705e-7/1.9732705e-7).toExponential(4);"
+				type="text"> 
+			    eV<sup>4</sup> </span></td>
+				<td><span class="style1">= 
+			    <input name="nrgdsi" size="15" onChange=
+				"document.forms[0].nrgdn.value=(eval(nrgdsi.value)/(1.6021773e-19/1.9732705e-7/1.9732705e-7/1.9732705e-7)).toExponential(4);"
+				type="text"> 
+			    N/m<sup>3</sup> </span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Pressure (P)</span></td>
+				<td><span class="style1">
+			    <input name="psrn" size="15" onChange=
+				"document.forms[0].psrsi.value=(eval(psrn.value)*8.1194003e-13/1.9732705e-7/1.9732705e-7).toExponential(4);"
+				type="text"> 
+			    eV<sup>4</sup> </span></td>
+				<td><span class="style1">= 
+			    <input name="psrsi" size="15" onChange=
+				"document.forms[0].psrn.value=(eval(psrsi.value)/(8.1194003e-13/1.9732705e-7/1.9732705e-7)).toExponential(4);"
+				type="text"> 
+			    Pascal </span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Charge</span></td>
+				<td><input name="crgn"
+				type="text" onChange=
+				"document.forms[0].crgsi.value=(eval(crgn.value)*1.8755468e-18).toExponential(4);" size="15"> </td>
+				<td><span class="style1">= 
+			    <input name="crgsi" size="15" onChange=
+				"document.forms[0].crgn.value=(eval(crgsi.value)/1.8755468e-18).toExponential(4);"
+				type="text"> 
+			    C	</span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Magnetic induction (B)</span></td>
+				<td><span class="style1">
+			    <input name="mbn" size="15" onChange=
+				"document.forms[0].mbsi.value=(eval(mbn.value)*1.4440271e-3).toExponential(4);"
+				type="text"> 
+			    eV<sup>2</sup></span></td>
+				<td><span class="style1">= 
+			    <input name="mbsi" size="15" onChange=
+				"document.forms[0].mbn.value=(eval(mbsi.value)/1.4440271e-3).toExponential(4);"
+				type="text"> 
+			    Tesla	</span></td>
+			</tr>
+			<tr>
+				<td><span class="style1">Electric potential (&phi;)</span></td>
+				<td><span class="style1">
+			    <input name="epn" size="15" onChange=
+				"document.forms[0].epsi.value=(eval(epn.value)*85.424546e-3).toExponential(4);"
+				type="text"> 
+			    eV</span></td>
+				<td><span class="style1">= 
+			    <input name="epsi" size="15" onChange=
+				"document.forms[0].epn.value=(eval(epsi.value)/85.424546e-3).toExponential(4);"
+				type="text"> 
+			    V	</span></td>
+			</tr>
+	  </table>
+	<br>
+	  
+	<div align="center">
+	  <button type="reset" value="Reset" class="button1">Clear</button>
+	</div>
+	</form>
+	<br>
+	<br>
+	<br>
+   </div>
+   </body>
+</html>
