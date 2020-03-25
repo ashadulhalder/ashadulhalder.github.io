@@ -1,8 +1,0 @@
-
-1490039600	Mr.	gvk	i	k	kc	01	01	01	khc
-1490039714	Mr.	gvk	i	k	kc	01	01	01	khc
-1490039742	Mr.	gvk	i	k	kc	01	01	01	khc
-1490039874	Mr.	gvk	i	k	kc	01	01	01	khc
-1490040098	Mr.	gvk	i	k	kc	01	01	01	khc
-1490040113	Mr.	gvk	i	k	kc	01	01	01	khc
-1490040259	Mr.	gvk	i	k	kc	01	01	01	khc
