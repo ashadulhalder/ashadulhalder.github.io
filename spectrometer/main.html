@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+    <script src="rt.js"></script>
+
+    <style type="text/css">
+<!--
+.style2 {color: #FFFFFF}
+-->
+    </style>
+<body>
+    <div class="container">
+      <h1 class="styleh" align="center">Spectrometer</h1>
+	  <table width="800" border="0" align="center">
+  		<tr>
+			<th scope="col"><span class="style1">Spectrometer</span></th>
+			<th scope="col"><span class="style1">Spectra</span></th>
+	    </tr>
+		 <tr>
+			<td>
+				<div class="image-frame">
+					<img id="image0" src="rsrc/table.png" alt="Picture" class="table"/>
+					<img id="image1" src="rsrc/base.png" alt="Picture" class="base"/>
+					<img id="image2" src="rsrc/prism.png" alt="Picture" class="prism"/><img id="spectscl" src="rsrc/spectscl.png" alt="Picture" class="spectscl"/>
+					<!--stack-overflow.jpg-->
+			  </div>			</td>
+			<td>
+				<div class="image-frame">
+					<canvas id="myCanvas" width="400" height="400"  style="border:3px solid">
+					<img id="spect" src="rsrc/spect.png" alt="Picture" class="spect"/></canvas>
+			  </div>			</td>
+		 </tr>
+		 <tr>
+			<td>
+				<br>
+				<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-150" max="150" value="0"  oninput="numbs.value=sldbs.value" >
+				<input id="numbs" class="image-rotate1" type="text" name="rangeInput"value="0"  oninput="sldbs.value=numbs.value" >			</td>
+			<td>
+				<br>
+				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="50"  oninput="numpr.value=sldpr.value" >
+				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="50"  oninput="sldpr.value=numpr.value" >			</td>
+		 </tr>
+		 <tr>
+			<td>
+				<p align="center" class="style2">Telescope</p>			</td>
+			<td>
+				<p align="center" class="style2">Prismtable</p>			</td>
+		 </tr>
+</table>
+</div>
+
+	
+	
+	
+  
+    <script> 
+		var sldr1 = document.getElementById("sldbs")
+		var sldr2 = document.getElementById("sldpr")
+		var numr1 = document.getElementById("numbs")
+		var numr2 = document.getElementById("numpr")
+		var canvas = document.getElementById("myCanvas"); 
+        var contex = canvas.getContext("2d"); 
+        var img = document.getElementById("spect");
+		var imgin = document.getElementById("spectscl");		
+        window.onload = function () { 			
+			var canvas = document.getElementById("myCanvas"); 
+            var contex = canvas.getContext("2d"); 
+            var img = document.getElementById("spect"); 
+            contex.drawImage(img, 500, 0, 50, 400, 0, 0, 400, 400);
+			contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+        }
+		
+		sldr1.onchange = function () {
+			var sldr1 = document.getElementById("sldbs")
+			var sldr2 = document.getElementById("sldpr")
+			
+			if (sldr2.value > -30 && sldr2.value <= 60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value > -120 && sldr2.value <= -30 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495-360);
+			}
+///////////////////////////////////////////			
+			else if (sldr2.value > -150 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value >= -180 && sldr2.value <= -150 && sldr1.value > 90 && sldr1.value <= 150) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495-360;
+			}
+			else if (sldr2.value > 120 && sldr2.value <= 180 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495+360);
+			}
+//////////////////////////////////	
+			
+			else if (sldr2.value > -120 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			
+			else{ var x = 60 }
+			contex.drawImage(img, x, 0, 50, 400, 0, 0, 1200, 400);
+			contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+			var iind = Number(sldr2.value)+30;
+			var r1 = Math.sin(iind*Math.PI/180)
+			document.getElementById('textInput').value=Math.PI;
+        }
+		
+		
+		
+		numr1.onchange = function () {
+			var sldr1 = document.getElementById("sldbs")
+			var sldr2 = document.getElementById("sldpr")
+			
+			if (sldr2.value > -30 && sldr2.value <= 60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value > -120 && sldr2.value <= -30 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495-360);
+			}
+///////////////////////////////////////////			
+			else if (sldr2.value > -150 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value >= -180 && sldr2.value <= -150 && sldr1.value > 90 && sldr1.value <= 150) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495-360;
+			}
+			else if (sldr2.value > 120 && sldr2.value <= 180 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495+360);
+			}
+//////////////////////////////////	
+			
+			else if (sldr2.value > -120 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			
+			else{ var x = 60 }
+			contex.drawImage(img, x, 0, 50, 400, 0, 0, 1200, 400);
+			contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+			var iind = Number(sldr2.value)+30;
+			var r1 = Math.sin(iind*Math.PI/180)
+			document.getElementById('textInput').value=Math.PI;
+        }
+		
+		
+		sldr2.onchange = function () {
+			var sldr1 = document.getElementById("sldbs")
+			var sldr2 = document.getElementById("sldpr")
+			
+			if (sldr2.value > -30 && sldr2.value <= 60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value > -120 && sldr2.value <= -30 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495-360);
+			}
+///////////////////////////////////////////			
+			else if (sldr2.value > -150 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value >= -180 && sldr2.value <= -150 && sldr1.value > 90 && sldr1.value <= 150) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495-360;
+			}
+			else if (sldr2.value > 120 && sldr2.value <= 180 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495+360);
+			}
+//////////////////////////////////	
+			
+			else if (sldr2.value > -120 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			
+			else{ var x = 60 }
+			contex.drawImage(img, x, 0, 50, 400, 0, 0, 1200, 400);
+			contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+			var iind = Number(sldr2.value)+30;
+			var r1 = Math.sin(iind*Math.PI/180)
+			document.getElementById('textInput').value=Math.PI;
+        }
+		
+		numr2.onchange = function () {
+			var sldr1 = document.getElementById("sldbs")
+			var sldr2 = document.getElementById("sldpr")
+			
+			if (sldr2.value > -30 && sldr2.value <= 60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value > -120 && sldr2.value <= -30 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)-30)+Number(sldr1.value)+495-360);
+			}
+///////////////////////////////////////////			
+			else if (sldr2.value > -150 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			else if (sldr2.value >= -180 && sldr2.value <= -150 && sldr1.value > 90 && sldr1.value <= 150) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495-360;
+			}
+			else if (sldr2.value > 120 && sldr2.value <= 180 && sldr1.value > 0 && sldr1.value <= 150) {
+				var x = 1200-(150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495+360);
+			}
+//////////////////////////////////	
+			
+			else if (sldr2.value > -120 && sldr2.value <= -60 && sldr1.value > -150 && sldr1.value <= 0) {
+				var x = 150-2*(Number(sldr2.value)+120-30)+Number(sldr1.value)+495;
+			}
+			
+			else{ var x = 60 }
+			contex.drawImage(img, x, 0, 50, 400, 0, 0, 1200, 400);
+			contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+			var iind = Number(sldr2.value)+30;
+			var r1 = Math.sin(iind*Math.PI/180)
+			document.getElementById('textInput').value=Math.PI;
+        }
+    </script> 
+	
+	
+	
+  </body>
+
+
+</html>
