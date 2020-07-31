@@ -24,10 +24,10 @@
      		</td>
 			<td>
 				<div class="image-frame">
-					<canvas id="myCanvas" width="400" height="400"  style="border:3px solid">
-					<img id="spect" src="rsrc/spect.png" alt="Picture" class="spect"/>
-					<img id="spectscl" src="rsrc/spectscl.png" alt="Picture" class="spectscl"/>
-					</canvas>
+				<canvas id="spectCanvas" width="400" height="400"
+					style="border:1px solid #c3c3c3;background-color: #000000">
+					Your browser does not support the canvas element.
+				</canvas>
 			  </div>
 			</td>
 		 </tr>
@@ -37,50 +37,60 @@
 			<td>
 				<p align="center" class="style2">Prismtable</p>			</td>
 		 </tr>
+
 		 <tr>
 			<td>
 				<br>
-				<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-150" max="150" value="0"  oninput="numbs.value=sldbs.value" >
-				<input id="numbs" class="image-rotate1" type="text" name="rangeInput"value="0"  oninput="sldbs.value=numbs.value" >
+				<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-150" max="150" value="0" step="0.0001" oninput="numbs.value=sldbs.value" >
+				<input id="numbs" class="image-rotate1" type="text" name="rangeInput"value="0" step="0.0001" oninput="sldbs.value=numbs.value" >
 			</td>
 			<td>
 				<br>
-				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="0"  oninput="numpr.value=sldpr.value" >
-				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="0"  oninput="sldpr.value=numpr.value" >
+				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="59" step="0.0001" oninput="numpr.value=sldpr.value" >
+				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="59" step="0.0001" oninput="sldpr.value=numpr.value" >
 			</td>
 		 </tr>
 
 </table>
-</div>
-
-	
-	
-	
+</div>	
   
     <script> 
+		function spectra(posx,widt){
+			ctx.clearRect(0,0,400,400);
+			ctx.beginPath();
+			ctx.moveTo(200, 73);
+			ctx.lineTo(220, 40);
+			ctx.lineTo(180, 40);
+			ctx.closePath();
+
+			ctx.fillStyle = "#00FF00";
+			ctx.fill();
+			
+			ctx.fillStyle = "#FFEE00";
+			ctx.fillRect(posx-(widt/2)+200,75,widt,250);			
+		}
+		
 		var sldr1 = document.getElementById("sldbs")
 		var sldr2 = document.getElementById("sldpr")
 		var numr1 = document.getElementById("numbs")
 		var numr2 = document.getElementById("numpr")
-		var canvas = document.getElementById("myCanvas"); 
-        var contex = canvas.getContext("2d"); 
-        var img = document.getElementById("spect");
-		var imgin = document.getElementById("spectscl");
+		var canvas = document.getElementById("spectCanvas");
+		var ctx = canvas.getContext("2d");
+		var wd = 2;
+
+
+
 		var mu = 1.5;
 		var adj = 5932;
+
 		
+        //window.onload = function () { 			
+		//	var px = 10*(r1-sldr1.value);
+		//	spectra()
+        //}
+		spectra(0,0)
 
 
-		//var t1 = Number
-		
-        window.onload = function () { 			
-			var canvas = document.getElementById("myCanvas"); 
-            var contex = canvas.getContext("2d"); 
-            var img = document.getElementById("spect"); 
-            contex.drawImage(img, 500, 0, 50, 400, 0, 0, 400, 400);
-			contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
-        }
-		
 		sldr1.onchange = function () {
 		
 			if (sldr2.value >=-120 && sldr2.value<=60){
@@ -134,23 +144,23 @@
 			
 			
 			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r1), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(r1-sldr1.value);
+				spectra(px,wd)
+				
 			}
 			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r2), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(r2-sldr1.value);
+				spectra(px,wd)
 			}
 			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-tr), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(tr-sldr1.value);
+				spectra(px,wd)
 			}
 			else {
-				contex.drawImage(img, 50, 0, 50, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				spectra()
 			}
         }
-		
+
 		sldr2.onchange = function () {
 		
 			if (sldr2.value >=-120 && sldr2.value<=60){
@@ -204,90 +214,20 @@
 			
 			
 			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r1), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(r1-sldr1.value);
+				spectra(px,wd)
+				
 			}
 			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r2), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(r2-sldr1.value);
+				spectra(px,wd)
 			}
 			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-tr), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(tr-sldr1.value);
+				spectra(px,wd)
 			}
 			else {
-				contex.drawImage(img, 50, 0, 50, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
-			}
-        }
-		
-		numr2.onchange = function () {
-		
-			if (sldr2.value >=-120 && sldr2.value<=60){
-				var r1 = 2*(Number(sldr2.value)+30)-180;
-				r1 = ((r1+180+360)%360)-180;
-			}
-			else {
-				var r1 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-180 && sldr2.value<=-60){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else {
-				var r2 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-30 && sldr2.value<=60){
-				var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = -180;}
-				var tr = dev;
-			}
-			else if (sldr2.value >=-180 && sldr2.value<=-150){
-				var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else {tr = -180}
-			
-			
-			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r1), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
-			}
-			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r2), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
-			}
-			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-tr), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
-			}
-			else {
-				contex.drawImage(img, 50, 0, 50, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				spectra()
 			}
         }
 		
@@ -344,22 +284,93 @@
 			
 			
 			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r1), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(r1-sldr1.value);
+				spectra(px,wd)
+				
 			}
 			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-r2), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(r2-sldr1.value);
+				spectra(px,wd)
 			}
 			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				contex.drawImage(img, adj+4*(Number(sldr1.value)-tr), 0, 4000, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				var px = 10*(tr-sldr1.value);
+				spectra(px,wd)
 			}
 			else {
-				contex.drawImage(img, 50, 0, 50, 400, 0, 0, 12000, 400);
-				contex.drawImage(imgin, 0, 0, 400, 400, 0, 0, 400, 400);
+				spectra()
 			}
-		}
+        }
+		
+		numr2.onchange = function () {
+		
+			if (sldr2.value >=-120 && sldr2.value<=60){
+				var r1 = 2*(Number(sldr2.value)+30)-180;
+				r1 = ((r1+180+360)%360)-180;
+			}
+			else {
+				var r1 = -180;
+			}
+			////////////////////////////////////////////////////////////
+			if (sldr2.value >=-180 && sldr2.value<=-60){
+				var r2 = 2*(Number(sldr2.value)+150)-180;
+				r2 = ((r2+180+360)%360)-180;
+			}
+			else if (sldr2.value >=120 && sldr2.value<=180){
+				var r2 = 2*(Number(sldr2.value)+150)-180;
+				r2 = ((r2+180+360)%360)-180;
+			}
+			else {
+				var r2 = -180;
+			}
+			////////////////////////////////////////////////////////////
+			if (sldr2.value >=-30 && sldr2.value<=60){
+				var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
+				var t1 = Math.asin(Math.sin(inc1)/mu);
+				var t2 = 60*Math.PI/180-t1;
+				var inc2 = Math.asin(Math.sin(t2)*mu);
+				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+				if (dev!==dev){dev = -180;}
+				var tr = dev;
+			}
+			else if (sldr2.value >=-180 && sldr2.value<=-150){
+				var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
+				var t1 = Math.asin(Math.sin(inc1)/mu);
+				var t2 = 60*Math.PI/180-t1;
+				var inc2 = Math.asin(Math.sin(t2)*mu);
+				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+				if (dev!==dev){dev = 180;}
+				var tr = -dev;
+			}
+			else if (sldr2.value >=120 && sldr2.value<=180){
+				var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
+				var t1 = Math.asin(Math.sin(inc1)/mu);
+				var t2 = 60*Math.PI/180-t1;
+				var inc2 = Math.asin(Math.sin(t2)*mu);
+				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+				if (dev!==dev){dev = 180;}
+				var tr = -dev;
+			}
+			else {tr = -180}
+			
+			
+			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
+				var px = 10*(r1-sldr1.value);
+				spectra(px,wd)
+				
+			}
+			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
+				var px = 10*(r2-sldr1.value);
+				spectra(px,wd)
+			}
+			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
+				var px = 10*(tr-sldr1.value);
+				spectra(px,wd)
+			}
+			else {
+				spectra()
+			}
+        }
+
     </script> 
 	
 	
