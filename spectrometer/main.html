@@ -52,321 +52,406 @@
 		 </tr>
 
 </table>
-</div>	
+</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Instructions</i></u></span></div>
+	<ul>
+	  <li>1st slider to adjust the position of the telescope. (<span class="inshl">1</span>) </li>
+	  <li>1st text box to read the value of slider 1. It can be used for fine adjustment.(<span class="inshl">2</span>) </li>
+	  <li>2nd slider to adjust the position of the prism. (<span class="inshl">3</span>) </li>
+	  <li>2nd text box to read the value of slider 2. It can be used for fine adjustment.(<span class="inshl">4</span>) </li>
+	  <li>To observe the continious motion of spectra, just click on the slider button and the use up/down key of you keyboard.</li>
+	</ul>
+	<div align="center"> <img src="rsrc/instr.png" width="600" height="200" /></div>
+  </div>
+
+</div>
   
-    <script> 
-		function spectra(posx,widt){
-			ctx.clearRect(0,0,400,400);
-			ctx.beginPath();
-			ctx.moveTo(200, 73);
-			ctx.lineTo(220, 40);
-			ctx.lineTo(180, 40);
-			ctx.closePath();
+<script> 
+	function spectra(posx,widt){
+		ctx.clearRect(0,0,400,400);
+		ctx.beginPath();
+		ctx.moveTo(200, 73);
+		ctx.lineTo(220, 40);
+		ctx.lineTo(180, 40);
+		ctx.closePath();
 
-			ctx.fillStyle = "#00FF00";
-			ctx.fill();
-			
-			ctx.fillStyle = "#FFEE00";
-			ctx.fillRect(posx-(widt/2)+200,75,widt,250);			
+		ctx.fillStyle = "#00FF00";
+		ctx.fill();
+
+		ctx.fillStyle = "#FFEE00";
+		ctx.fillRect(posx-(widt/2)+200,75,widt,250);			
+	}
+
+	var sldr1 = document.getElementById("sldbs")
+	var sldr2 = document.getElementById("sldpr")
+	var numr1 = document.getElementById("numbs")
+	var numr2 = document.getElementById("numpr")
+	var canvas = document.getElementById("spectCanvas");
+	var ctx = canvas.getContext("2d");
+	var wd = 2;
+
+
+
+	var mu = 1.5;
+	var adj = 5932;
+
+	//spectra(0,0)
+	window.onload = function () {
+		modal.style.display = "block";
+		if (sldr2.value >=-120 && sldr2.value<=60){
+			var r1 = 2*(Number(sldr2.value)+30)-180;
+			r1 = ((r1+180+360)%360)-180;
 		}
-		
-		var sldr1 = document.getElementById("sldbs")
-		var sldr2 = document.getElementById("sldpr")
-		var numr1 = document.getElementById("numbs")
-		var numr2 = document.getElementById("numpr")
-		var canvas = document.getElementById("spectCanvas");
-		var ctx = canvas.getContext("2d");
-		var wd = 2;
+		else {
+			var r1 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-180 && sldr2.value<=-60){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else {
+			var r2 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-30 && sldr2.value<=60){
+			var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = -180;}
+			var tr = dev;
+		}
+		else if (sldr2.value >=-180 && sldr2.value<=-150){
+			var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else {tr = -180}
 
 
+		if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
+			var px = 100*(r1-sldr1.value);
+			spectra(px,wd)
 
-		var mu = 1.5;
-		var adj = 5932;
+		}
+		else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
+			var px = 100*(r2-sldr1.value);
+			spectra(px,wd)
+		}
+		else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
+			var px = 100*(tr-sldr1.value);
+			spectra(px,wd)
+		}
+		else {
+			spectra()
+		}
+	}
 
-		spectra(0,0)
+	sldr1.onchange = function () {
+
+		if (sldr2.value >=-120 && sldr2.value<=60){
+			var r1 = 2*(Number(sldr2.value)+30)-180;
+			r1 = ((r1+180+360)%360)-180;
+		}
+		else {
+			var r1 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-180 && sldr2.value<=-60){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else {
+			var r2 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-30 && sldr2.value<=60){
+			var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = -180;}
+			var tr = dev;
+		}
+		else if (sldr2.value >=-180 && sldr2.value<=-150){
+			var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else {tr = -180}
 
 
-		sldr1.onchange = function () {
-		
-			if (sldr2.value >=-120 && sldr2.value<=60){
-				var r1 = 2*(Number(sldr2.value)+30)-180;
-				r1 = ((r1+180+360)%360)-180;
-			}
-			else {
-				var r1 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-180 && sldr2.value<=-60){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else {
-				var r2 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-30 && sldr2.value<=60){
-				var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = -180;}
-				var tr = dev;
-			}
-			else if (sldr2.value >=-180 && sldr2.value<=-150){
-				var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else {tr = -180}
-			
-			
-			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				var px = 100*(r1-sldr1.value);
-				spectra(px,wd)
-				
-			}
-			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				var px = 100*(r2-sldr1.value);
-				spectra(px,wd)
-			}
-			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				var px = 100*(tr-sldr1.value);
-				spectra(px,wd)
-			}
-			else {
-				spectra()
-			}
-        }
+		if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
+			var px = 100*(r1-sldr1.value);
+			spectra(px,wd)
 
-		sldr2.onchange = function () {
-		
-			if (sldr2.value >=-120 && sldr2.value<=60){
-				var r1 = 2*(Number(sldr2.value)+30)-180;
-				r1 = ((r1+180+360)%360)-180;
-			}
-			else {
-				var r1 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-180 && sldr2.value<=-60){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else {
-				var r2 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-30 && sldr2.value<=60){
-				var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = -180;}
-				var tr = dev;
-			}
-			else if (sldr2.value >=-180 && sldr2.value<=-150){
-				var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else {tr = -180}
-			
-			
-			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				var px = 100*(r1-sldr1.value);
-				spectra(px,wd)
-				
-			}
-			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				var px = 100*(r2-sldr1.value);
-				spectra(px,wd)
-			}
-			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				var px = 100*(tr-sldr1.value);
-				spectra(px,wd)
-			}
-			else {
-				spectra()
-			}
-        }
-		
-		numr1.onchange = function () {
-		
-			if (sldr2.value >=-120 && sldr2.value<=60){
-				var r1 = 2*(Number(sldr2.value)+30)-180;
-				r1 = ((r1+180+360)%360)-180;
-			}
-			else {
-				var r1 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-180 && sldr2.value<=-60){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else {
-				var r2 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-30 && sldr2.value<=60){
-				var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = -180;}
-				var tr = dev;
-			}
-			else if (sldr2.value >=-180 && sldr2.value<=-150){
-				var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else {tr = -180}
-			
-			
-			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				var px = 100*(r1-sldr1.value);
-				spectra(px,wd)
-				
-			}
-			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				var px = 100*(r2-sldr1.value);
-				spectra(px,wd)
-			}
-			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				var px = 100*(tr-sldr1.value);
-				spectra(px,wd)
-			}
-			else {
-				spectra()
-			}
-        }
-		
-		numr2.onchange = function () {
-		
-			if (sldr2.value >=-120 && sldr2.value<=60){
-				var r1 = 2*(Number(sldr2.value)+30)-180;
-				r1 = ((r1+180+360)%360)-180;
-			}
-			else {
-				var r1 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-180 && sldr2.value<=-60){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var r2 = 2*(Number(sldr2.value)+150)-180;
-				r2 = ((r2+180+360)%360)-180;
-			}
-			else {
-				var r2 = -180;
-			}
-			////////////////////////////////////////////////////////////
-			if (sldr2.value >=-30 && sldr2.value<=60){
-				var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = -180;}
-				var tr = dev;
-			}
-			else if (sldr2.value >=-180 && sldr2.value<=-150){
-				var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else if (sldr2.value >=120 && sldr2.value<=180){
-				var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
-				var t1 = Math.asin(Math.sin(inc1)/mu);
-				var t2 = 60*Math.PI/180-t1;
-				var inc2 = Math.asin(Math.sin(t2)*mu);
-				var dev = (inc1+inc2-t1-t2)*180/Math.PI;
-				if (dev!==dev){dev = 180;}
-				var tr = -dev;
-			}
-			else {tr = -180}
-			
-			
-			if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
-				var px = 100*(r1-sldr1.value);
-				spectra(px,wd)
-				
-			}
-			else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
-				var px = 100*(r2-sldr1.value);
-				spectra(px,wd)
-			}
-			else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
-				var px = 100*(tr-sldr1.value);
-				spectra(px,wd)
-			}
-			else {
-				spectra()
-			}
-        }
+		}
+		else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
+			var px = 100*(r2-sldr1.value);
+			spectra(px,wd)
+		}
+		else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
+			var px = 100*(tr-sldr1.value);
+			spectra(px,wd)
+		}
+		else {
+			spectra()
+		}
+}
 
-    </script> 
+	sldr2.onchange = function () {
+
+		if (sldr2.value >=-120 && sldr2.value<=60){
+			var r1 = 2*(Number(sldr2.value)+30)-180;
+			r1 = ((r1+180+360)%360)-180;
+		}
+		else {
+			var r1 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-180 && sldr2.value<=-60){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else {
+			var r2 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-30 && sldr2.value<=60){
+			var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = -180;}
+			var tr = dev;
+		}
+		else if (sldr2.value >=-180 && sldr2.value<=-150){
+			var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else {tr = -180}
+
+
+		if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
+			var px = 100*(r1-sldr1.value);
+			spectra(px,wd)
+
+		}
+		else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
+			var px = 100*(r2-sldr1.value);
+			spectra(px,wd)
+		}
+		else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
+			var px = 100*(tr-sldr1.value);
+			spectra(px,wd)
+		}
+		else {
+			spectra()
+		}
+}
+
+	numr1.onchange = function () {
+
+		if (sldr2.value >=-120 && sldr2.value<=60){
+			var r1 = 2*(Number(sldr2.value)+30)-180;
+			r1 = ((r1+180+360)%360)-180;
+		}
+		else {
+			var r1 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-180 && sldr2.value<=-60){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else {
+			var r2 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-30 && sldr2.value<=60){
+			var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = -180;}
+			var tr = dev;
+		}
+		else if (sldr2.value >=-180 && sldr2.value<=-150){
+			var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else {tr = -180}
+
+
+		if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
+			var px = 100*(r1-sldr1.value);
+			spectra(px,wd)
+
+		}
+		else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
+			var px = 100*(r2-sldr1.value);
+			spectra(px,wd)
+		}
+		else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
+			var px = 100*(tr-sldr1.value);
+			spectra(px,wd)
+		}
+		else {
+			spectra()
+		}
+}
+
+	numr2.onchange = function () {
+
+		if (sldr2.value >=-120 && sldr2.value<=60){
+			var r1 = 2*(Number(sldr2.value)+30)-180;
+			r1 = ((r1+180+360)%360)-180;
+		}
+		else {
+			var r1 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-180 && sldr2.value<=-60){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var r2 = 2*(Number(sldr2.value)+150)-180;
+			r2 = ((r2+180+360)%360)-180;
+		}
+		else {
+			var r2 = -180;
+		}
+		////////////////////////////////////////////////////////////
+		if (sldr2.value >=-30 && sldr2.value<=60){
+			var inc1 = (Number(sldr2.value)+30)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = -180;}
+			var tr = dev;
+		}
+		else if (sldr2.value >=-180 && sldr2.value<=-150){
+			var inc1 = -1*(Number(sldr2.value)+150)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else if (sldr2.value >=120 && sldr2.value<=180){
+			var inc1 = -1*(Number(sldr2.value)-210)*Math.PI/180;
+			var t1 = Math.asin(Math.sin(inc1)/mu);
+			var t2 = 60*Math.PI/180-t1;
+			var inc2 = Math.asin(Math.sin(t2)*mu);
+			var dev = (inc1+inc2-t1-t2)*180/Math.PI;
+			if (dev!==dev){dev = 180;}
+			var tr = -dev;
+		}
+		else {tr = -180}
+
+
+		if (Number(sldr1.value)<=r1+15 && Number(sldr1.value)>=r1-15){
+			var px = 100*(r1-sldr1.value);
+			spectra(px,wd)
+
+		}
+		else if (Number(sldr1.value)<=r2+15 && Number(sldr1.value)>=r2-15){
+			var px = 100*(r2-sldr1.value);
+			spectra(px,wd)
+		}
+		else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
+			var px = 100*(tr-sldr1.value);
+			spectra(px,wd)
+		}
+		else {
+			spectra()
+		}
+}
+
+</script> 
 	
 	
 	
