@@ -59,144 +59,174 @@
 			</table>
 		  </td></tr>
 </table>
+<div id="myModal" class="modal">
 
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Instructions</i></u></span></div>
+	<ul>
+	  <li>1st slider to adjust the distance between the slit and the telescope (in cm). (<span class="inshl">1</span>) </li>
+	  <li>1st text box to read the value of slider 1. It can be used for fine adjustment.(<span class="inshl">2</span>) </li>
+	  <li>2nd slider to adjust the position of the telescope along x axis (in mm). (<span class="inshl">3</span>) </li>
+	  <li>2nd text box to read the value of slider 2. It can be used for fine adjustment.(<span class="inshl">4</span>) </li>
+	  <li>3rd slider to adjust the distance between the slit and the prism (in cm). (<span class="inshl">5</span>) </li>
+	  <li>3rd text box to read the value of slider 3. It can be used for fine adjustment.(<span class="inshl">6</span>) </li>
+	  <li>4th slider to adjust the slit width. (<span class="inshl">7</span>) </li>
+	  <li>To observe the continious motion of spectra, just click on the slider button and the use up/down key of you keyboard.</li>
+	</ul>
+	<div align="center"> <img src="rsrc/instr.png" width="600" height="200" /></div>
+  </div>
+
+</div>
 
 
 	
 	
 	
   
-    <script>
-		// prism angle alpha is given by, d=2a(mu-1)alpha, a=slit~biprism
-		var alpha = 0.5*Math.PI/180;
-		var mu = 1.5;
-		var lmda = 589e-9; //nm
-		
-		function alignment(tel,pri){
-			contexsp.clearRect(0,0,800,300);
-			contexsp.drawImage(imgsp, 0, 0, 1200, 400, 0, 0, 800, 300);
-			contexsp.drawImage(imgprism, 845-8.5*pri, 0, 1200, 400, 0, 0, 800, 300);
-			contexsp.drawImage(imgtele, 845-8.5*tel, 0, 1200, 400, 0, 0, 800, 300);			
-		}
-		
-		function spali(wdt,wdtshd,stlx){
-			contex.clearRect(0,0,400,400);
-			iwidth = wdt*1700/0.0118789;
-			dwidth = wdtshd*1700/0.0118789;
-			contex.drawImage(spc, 0, 0, 1700, 400, 200-iwidth/2-stlx, 0, iwidth, 400);
-			contex.drawImage(spcshade, 0, 0, 1700, 400, 200-dwidth/2-stlx, 0, dwidth, 400);
-			contex.drawImage(spcscl, 0, 0, 400, 400, 0, 0, 400, 400);
-		}
-		
-		var sldtl = document.getElementById("sldtl")
-		var sldbp = document.getElementById("sldbp")
-		var sldspx = document.getElementById("sldtlx")
-		var numtl = document.getElementById("numtl")
-		var numbp = document.getElementById("numbp")
-		var numspx = document.getElementById("numtlx")
-		var sldsw = document.getElementById("sldst")
-		
-		var canvassp = document.getElementById("canvassp");
-		var contexsp = canvassp.getContext("2d"); 
-        var imgsp = document.getElementById("setup");
-		var imgprism = document.getElementById("prism");
-		var imgtele = document.getElementById("tele");
-		
-		var canvas = document.getElementById("myCanvas"); 
-        var contex = canvas.getContext("2d"); 
-        var spc = document.getElementById("spect");
-		var spcshade = document.getElementById("spectshade");
-		var spcscl = document.getElementById("spectscl");
-		
-		
-        window.onload = function () {
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)
-        }
-		
-		sldtl.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-		
-		numtl.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-		
-		sldtlx.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-		
-		numtlx.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-		
-		sldbp.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-		
-		numbp.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-		
-		sldsw.onchange = function () {			
-			D = Number(sldtl.value);
-			a = Number(sldbp.value);
-			alignment(D,a)
-			bta = lmda*D/(2*a*(mu-1)*alpha);
-			width = bta*100;
-			tlx = Number(sldtlx.value);
-			dw = Number(sldsw.value);
-			spali(width,width/dw,tlx)	
-		}
-    </script> 
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	// prism angle alpha is given by, d=2a(mu-1)alpha, a=slit~biprism
+	var alpha = 0.5*Math.PI/180;
+	var mu = 1.5;
+	var lmda = 589e-9; //nm
+	
+	function alignment(tel,pri){
+		contexsp.clearRect(0,0,800,300);
+		contexsp.drawImage(imgsp, 0, 0, 1200, 400, 0, 0, 800, 300);
+		contexsp.drawImage(imgprism, 845-8.5*pri, 0, 1200, 400, 0, 0, 800, 300);
+		contexsp.drawImage(imgtele, 845-8.5*tel, 0, 1200, 400, 0, 0, 800, 300);			
+	}
+	
+	function spali(wdt,wdtshd,stlx){
+		contex.clearRect(0,0,400,400);
+		iwidth = wdt*1700/0.0118789;
+		dwidth = wdtshd*1700/0.0118789;
+		contex.drawImage(spc, 0, 0, 1700, 400, 200-iwidth/2-stlx, 0, iwidth, 400);
+		contex.drawImage(spcshade, 0, 0, 1700, 400, 200-dwidth/2-stlx, 0, dwidth, 400);
+		contex.drawImage(spcscl, 0, 0, 400, 400, 0, 0, 400, 400);
+	}
+	
+	var sldtl = document.getElementById("sldtl")
+	var sldbp = document.getElementById("sldbp")
+	var sldspx = document.getElementById("sldtlx")
+	var numtl = document.getElementById("numtl")
+	var numbp = document.getElementById("numbp")
+	var numspx = document.getElementById("numtlx")
+	var sldsw = document.getElementById("sldst")
+	
+	var canvassp = document.getElementById("canvassp");
+	var contexsp = canvassp.getContext("2d"); 
+	var imgsp = document.getElementById("setup");
+	var imgprism = document.getElementById("prism");
+	var imgtele = document.getElementById("tele");
+	
+	var canvas = document.getElementById("myCanvas"); 
+	var contex = canvas.getContext("2d"); 
+	var spc = document.getElementById("spect");
+	var spcshade = document.getElementById("spectshade");
+	var spcscl = document.getElementById("spectscl");
+	
+	
+	window.onload = function () {
+		modal.style.display = "block";
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)
+	}
+	
+	sldtl.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+	
+	numtl.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+	
+	sldtlx.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+	
+	numtlx.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+	
+	sldbp.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+	
+	numbp.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+	
+	sldsw.onchange = function () {			
+		D = Number(sldtl.value);
+		a = Number(sldbp.value);
+		alignment(D,a)
+		bta = lmda*D/(2*a*(mu-1)*alpha);
+		width = bta*100;
+		tlx = Number(sldtlx.value);
+		dw = Number(sldsw.value);
+		spali(width,width/dw,tlx)	
+	}
+</script> 
 	
 	
 	
