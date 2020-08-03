@@ -38,6 +38,11 @@ body {
       position:absolute;
       z-index: 2;
 }
+
+.insti{
+      position:absolute;
+      z-index: 5;
+}
 	
 .tbox {
   width: 100px;
