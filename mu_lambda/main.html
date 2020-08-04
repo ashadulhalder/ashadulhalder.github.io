@@ -96,6 +96,7 @@
 	
 	function draw(){
 		ctx.clearRect(0,0,800,200);
+		ctx.shadowColor = "#000000";
 		ctx.beginPath();
 		ctx.moveTo(400, 10);
 		ctx.lineTo(410, 2);
@@ -116,7 +117,7 @@
 			ctx.fillStyle = "#DDDDFF";
 			ctx.shadowBlur = 10;
 			ctx.shadowColor = "white";
-			ctx.fillRect(px-(wd/2)+400,10,wd,250);
+			ctx.fillRect(800-(px-(wd/2)+400),10,wd,250);
 		}
 		////////////////////////////////////////////////////////////
 		if (sldr2.value >=-180 && sldr2.value<=-60){
@@ -136,7 +137,7 @@
 			ctx.fillStyle = "#DDDDFF";
 			ctx.shadowBlur = 10;
 			ctx.shadowColor = "white";
-			ctx.fillRect(px-(wd/2)+400,10,wd,250);
+			ctx.fillRect(800-(px-(wd/2)+400),10,wd,250);
 		}
 		
 		////////////////////////////////////////////////////////////
@@ -175,12 +176,12 @@
 			if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15){
 				var px = 100*(tr-sldr1.value);
 				ctx.shadowBlur = 10;
-				if (i==0){ctx.fillStyle = "#4d00bf";ctx.shadowColor = "#4d00bf";ctx.fillRect(px-(wd/2)+400,10,wd,180);}
-				else if (i==1){ctx.fillStyle = "#0035ff";ctx.shadowColor = "#0035ff";ctx.fillRect(px-(wd/2)+400,10,wd,180);}
-				else if (i==2){ctx.fillStyle = "#00ffea";ctx.shadowColor = "#00ffea";ctx.fillRect(px-(wd/2)+400,10,wd,180);}
-				else if (i==3){ctx.fillStyle = "00ff7b";ctx.fillRect(px-(wd/2)+400,10,wd,180);}
-				else if (i==4){ctx.fillStyle = "#ffe600";ctx.shadowColor = "#ffe600";ctx.fillRect(px-(wd/2)+400,10,wd,180);}
-				else if (i==5){ctx.fillStyle = "#FF0000";ctx.shadowColor = "#FF0000";ctx.fillRect(px-(wd/2)+400,10,wd,180);}
+				if (i==0){ctx.fillStyle = "#4d00bf";ctx.shadowColor = "#4d00bf";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);}
+				else if (i==1){ctx.fillStyle = "#0035ff";ctx.shadowColor = "#0035ff";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);}
+				else if (i==2){ctx.fillStyle = "#00ffea";ctx.shadowColor = "#00ffea";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);}
+				else if (i==3){ctx.fillStyle = "00ff7b";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);}
+				else if (i==4){ctx.fillStyle = "#ffe600";ctx.shadowColor = "#ffe600";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);}
+				else if (i==5){ctx.fillStyle = "#FF0000";ctx.shadowColor = "#FF0000";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);}
 				//ctx.shadowBlur = 10;
 			}
 		}
