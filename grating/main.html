@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+    <script src="rt.js"></script>
+
+<body>
+    <div class="container">
+      <h1 class="styleh" align="center">Diffraction Grating</h1>
+	  <table width="800" border="0" align="center">
+	  <tr><td>
+	  <table width="800" border="0" align="center">
+		 <tr>
+			<td>
+				<div class="image-frame">
+					<img id="image0" src="rsrc/table.png" alt="Picture" class="table"/>
+					<img id="image1" src="rsrc/base.png" alt="Picture" class="base"/>
+					<img id="image2" src="rsrc/prism.png" alt="Picture" class="prism"/>
+			  </div>
+     		</td>
+			<td>
+				<div>
+				<br>
+					<p align="center" class="style2">Telescope</p>
+					<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-150" max="150" value="-0.02" step="0.01" oninput="numbs.value=sldbs.value+0.02" >
+					<input id="numbs" class="image-rotate1" type="text" name="rangeInput"value="0" step="0.001" oninput="sldbs.value=numbs.value-0.02" >
+					<br><br><br>
+					
+					<div align="center">
+					<span class="style2">Mercury</span> 
+					<label class="switch">
+					  <input type="checkbox" id="myCheck" checked>
+					  <span class="slider round"></span>
+					</label>
+					<span align="center" class="style2">Sodium</span> 
+					</div>
+					<!--<p align="center" class="style2">Prismtable</p>
+					<br>
+					<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="0" step="0.01" oninput="numpr.value=sldpr.value" >
+					<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="0" step="0.001" oninput="sldpr.value=numpr.value" >-->
+				</div>
+			</td>
+		 </tr>
+	</table></td></tr>
+	<tr><td>
+	<div class="spc-frame">
+		<canvas id="spectCanvas" width="800" height="400" style="border:1px solid #c3c3c3;background-color: #000000">
+			Your browser does not support the canvas element.
+		</canvas>
+	</div></td></tr>
+	</table
+	</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Instructions</i></u></span></div>
+	<ul>
+	  <li>1st slider to adjust the position of the telescope. (<span class="inshl">1</span>) </li>
+	  <li>1st text box to read the value of slider 1. It can be used for fine adjustment.(<span class="inshl">2</span>) </li>
+	  <li>To switch between mercury vapour lamp and sodium vapour lamp. (<span class="inshl">3</span>) </li>
+	  <li>To observe the continious motion of spectra, just click on the slider button and the use up/down key of you keyboard.</li>
+	  <li>Wavelengths are 420.6 nm, 447.2 nm, 492.2 nm, 501.6 nm, 587.6 nm, 667.8 nm</li>
+	</ul>
+	<div align="center"> <img src="rsrc/instr.png" width="600" height="200" /></div>
+  </div>
+
+</div>
+<input id="txt" class="image-rotate2" type="text">
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+
+	var checkBox = document.getElementById("myCheck");
+	var sldr1 = document.getElementById("sldbs")
+	var numr1 = document.getElementById("numbs")
+	var canvas = document.getElementById("spectCanvas");
+	var ctx = canvas.getContext("2d");
+	var wd = 2;
+
+	
+	var adj = 5932;
+	// 15000 lines/inch ==> N=5.9e5 lines/m
+	N = 5.9e5;
+	
+	function draw(){
+		if (checkBox.checked == false){
+			lambdal = [420.6, 447.2, 492.2, 501.6, 587.6, 667.8];
+			ctx.clearRect(0,0,800,200);
+			ctx.shadowColor = "#000000";
+			ctx.beginPath();
+			ctx.moveTo(400, 10);
+			ctx.lineTo(410, 2);
+			ctx.lineTo(390, 2);
+			ctx.closePath();
+
+			ctx.fillStyle = "#00FF00";
+			ctx.fill();
+
+			////////////////////////////////////////////////////////////
+			for (i = 0; i < lambdal.length; i++) {
+				for (j = -3; j <=3; j++) {
+					tr = Math.asin(j*lambdal[i]*1e-9*N)*180/Math.PI;
+					if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15 && j!=0){
+						var px = 100*(tr-sldr1.value);
+						ctx.shadowBlur = 10;
+						if (i==0){ctx.fillStyle = "#4d00bf";ctx.shadowColor = "#4d00bf";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+						else if (i==1){ctx.fillStyle = "#0035ff";ctx.shadowColor = "#0035ff";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+						else if (i==2){ctx.fillStyle = "#00ffea";ctx.shadowColor = "#00ffea";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+						else if (i==3){ctx.fillStyle = "00ff7b";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+						else if (i==4){ctx.fillStyle = "#ffe600";ctx.shadowColor = "#ffe600";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+						else if (i==5){ctx.fillStyle = "#FF0000";ctx.shadowColor = "#FF0000";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+					}
+					else if (Number(sldr1.value)<=tr+4.04 && Number(sldr1.value)>=tr-4.04 && j==0){
+						var px = 100*(0-sldr1.value);
+						ctx.shadowBlur = 10;
+						ctx.fillStyle = "#ddddff";
+						ctx.shadowColor = "#ddddff";
+						ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);
+						ctx.globalAlpha = 1-tr/180;
+					}
+				}
+			}
+		}
+		else{
+			lambdal = [588.9950, 589.5924];
+			ctx.clearRect(0,0,800,200);
+			ctx.shadowColor = "#000000";
+			ctx.beginPath();
+			ctx.moveTo(400, 10);
+			ctx.lineTo(410, 2);
+			ctx.lineTo(390, 2);
+			ctx.closePath();
+
+			ctx.fillStyle = "#00FF00";
+			ctx.fill();
+
+			////////////////////////////////////////////////////////////
+			for (i = 0; i < lambdal.length; i++) {
+				for (j = -3; j <=3; j++) {
+					tr = Math.asin(j*lambdal[i]*1e-9*N)*180/Math.PI;
+					if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15 && j!=0){
+						var px = 100*(tr-sldr1.value);
+						ctx.shadowBlur = 10;
+						if (i==0){ctx.fillStyle = "#FFEE00";ctx.shadowColor = "#FFEE00";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+						else if (i==1){ctx.fillStyle = "#FFE000";ctx.shadowColor = "#FFE000";ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);ctx.globalAlpha = 1-tr/90;}
+					}
+					else if (Number(sldr1.value)<=tr+15 && Number(sldr1.value)>=tr-15 && j==0){
+						var px = 100*(tr-sldr1.value);
+						ctx.shadowBlur = 10;
+						ctx.fillStyle = "#FFEE00";
+						ctx.shadowColor = "#FFEE00";
+						ctx.fillRect(800-(px-(wd/2)+400),10,wd,180);
+						ctx.globalAlpha = 1-tr/180;
+					}
+				}
+			}
+		}
+	}
+	
+	//spectra(0,0)
+	window.onload = function () {
+		modal.style.display = "block";
+		draw()
+	}
+
+	sldr1.onchange = function () {
+		draw()
+	}
+
+	
+	numr1.onchange = function () {
+		draw()
+	}
+	
+	checkBox.onchange = function () {
+		draw()
+	}
+</script> 
+	
+	
+	
+  </body>
+
+
+</html>
