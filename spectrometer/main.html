@@ -46,8 +46,8 @@
 			</td>
 			<td>
 				<br>
-				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="59" step="0.0001" oninput="numpr.value=sldpr.value" >
-				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="59" step="0.0001" oninput="sldpr.value=numpr.value" >
+				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="0" step="0.0001" oninput="numpr.value=sldpr.value" >
+				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="0" step="0.0001" oninput="sldpr.value=numpr.value" >
 			</td>
 		 </tr>
 
@@ -98,7 +98,7 @@
 		ctx.fillStyle = "#FFEE00";
 		ctx.shadowBlur = 10;
 		ctx.shadowColor = "white";
-		ctx.fillRect(posx-(widt/2)+200,75,widt,250);		
+		ctx.fillRect(400-(posx-(widt/2)+200),75,widt,250);		
 	}
 
 	var sldr1 = document.getElementById("sldbs")
