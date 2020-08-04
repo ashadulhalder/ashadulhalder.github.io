@@ -84,6 +84,8 @@
 	}
 	function spectra(posx,widt){
 		ctx.clearRect(0,0,400,400);
+		ctx.shadowBlur = 0;
+		ctx.shadowColor = "black";
 		ctx.beginPath();
 		ctx.moveTo(200, 73);
 		ctx.lineTo(220, 40);
@@ -94,7 +96,9 @@
 		ctx.fill();
 
 		ctx.fillStyle = "#FFEE00";
-		ctx.fillRect(posx-(widt/2)+200,75,widt,250);			
+		ctx.shadowBlur = 10;
+		ctx.shadowColor = "white";
+		ctx.fillRect(posx-(widt/2)+200,75,widt,250);		
 	}
 
 	var sldr1 = document.getElementById("sldbs")
