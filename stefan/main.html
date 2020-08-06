@@ -31,20 +31,23 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-	<div align="center"><span class="inh"><u><i>Instructions</i></u></span></div>
+	<div align="center"><span class="inh"><u><i>Procedure</i></u></span></div>
 	<ul>
-	  <li>1st slider to adjust the distance between the slit and the telescope (in cm). (<span class="inshl">1</span>) </li>
-	  <li>1st text box to read the value of slider 1. It can be used for fine adjustment.(<span class="inshl">2</span>) </li>
-	  <li>2nd slider to adjust the position of the telescope along x axis (in mm). (<span class="inshl">3</span>) </li>
-	  <li>2nd text box to read the value of slider 2. It can be used for fine adjustment.(<span class="inshl">4</span>) </li>
-	  <li>3rd slider to adjust the distance between the slit and the prism (in cm). (<span class="inshl">5</span>) </li>
-	  <li>3rd text box to read the value of slider 3. It can be used for fine adjustment.(<span class="inshl">6</span>) </li>
-	  <li>4th slider to adjust the slit width. (<span class="inshl">7</span>) </li>
-	  <li>To observe the continious motion of spectra, just click on the slider button and the use up/down key of you keyboard.</li>
-	  <li>The slider can be changed using both mouse or keyboard. In the case of keyboard, atfirst the corresponding slider has to be focused by mouse click. After that, the slider can be adjusted by pressing the arrow buttons.</li>
+	  <li>First increase the voltage (from <i>V=0</i>) slowly till the filament start glowing and record corresponding voltage and current in Table I. </li>
+	  <li>After that, decrease the voltage gradually till the glow ceases. Record again the voltage and current in Table I.</li>
+	  <li>Calculate the resistance for both the cases and take the average of them as the draper resistance (<i>R<sub>d</sub></i>). </li>
+	  <div align="center"> <img src="rsrc/t1.png" width="400" height="100" /></div>
+	  
+	  <li>Increase the voltage of power supply in small steps (0.5, 1.0, 1.5, ...) and record corresponding current (in mA) in Table-II.</li>
+	  <li>Calculate the resistance of the filament <i>R=V/I</i> and the corresponding power <i>P=VI</i> for individual readings.</li>
+	  <li>Plot log<sub>10</sub><i>R</i> v/s log<sub>10</sub><i>T</i> graph. The graph should be straight line for <i>V&ge;2.5</i> V. Estimate the slope of the straight line from the graph.</li>
+	  
+	  <li>The slider can be tuned by pressing the arrow buttons on keyboard.</li>
+	  <div align="center"> <img src="rsrc/t2.png" width="400" height="300" /></div>
+	  <br><br>
 	</ul>
-	<div align="center"> <img src="rsrc/instr.png" width="600" height="200" /></div>
-  </div>
+	</div>
+  <br>
 
 </div>
 
@@ -74,7 +77,7 @@
 		contexsp.fillText(String(vtg.toFixed(2)),140,225);
 		amp = -37+1350*Math.log10(vtg+1.2)+4*Math.pow((vtg+4),2);
 		contexsp.fillText(String(amp.toFixed(0)),670,220);
-		if (vtg>=1.51){opct = Math.pow(vtg-1.51,0.2);}
+		if (vtg>=1.52){opct = Math.pow(vtg-1.52,0.2);}
 		else{opct = 0;}
 		contexsp.globalAlpha = opct;
 		contexsp.drawImage(imglight, 0, 0, 1200, 400, 0, 0, 800, 300);
@@ -96,7 +99,7 @@
 	
 	
 	window.onload = function () {
-		//modal.style.display = "block";
+		modal.style.display = "block";
 		v = Number(sldv.value);
 		draw(v)
 	}
