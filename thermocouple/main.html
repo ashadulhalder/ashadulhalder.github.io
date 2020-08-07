@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+    <script src="rt.js"></script>
+
+<body>
+    <div class="container">
+      <h1 class="styleh" align="center">Thermocouple (incomplete)</h1>
+	  <table width="800" border="0" align="center">
+		  <tr>
+			<td>
+				<canvas id="canvassp" width="800" height="500"  style="border:3px solid">
+					<img src="rsrc/setup.png" alt="Picture" name="setup" width="800"  align="center" id="setup" class="setup"/>
+					<img src="rsrc/jky.png" alt="Picture" width="800"  align="center" id="jky"  class="jky"/>
+					<img src="rsrc/pointer.png" alt="Picture" width="800"  align="center" id="pointr"  class="pointr"/>
+					<img src="rsrc/key.png" alt="Picture" width="800"  align="center" id="key"  class="key"/>
+				</canvas>
+			</td>
+		  </tr>
+		  <tr><td align="center">
+				<span class="style4"> Voltage</span>
+				<br><br>
+				<input id="sldx" class="slider" type="range" name="rangeInput" min="0" max="30" value="30" step="0.01" oninput="numx.value=sldx.value" >
+				<br>
+				<input id="numx" class="image-rotate1" type="text" name="rangeInput"value="0" step="0.001" oninput="sldx.value=numx.value" >
+		  </td></tr>
+		  <tr><td align="center"><br><span class="style4"> R = </span>
+				<input id="res" class="image-rotate1" type="text" name="rangeInput"value="0" step="0.001" >
+				<span class="style4"> &Omega; </span>
+		  </td></tr>
+		  <tr><td align="center">
+			<button class="button button1" id="con" onmousedown="mdown()" onmouseup="mup()">Circuit on</button>
+			
+		  </td></tr>
+</table>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Procedure</i></u></span></div>
+	<ul>
+	  <li>First increase the voltage (from <i>V=0</i>) slowly till the filament start glowing and record corresponding voltage and current in Table I. </li>
+	  <li>After that, decrease the voltage gradually till the glow ceases. Record again the voltage and current in Table I.</li>
+	  <li>Calculate the resistance for both the cases and take the average of them as the draper resistance (<i>R<sub>d</sub></i>). </li>
+	  <div align="center"> <img src="rsrc/t1.png" width="400" height="100" /></div>
+	  
+	  <li>Increase the voltage of power supply in small steps (0.5, 1.0, 1.5, ...) and record corresponding current (in mA) in Table-II.</li>
+	  <li>Calculate the resistance of the filament <i>R=V/I</i> and the corresponding power <i>P=VI</i> for individual readings.</li>
+	  <li>Plot log<sub>10</sub><i>R</i> v/s log<sub>10</sub><i>T</i> graph. The graph should be straight line for <i>V&ge;2.5</i> V. Estimate the slope of the straight line from the graph.</li>
+	  
+	  <li>The slider can be tuned by pressing the arrow buttons on keyboard.</li>
+	  <div align="center"> <img src="rsrc/t2.png" width="400" height="300" /></div>
+	  <br><br>
+	</ul>
+	</div>
+  <br>
+
+</div>
+
+
+	
+	
+	
+  
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	
+
+	function drawup(vv,dp){  
+		var id = setInterval(drawm, 10);
+		var mi = 0;
+		var scl = 50
+		function drawm() {
+		if (mi==5*scl){
+			document.getElementById("con").disabled = false;
+			$(con).css('background-color', '#00AA55');
+			clearInterval(id);
+		}
+		else{
+			document.getElementById("con").disabled = true;
+			$(con).css('background-color', '#00FF55');
+			mi++;
+			disp = (dp-0.2*dp*mi/scl)*Math.cos(mi/scl*Math.PI/2)
+			contexsp.clearRect(0,0,800,500);
+			contexsp.drawImage(imgsp, 0, 0, 800, 500, 0, 0, 800, 500);
+			contexsp.drawImage(imgjky, 0, 0, 800, 500, vv*7.8-385, -5, 800, 500);
+			contexsp.drawImage(imgpt, 0, 0, 800, 500, disp*7, 0, 800, 500);
+		}
+		}
+	}
+	
+	function draw(vv){  
+		var id = setInterval(drawm, 10);
+		var mi = 0;
+		function drawm() {
+		if (mi==50){
+			clearInterval(id);
+		}
+		else{
+			mi++;
+			disp = vv*Math.sin(mi/50*Math.PI/2);
+			contexsp.clearRect(0,0,800,500);
+			contexsp.drawImage(imgsp, 0, 0, 800, 500, 0, 0, 800, 500);
+			contexsp.drawImage(imgjky, 0, 0, 800, 500, vv*7.8-385, -5, 800, 500);
+			contexsp.drawImage(imgpt, 0, 0, 800, 500, disp*7, 0, 800, 500);
+			contexsp.drawImage(imgky, 0, 0, 800, 500, 0, 0, 800, 500);
+		}
+		}
+	}
+	
+	function drawsldr(vv){  
+		contexsp.clearRect(0,0,800,500);
+		contexsp.drawImage(imgsp, 0, 0, 800, 500, 0, 0, 800, 500);
+		contexsp.drawImage(imgjky, 0, 0, 800, 500, vv*7.8-385, -5, 800, 500);
+		contexsp.drawImage(imgpt, 0, 0, 800, 500, 0, 0, 800, 500);
+	}
+	
+	
+	var sldx = document.getElementById("sldx")
+	var numx = document.getElementById("numx")
+	var con = document.getElementById("con");
+	
+	var canvassp = document.getElementById("canvassp");
+	var contexsp = canvassp.getContext("2d"); 
+	var imgsp = document.getElementById("setup");
+	var imgjky = document.getElementById("jky");
+	var imgpt = document.getElementById("pointr");
+	var imgky = document.getElementById("key");
+	
+	
+	
+	window.onload = function () {
+		//modal.style.display = "block";
+		v = Number(sldx.value);
+		drawsldr(v)	
+	}
+	
+	sldx.onchange = function () {			
+		v = Number(sldx.value);
+		drawsldr(v)	
+	}
+	
+	numx.onchange = function () {			
+		v = Number(sldx.value);
+		drawsldr(v)	
+	}
+	function mdown(){
+		$(con).css('background-color', 'red');
+		v = Number(sldx.value);
+		draw(v)
+	}
+	
+	function mup(){
+		//$(con).css('background-color', '#00FF55');
+		v = Number(sldx.value);
+		drawup(v,disp)
+	}
+</script> 
+	
+	
+	
+</body>
+
+
+</html>
