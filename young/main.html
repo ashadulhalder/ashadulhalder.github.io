@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+    <script src="rt.js"></script>
+
+<body>
+    <div class="container">
+		<h1 class="styleh" align="center">Young's Modulus</h1>
+		<table width="1300" border="0" align="center">
+		  <tr>
+			<td>
+				<canvas id="canvas" width="850" height="450"  style="border:3px solid">
+					<img src="rsrc/setup.png" alt="Picture" name="setup" width="850"  align="center" id="setup" class="setup"/>
+					<img src="rsrc/stand2.png" alt="Picture" name="st2" width="850"  align="center" id="st2" class="st2"/>
+					<img src="rsrc/rod.png" alt="Picture" name="rod" width="850"  align="center" id="rod" class="rod"/>
+					<img src="rsrc/tt_stand.png" alt="Picture" width="850"  align="center" id="tts"  class="tts"/>
+					<img src="rsrc/ttt.png" alt="Picture" width="850"  align="center" id="ttt"  class="ttt"/>
+					<img src="rsrc/hook.png" alt="Picture" width="850"  align="center" id="hook"  class="hook"/>
+					<img src="rsrc/weight.png" alt="Picture" width="850"  align="center" id="weight"  class="weight"/>
+				</canvas>
+			</td>
+			<td>
+				<canvas id="canvascw" width="450" height="450"  style="border:3px solid">
+					<img src="rsrc/object.png" alt="Picture" width="450"  align="center" id="obj" class="obj"/>
+					<img src="rsrc/cw.png" alt="Picture" width="450"  align="center" id="cw"  class="cw"/>
+				</canvas>
+			</td>
+		  </tr>
+		  </table>
+		  <table width="800" border="0" align="center">
+		  <tr>
+			<td>
+				<canvas id="canvasscl" width="300" height="100"  style="border:3px solid">
+					<img src="rsrc/mscl.png" alt="Picture" height="100"  align="center" id="ms" class="ms"/>
+					<img src="rsrc/vscl.png" alt="Picture" height="100"  align="center" id="vs"  class="vs"/>
+				</canvas>
+			</td>
+		  
+		  <td align="center">
+				<span class="style4">d</span>
+				<input id="sld" class="slider" type="range" name="rangeInput" min="0" max="18" value="0" step="0.01">
+				<!--<input id="num" style="width: 5em" type="number" name="rangeInput" min="0" max="18" value="0" step="0.01" oninput="sld.value=num.value" >-->
+				<br>
+				<span class="style4">x</span>
+				<input id="sldx" class="slider" type="range" name="rangeInput" min="50" max="100" value="100" step="1" oninput="numx.value=sldx.value" >
+				<input id="numx" style="width: 5em" type="number" name="rangeInput" min="50" max="100" value="100" step="1" oninput="sldx.value=numx.value" >
+				<span class="style4">cm</span>
+				<br>
+				<span class="style4">Weight = </span>
+				<select id="wth" >
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+				<span class="style4">kg</span>
+		  </td></tr>
+		</table>
+		<div align="center">
+			<button class="button" id="info">Info</button>
+		</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Procedure</i></u></span></div>
+	<ul>
+		<div align="center"> <img src="rsrc/info.png" width="90%"/></div>
+		<li>First adjust the distance (<i>x</i>) between the stands (S<sub>1</sub>, S<sub>2</sub>) using the slider <span class="inshl">c1</span> (or using corresponding textbox). The position of the hook and the travelling microscope stand will be adjusted automatically with <i>x</i></li>
+		<li>In this experiment, we need only vertical movement of the travelling microscope. So, using the slider <span class="inshl">c2</span>, coincide the horizontal cross-wire of the microscope with the tip of the niddle (n). The magnified view of the vertical scale is shown in image <span class="inshl">I<sub>3</sub></span> (<span class="inshl">I<sub>2</sub></span> is the microscope view). Record the reading in Table I.</li>
+		<li>Now put different weights (using dropdown button <span class="inshl">c3</span>) on the weight holder (w) and record the corresponding readings in Table I. It is to be noted that, the weight holder is not massless (weight = wh kg).
+		<div align="center"> <img src="rsrc/t1.png" width="50%"/></div>
+		<li>Plot <i>d</i> v/s <i>x</i> graph. The graph should be straight line. Estimate the value of the Young's Modulus from the slope of the graph using the equation,</li>
+		<div align="center"> <img src="rsrc/formula.png" width="30%"/></div>
+		where, <i>d</i> and <i>b</i> are the thickness and breadth of the metal bar respectively. In this experiment  <i>d = 0.4 cm</i> and  <i>b = 5 cm</i>.
+		<li>Repeat the entire procedure for different values of <i>x</i> and calculate Young's Modulus for individual cases.</li>
+		<li>The slider can be tuned by pressing the arrow buttons on keyboard.</li>
+	  <br><br><br><br><br><br>
+	</ul>
+	</div>
+  <br>
+
+</div>
+	
+	
+	
+  
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	
+	var thick = 0.4; //cm
+	var breadth = 5; //cm
+	
+	function draw(hv,xv,wtp){
+		wt = wtp+0.5;
+		var dis = 9.8*wt*Math.pow(xv/100,3)/(4*Math.pow(thick/100,3)*breadth/100*234e9);
+		contex.clearRect(0,0,850,450);
+		contex.drawImage(imgst, 0, 0, 850, 450, 0, 0, 850, 450);
+		contex.drawImage(imgst2, 0, 0, 850, 450, 7.5*xv-750, 0, 850, 450);
+		for(var x=0;x<850;x++){
+			contex.drawImage(rod,x,0,1,450,x,-5+0.00003*wt*(Math.pow(50-xv*7.5/2-50,2)-Math.pow(x-xv*7.5/2-50,2)),1,450
+			);           
+		}
+		contex.drawImage(imghk, 0, 0, 850, 450, 7.5*xv/2-375, -5+0.00003*w*(Math.pow(50-xv*7.5/2-50,2)-0), 850, 450);
+		for (i = 0; i < wtp; i++) { 
+			contex.drawImage(imgwt, 0, 0, 850, 450, 7.5*xv/2-375, -5+0.00003*w*(Math.pow(50-xv*7.5/2-50,2)-0)-i*10+35, 850, 450);
+		}
+		contex.drawImage(imgtts, 0, 0, 850, 450, 7.5*xv/2-470, 0, 850, 450);
+		contex.drawImage(imgttt, 0, 0, 850, 450, 7.5*xv/2-470, -5*hv+70, 850, 450);
+
+		contexcw.clearRect(0,0,450,450);
+		contexcw.drawImage(imgobj, 0, 0, 450, 900, 0, -20*(hv+dis*100)+20, 450, 900);
+		contexcw.drawImage(imgcw, 0, 0, 450, 450, 0, 0, 450, 450);
+		
+		contexscl.clearRect(0,0,300,100);
+		contexscl.drawImage(imgms, 0, 0, 1788, 100, -hv*79.5222, 0, 1788, 100);
+		contexscl.drawImage(imgvs, 0, 0, 300, 100, 12, 20, 300, 100);
+	}
+
+	
+	var sld = document.getElementById("sld")
+	var num = document.getElementById("num")
+	var sldx = document.getElementById("sldx")
+	var numx = document.getElementById("numx")
+	var wht = document.getElementById("wth")
+	var inf = document.getElementById("info")
+	
+	var canvas = document.getElementById("canvas");
+	var contex = canvas.getContext("2d"); 
+	var imgst = document.getElementById("setup");
+	var imgtts = document.getElementById("tts");
+	var imgttt = document.getElementById("ttt");
+	var imghk = document.getElementById("hook");
+	var imgwt = document.getElementById("weight");
+	var imgst2 = document.getElementById("st2");
+	var imgrod = document.getElementById("rod");
+	
+	var canvascw = document.getElementById("canvascw");
+	var contexcw = canvascw.getContext("2d"); 
+	var imgobj = document.getElementById("obj");
+	var imgcw = document.getElementById("cw");
+	
+	var canvasscl = document.getElementById("canvasscl");
+	var contexscl = canvasscl.getContext("2d"); 
+	var imgms = document.getElementById("ms");
+	var imgvs = document.getElementById("vs");
+	
+	
+	
+	window.onload = function () {
+		modal.style.display = "block";
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		w = Number(wht.value);
+		draw(h,x,w)
+	}
+	
+	info.onclick = function () {
+		modal.style.display = "block";
+	}
+	
+	sld.onchange = function () {			
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		w = Number(wht.value);
+		draw(h,x,w)
+	}
+	
+	//num.onchange = function () {			
+	//	h = Number(sld.value);
+	//	x = Number(sldx.value);
+	//	w = Number(wht.value);
+	//	draw(h,x,w)
+	//}
+	
+	sldx.onchange = function () {			
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		w = Number(wht.value);
+		draw(h,x,w)
+	}
+	
+	numx.onchange = function () {			
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		w = Number(wht.value);
+		draw(h,x,w)
+	}
+	
+	wht.onchange = function () {			
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		w = Number(wht.value);
+		draw(h,x,w)
+	}
+</script> 
+	
+	
+	
+</body>
+
+
+</html>
