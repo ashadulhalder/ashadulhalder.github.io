@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+
+<body>
+    <div class="container">
+		<h1 class="styleh" align="center">Surface Tension of Water</h1>
+		<table width="1300" border="0" align="center">
+		  <tr>
+			<td>
+				<canvas id="canvas" width="850" height="450"  style="border:3px solid">
+					<img src="rsrc/setup.png" alt="Picture" name="setup" width="850"  align="center" id="setup" class="setup"/>
+					<img src="rsrc/tubes.png" alt="Picture" width="850"  align="center" id="t1" class="t1"/>
+					<img src="rsrc/tubes_r.png" alt="Picture" width="850"  align="center" id="t2" class="t2"/>
+					<img src="rsrc/tt_stand.png" alt="Picture" width="850"  align="center" id="tts"  class="tts"/>
+					<img src="rsrc/ttt.png" alt="Picture" width="850"  align="center" id="ttt"  class="ttt"/>
+				</canvas>
+			</td>
+			<td>
+				<canvas id="canvascw" width="450" height="450"  style="border:3px solid">
+					<img src="rsrc/micro_2.png" alt="Picture" width="450"  align="center" id="obj" class="obj"/>
+					<img src="rsrc/micro_1.png" alt="Picture" width="450"  align="center" id="objr" class="obj"/>
+					<img src="rsrc/tubes_ovrly.png" alt="Picture" width="450"  align="center" id="tbly" class="obj"/>
+					<img src="rsrc/cw.png" alt="Picture" width="450"  align="center" id="cw"  class="cw"/>
+				</canvas>
+			</td>
+		  </tr>
+		  </table>
+		  <table width="1000" border="0" align="center">
+		  <tr>
+			<td>
+				<canvas id="canvasscl" width="500" height="100"  style="border:3px solid">
+					<img src="rsrc/mscl.png" alt="Picture" height="100"  align="center" id="ms" class="ms"/>
+					<img src="rsrc/vscl.png" alt="Picture" height="100"  align="center" id="vs"  class="vs"/>
+				</canvas>
+			</td>
+		  
+		  <td align="center" width = "500px">
+				<span class="style4">d</span>
+				<input id="sld" class="slider" type="range" name="rangeInput" min="0" max="18" value="0" step="0.001">
+				<!--<input id="num" style="width: 5em" type="number" name="rangeInput" min="0" max="18" value="0" step="0.01" oninput="sld.value=num.value" >-->
+				<br>
+				<span class="style4">x</span>
+				<input id="sldx" class="slider" type="range" name="rangeInput" min="20" max="100" value="100" step="0.1">
+				<span class="style4">cm</span>
+				<br>
+				<div align="center">
+					<span class="style4">Vertical</span> 
+					<label class="switch">
+					  <input type="checkbox" id="rt" checked>
+					  <span class="sliderck round"></span>
+					</label>
+					<span align="center" class="style4">Horizontal</span> 
+				</div>
+		  </td></tr>
+		</table>
+		<div align="center">
+			<button class="button" id="info">Info</button>
+		</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Procedure</i></u></span></div>
+	<ul>
+		<div align="center"> <img src="rsrc/info.png" width="90%"/></div>
+		<li>Calculate the least count of the travelling microscope for vertical scale(because we use only vertical movement of the travelling microscope)</li>
+		<li>Make the capillary tubes horizontal using the key <span class="inshl">S3</span> and determine the internal radius of the leftmost capillary tube by moving the travelling microscope upward (using slider <span class="inshl">S1</span>). Record the data in table I.</li>
+		<li>Record the same by moving the microscope downward and take the mean of them.</li>
+		<li>Repeat the same procedure for other tubes in order to determine their radius. (Use slider <span class="inshl">S2</span>to go different tubes.)</li>
+		<li>Make the capillary tubes vertical using the key <span class="inshl">S3</span> to estimate the capillary rise in individual tubes and record the readings in table I</li>
+		<div align="center"> <img src="rsrc/t1.png" width="90%"/></div>
+		<li>Calculate the surface tension of the liquid for each tube, using the formula,</li>
+		<div align="center"> <img src="rsrc/formula.png" width="30%"/></div>
+		where, <i>d</i> and <i>b</i> are the thickness and breadth of the metal bar respectively. In this experiment  <i>d </i> is the capillary rise, <i>r</i> is the internal radius of the tube, <i>g=980 m/s<sup>2</sup></i> and <i>d</i> is the density of the liquid (in this case <i>d</i>=1 for water).
+		<li>Repeat the entire procedure for different values of <i>x</i> and calculate Young's Modulus for individual cases.</li>
+		<li>The slider can be tuned by pressing the arrow buttons on keyboard.</li>
+	  <br><br><br><br><br><br>
+	</ul>
+	</div>
+  <br>
+
+</div>
+	
+	
+	
+  
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	
+	var h1 = 30;
+	var h2 = 60;
+	var h3 = 45;
+	var msep = 8;
+	var vsep = msep*49/50;
+	function draw(hv,xv){
+		if (rt.checked == false){imgobjt = imgt1;imgobjcw = imgobj;}
+		else{imgobjt = imgt2;imgobjcw = imgobjr;}
+		
+		contex.clearRect(0,0,850,450);
+		contex.drawImage(imgst, 0, 0, 850, 450, 0, 0, 850, 450);
+		contex.drawImage(imgobjt, 0, 0, 850, 450, 0, 0, 850, 450);
+		contex.drawImage(imgtts, 0, 0, 850, 450, 7.5*xv-470, 0, 850, 450);
+		contex.drawImage(imgttt, 0, 0, 850, 450, 7.5*xv-470, -5*hv+130, 850, 450);
+		
+		contexcw.clearRect(0,0,450,450);
+		contexcw.fillStyle = "#6186cd";
+		contexcw.fillRect(0, 0, 450, 450);
+		contexcw.drawImage(imgobjcw, 0, 0, 1788, 100, -1788*3+46.5*(xv-20)+1500, -60*(hv), 1788*3, 100*3);
+		contexcw.drawImage(imgobjcw, 0, 0, 1788, 533, -1788*3+46.5*(xv-20)+1500, -60*(hv)+60, 1788*3, 533*3);
+		
+		if (rt.checked == true){
+			contexcw.strokeStyle = "#CCCCEE";
+			contexcw.lineWidth = 28;
+			contexcw.beginPath();
+			contexcw.arc( 213-1788*3+46.5*(xv-20)+3000, 224-60*(hv)+1020, 21.5, 0, 2 * Math.PI);
+			contexcw.stroke();
+			contexcw.lineWidth = 30;
+			contexcw.beginPath();
+			contexcw.arc( 212-1788*3+46.5*(xv-20)+3370, 220-60*(hv)+1020, 24.3, 0, 2 * Math.PI);
+			contexcw.stroke();
+			contexcw.lineWidth = 26;
+			contexcw.beginPath();
+			contexcw.arc( 208-1788*3+46.5*(xv-20)+3730, 225-60*(hv)+1020, 24, 0, 2 * Math.PI);
+			contexcw.stroke();
+		}
+		else{
+			contexcw.fillStyle = "#5555FF";
+			contexcw.fillRect(217-1788*3+46.5*(xv-20)+2939, 270-60*(hv)+20, 56, 1.95459*94);
+			contexcw.fillRect(220-1788*3+46.5*(xv-20)+3300, 270-60*(hv)+20, 56, 1.56545*94);
+			contexcw.fillRect(208-1788*3+46.5*(xv-20)+3660, 270-60*(hv)+20, 72, 1.33221*94);
+			contexcw.drawImage(imgtbly, 0, 0, 1788, 533, -1788*3+46.5*(xv-20)+1500, -60*(hv)+60, 1788*3, 533*3);
+			contexcw.fillStyle = "#FFFFFF";
+			contexcw.fillRect(208-1788*3+46.5*(xv-20)+4027, 270-60*(hv)+20, 10, 1.33221*94);
+		}
+		
+		contexcw.drawImage(imgcw, 0, 0, 450, 450, 0, 0, 450, 450);
+		
+		contexscl.font = "20px Arial";
+		contexscl.clearRect(0,0,300,100);
+		contexscl.fillStyle = "#AAAAAA";
+		contexscl.fillRect(0, 0, 500, 100);
+		contexscl.fillStyle = "#000000";
+		//contexscl.drawImage(imgms, 0, 0, 2678, 125, -hv*79.5222, 0, 2142, 100);
+		
+		for (vi=0;vi<=200;vi++){
+			contexscl.fillRect(20+vi*msep*2-hv*100, 35, 1, 20);
+		}
+		for (vi=0;vi<=200;vi++){
+			contexscl.fillRect(20+vi*msep*2+msep-hv*100, 38, 1, 17);
+		}
+		for (vi=0;vi<=20;vi++){
+			contexscl.fillRect(20+vi*msep*2*10-hv*100, 28, 1, 27);
+			contexscl.fillText(String(vi), 25+vi*msep*2*10-hv*100, 28);
+		}
+		contexscl.fillRect(20, 55, 50*vsep+1, 1);
+		for (vi=0;vi<=50;vi++){
+			contexscl.fillRect(20+vi*vsep, 55, 1, 20);
+		}
+		for (vi=0;vi<=5;vi++){
+			contexscl.fillRect(20+vi*vsep*10, 55, 1, 25);
+			contexscl.fillText(String(vi), 20+vi*vsep*10, 95);
+		}
+	}
+
+	
+	var sld = document.getElementById("sld")
+	var num = document.getElementById("num")
+	var sldx = document.getElementById("sldx")
+	var numx = document.getElementById("numx")
+	var wht = document.getElementById("wth")
+	var inf = document.getElementById("info")
+	var rt = document.getElementById("rt");
+	
+	var canvas = document.getElementById("canvas");
+	var contex = canvas.getContext("2d"); 
+	var imgst = document.getElementById("setup");
+	var imgt1 = document.getElementById("t1");
+	var imgt2 = document.getElementById("t2");
+	var imgtts = document.getElementById("tts");
+	var imgttt = document.getElementById("ttt");
+	
+	var canvascw = document.getElementById("canvascw");
+	var contexcw = canvascw.getContext("2d"); 
+	var imgobj = document.getElementById("obj");
+	var imgobjr = document.getElementById("objr");
+	var imgcw = document.getElementById("cw");
+	var imgtbly = document.getElementById("tbly");
+	
+	var canvasscl = document.getElementById("canvasscl");
+	var contexscl = canvasscl.getContext("2d"); 
+	var imgms = document.getElementById("ms");
+	var imgvs = document.getElementById("vs");
+	
+	
+	
+	window.onload = function () {
+		modal.style.display = "block";
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		draw(h,x)
+	}
+	
+	info.onclick = function () {
+		modal.style.display = "block";
+	}
+	
+	sld.onchange = function () {			
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		draw(h,x)
+	}
+	
+	//num.onchange = function () {			
+	//	h = Number(sld.value);
+	//	x = Number(sldx.value);
+	//	w = Number(wht.value);
+	//	draw(h,x,w)
+	//}
+	
+	sldx.onchange = function () {			
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		draw(h,x)
+	}
+	rt.onchange = function () {
+		h = Number(sld.value);
+		x = Number(sldx.value);
+		draw(h,x)
+	}
+
+
+</script> 
+	
+	
+	
+</body>
+
+
+</html>
