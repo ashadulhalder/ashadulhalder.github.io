@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+	<script src="rt.js"></script>
+
+<body>
+    <div class="container">
+		<h1 class="styleh" align="center">Determination of Rigidity Modulus</h1>
+		<table width="800"  border="0" align="center">
+		  <tr>
+			<td width="500">
+			  <table width="500" border="0">
+			    <tr>
+				  <td height="500">
+					<div class="image-frame">
+						<img src="rsrc/setup.png" alt="Picture" name="setup" width="400"  align="center" id="setup" class="setup"/>
+						<img src="rsrc/obj.png" alt="Picture" name="setup" width="400"  align="center" id="obj" class="obj"/>
+					</div>
+					<div align="center">
+						<span class="style4">Mode</span>
+						<select name="optn" id="optn">
+							<option value="0">Empty Cradle</option>
+							<option value="1">Cradle+Known body</option>
+							<option value="2">Cradle+Unknown body</option>
+						</select>
+						<br>
+						<span class="style4">Displacement = </span>
+						<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-90" max="90" value="45"  oninput="numbs.value=sldbs.value" >
+						<input id="numbs" class="image-rotate1" type="text" name="rangeInput" value="45"  oninput="sldbs.value=numbs.value" >
+						<span class="style4">degree</span>
+					</div>
+				  </td>
+			    </tr>
+			    <tr>
+				  <td>
+				    <table width="500" border="0">
+				      <tr>
+					    <td>
+							<canvas id="canvassw" width="220" height="100"  style="border:3px solid">
+								Your browser does not support the HTML canvas.
+							</canvas>
+						</td>
+					    <td>
+							<div align="center">
+								<br>
+								<input type="button" class="button1 button1st" id="startTimer" value="Start" onclick="start();">
+								<input type="button" class="button1 button1pa" id="stopTimer" value="Stop"  onclick="stop();">
+								<input type="button" class="button1 button1re" id="resetTimer" value="Reset"  onclick="reset();">
+								<br><br>
+								<button class="button" id="info">Info</button>
+							</div>
+						</td>
+				      </tr>
+				    </table>
+				  </td>
+			    </tr>
+				<tr>
+				  <td>
+				    
+				  </td>
+				</tr>
+			  </table>
+			</td>
+			<td width="300">
+				<canvas id="canvasnothing" width="300" height="650"  style="border:3px solid">
+					<img src="rsrc/setupfv.png" alt="Picture" name="setup" width="300"  align="center" id="setupfv"/>
+				</canvas>
+			</td>
+		  </tr>
+		</table> 
+	</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Procedure</i></u></span></div>
+	<ul>
+		<div align="center"> <img src="rsrc/info.png" width="50%"/></div>
+		<li>First measure the time period of the empty cradle oscillation. In order to measure it, set a certain amount of angular displacement using the slider <span class="inshl">S2</span> (or the nearby textbox, e.g. 45 degree) and choose the mode <span class="inshl">Empty Cradle</span>. After that, click on the <span class="inshl">Start</span> button to start oscillation It also starts the timer (frame <span class="inshl">C</span>).</li>
+		<li>Record the time taken for 20 (may be other number, but atlease 15 for better accurecy) complete cycle of oscillation in table I and calculate mean time period (T<sub>0</sub>) of oscillation from that.</li>
+		<li>The stopwatch (frame <span class="inshl">C</span>) can be paused using the <span class="inshl">Stop</span> button. This also pauses the motion of the cradle.</li>
+		<li>The entire experiment can be initiated using the <span class="inshl">Reset</span> button. This also reset the timer to zero.</li>
+		<li>Similarly, measure the time periods (<i>T<sub>1</sub></i> and <i>T<sub>2</sub></i>) for the <span class="inshl">"Cradle + Known body"</span> mode and <span class="inshl">"Cradle + Unknown body"</span> mode respectively. Record them in table I</li>
+		<div align="center"> <img src="rsrc/t1.png" width="30%"/></div>
+		<li>Calculate the moment of inertia of the known body (Rectangular bar) using the equation,</li>
+		<div align="center"> <img src="rsrc/f1.png" width="15%"/></div>
+		where <i>l</i> (length) = 8.837 cm, <i>b</i> (breadth) = 2.543 cm and <i>M</i> (mass) = 420 gram.
+		<li>Now estimate the moment of inertia of the unknown body (cylindrical) using the equation,</li>
+		<div align="center"> <img src="rsrc/f2.png" width="15%"/></div>
+		<li>The unknown body is a cylinder in this case. It rotates about an axis passing through its centre of gravity and perpendicular to its length. It's mass is 0.0750717 gram, length is 10 cm and radius = 2 cm.</li>
+		<li>Calculate the moment of inertia theoretically (in this case) and compare with the experimental value.</li>
+		<div align="center"> <img src="rsrc/f4.png" width="30%"/></div>
+		<li>If the radius(<i>R</i>) and the length(<i>L</i>) of the suspention wire is given, the regidity modulus of the of the material of the wire can be calculated from the equation</li>
+		<div align="center"> <img src="rsrc/f3.png" width="30%"/></div>
+	  <br><br><br><br><br><br>
+	</ul>
+	</div>
+  <br>
+
+</div>
+	<!--<input id="txt" class="image-rotate2" type="text">-->
+	
+	
+  
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	
+
+	function draw(){		
+		contexnothing.drawImage(imgstfv, 0, 0, 300, 600, 0, 0, 300, 650);
+	}
+
+	
+	var inf = document.getElementById("info")
+	var slbs = document.getElementById("sldbs")
+	var optn = document.getElementById("optn")
+	
+	var imgobj = document.getElementById("obj");
+	var canvassw = document.getElementById("canvassw");
+	var contexsw = canvassw.getContext("2d"); 
+
+	var canvasnothing = document.getElementById("canvasnothing");
+	var contexnothing = canvasnothing.getContext("2d");
+	var imgstfv = document.getElementById("setupfv");
+	
+	contexsw.fillStyle = "#000000";
+	contexsw.fillRect(0,0,220,100);
+	contexsw.font = "20px Arial";
+	contexsw.fillStyle = "#FF0000";
+	contexsw.fillText("second",25,75);
+	contexsw.font = "50px Arial";
+	contexsw.fillText("0.000",20,50);
+	
+		
+	var tcount = 0;
+	var timerID = -1;
+	var timeElapsed = 0;
+	var msep = 3.5;
+	var tsep = 10;
+
+	l = 20;
+	v = 1;
+	nu = 0.01;
+	g = 980;
+	r = 0.1;
+	rho = 1;
+	
+	eta = 8.3e10;
+	rad = 0.3592e-3; //in m
+	length = 0.944;//in m
+	I0 = 0.00090147;
+	C = eta*Math.PI*Math.pow(rad,4)/(2*length);
+	
+	function tick() {
+		var now = new Date().getTime();
+		tcount = now-then;
+		ts = (now-then)/1000;
+		contexsw.clearRect(0,0,220,50);
+		contexsw.fillStyle = "#000000";
+		contexsw.fillRect(0,0,220,50);
+		contexsw.font = "50px Arial";
+		contexsw.fillStyle = "red";
+		contexsw.fillText(String(ts.toFixed(3)),20,50);
+		
+		ht = 209187.42676999047/(ts + 2014.7087123127033) - 18.669564921358692;
+		if (optn.value==0){I = I0}
+		else if (optn.value==1){I = I0+2.96e-4}
+		else if (optn.value==2){I = I0+0.0000700669}
+		omega = 1;
+		omega = Math.sqrt(C/I);
+		rtat = Number(slbs.value)*Math.cos(omega*ts);
+		imgobj.style.transform = "rotate("+rtat+"deg)";
+		//contex.restore();
+	}
+	
+
+	//document.getElementById('txt').value=ht;
+	function start() {
+		then = new Date().getTime()-timeElapsed
+		if(timerID == -1){
+			timerID = setInterval(tick, tsep);
+		}
+		startTimer.disabled = true
+	}
+
+	function stop() {
+		timeElapsed = tcount
+		if(timerID != -1){
+			clearInterval(timerID)
+			timerID = -1
+		}
+		startTimer.disabled = false
+	}
+
+	function reset() {
+		stop();
+		then = new Date().getTime();
+		timeElapsed = -1;
+		tick()
+		startTimer.disabled = false
+	}
+
+	window.onload = function () {
+		modal.style.display = "block";
+		draw()
+		updown()
+	}
+	
+	info.onclick = function () {
+		modal.style.display = "block";
+	}
+
+</script> 
+	
+	
+	
+</body>
+
+
+</html>
