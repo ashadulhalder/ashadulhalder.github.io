@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="stl.css" />
+
+<body>
+    <div class="container">
+		<h1 class="styleh" align="center">Determination of Temperature Coefficient of Resistance</h1>
+		<table width="867" border="0" align="center">
+			<tr>
+			<td>
+				<canvas id="canvas" width="867" height="439"  style="border:3px solid">
+					<img src="rsrc/setup_1.png" alt="Picture" name="setup" width="867"  align="center" id="setup" class="setup"/>
+					<img src="rsrc/setup_2.png" alt="Picture" width="867"  align="center" id="setupr"/>
+					<img src="rsrc/strip.png" alt="Picture" width="867"  align="center" id="strp"/>
+					<img src="rsrc/strip_rev.png" alt="Picture" width="867"  align="center" id="strpr"/>
+					<img src="rsrc/glow.png" alt="Picture" id="glo"  align="center" width="24"/>
+					<img src="rsrc/jky.png" alt="Picture" id="jky"  align="center/>
+					<!--<img src="rsrc/brt.png" alt="Picture" name="setup" width="850"  align="center" id="brt" class="brt"/>
+					<img src="rsrc/pipe.png" alt="Picture" width="850"  align="center" id="pipe"/>-->
+				</canvas>
+			</td>
+			</tr>
+			<tr>
+			<td>
+			<table width="867" border="0" align="center">
+			<tr><td>
+				<canvas id="canvassw" width="200" height="150"  style="border:3px solid">
+					Your browser does not support the HTML canvas.
+				</canvas>
+			</td>
+			<td>
+				<br>
+				<div align="center">
+				<span class="style4">Carry Foster scale</span>
+				<input id="sld" class="slider" type="range" name="rangeInput" min="0" max="100" value="50" step="0.1" oninput="num.value=sld.value" >
+				<input id="num" class="image-rotate1" type="text" name="rangeInput" min="0" max="100" value="50" step="0.1" size="4" oninput="sld.value=num.value" >
+				<span class="style4">cm</span>
+				<br>
+				<span class="style4">Resistance box</span>
+				<input id="res" class="image-rotate1" type="text" name="rangeInput" min="0" max="10" value="1" step="0.1" size="4">
+				<span class="style4">&Omega;&nbsp;&nbsp;&nbsp;</span>
+				<br>
+				
+				<span class="style4">Interchange the Position of G1 and G4</span> 
+					<label class="switch">
+					  <input type="checkbox" id="flow" unchecked>
+					  <span class="sliderck round"></span>
+					</label>
+				<br>
+				<br>
+				<!--<select name="optn" id="optn">
+					<option value="0">Estimate &rho;</option>
+					<option value="1">Estimate X</option>
+				</select>-->
+				<span class="style4">Estimate &rho;</span> 
+					<label class="switch">
+					  <input type="checkbox" id="optn" unchecked>
+					  <span class="sliderck round"></span>
+					</label>
+				<span align="center" class="style4">R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span class="style4">Heater Off</span> 
+					<label class="switch">
+					  <input type="checkbox" id="powr" unchecked>
+					  <span class="sliderck round"></span>
+					</label>
+				<span align="center" class="style4">On</span>
+				<br>
+				<button class="button" id="info">Info</button>
+				<div>
+			</td>
+			</tr>
+			</table>
+			</td>
+			</tr>
+		</table>		  
+	</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div align="center"><span class="inh"><u><i>Procedure</i></u></span></div>
+	<ol>
+		<div align="center"> <img src="rsrc/info.png" width="90%"/></div>
+		<li>Firstly, to determore &rho; make sure that the switch <span class="inshl">I4</span> is off</li> (this will plase a copper strip at G1 or G4). If zero resistance is inserted in the resistance box (using textbox <span class="inshl">I1</span>), the null point should appear near 50 cm of the carry foster bridge (the galvanometer reasing can be observed in <span class="inshl">G</span> of the image and the jockey can be moved using the slider or textbox <span class="inshl">I1</span>).
+		<li>Now, the resistance of the resistance box is changed in steps (0.1 &ohm; 0.2 &ohm; 0.3 &ohm;) to shift the null point about 5 cm from the mid point. Record the reading of the null point in <span class="inshl">Table I</span> as <i>l</i><sub>1</sub>.</li>
+		<div align="center"> <img src="rsrc/t1.png" width="50%"/></div>
+		<li>Repeat the step <span class="inshl">2</span> after interchanging the positions of the copper strip and the resistance box using switch <span class="inshl">I3</span>. Record again the reading as <i>l</i><sub>2</sub></li>
+		<li>Calculate the resistance per unit length of the carry fostre wire (&rho;) using the equation,</li>
+		<div align="center"> <img src="rsrc/f1.png" width="10%"/></div>
+		where <i>X</i> is the resistance inserted in the the resistance box.
+		<li>Now, to determine the resistance of the unknown resistance coil at room temperature, make sure that the heater is turned off (switch <span class="inshl">I5</span> is turned off and the digital thermometer should show around 20&#8451;).</li>
+		<li>Remove the copper strip by switching on the key <span class="inshl">I4</span>. After that, record the reading of the null point in <span class="inshl">Table II</span>. Repeat the same by interchanging the positions of unknown resistance R and the resistance box X.</li>
+		<div align="center"> <img src="rsrc/t2.png" width="50%"/></div>
+		<li>Let, <i>l'</i><sub>1</sub> and <i>l'</i><sub>2</sub> are the reading of null point for both reading respectively. Then the resistance of the unknown coil at room temperature is given by</li>
+		<div align="center"> <img src="rsrc/f2.png" width="15%"/></div>
+		<li>Now turn on the heater using the key <span class="inshl">I5</span> and moniter the temperature reading (<span class="inshl">T</span>). Initially the temperature should change rapidly, but later it changes gradually near equlibrium. When the temperature become steady a notificaion will appear (<span class="inshl">S</span>). During this process (change of temperature), the heater cannot be turned off. (Similarly, the heater cannot be turned on while temperature become steady at room temperature.)</li>
+		<li>Repeat the step <span class="inshl">6</span> and step <span class="inshl">7</span> in order to estimate the resistance of the unknown coil at boiling point of the liquid (in this case water).</li>
+		<li>Now calculate the temperature coefficient of the resistance coil using the expression,</li>
+		<div align="center"> <img src="rsrc/f3.png" width="15%"/></div>
+		where, <i>R</i><sub>1</sub> and <i>R</i><sub>2</sub> are the resistance of the unknown coil at temperature <i>T</i><sub>1</sub>&#8451; and <i>T</i><sub>1</sub>&#8451;
+		<li>r1 and r2 are the resistances attached at G1 and G2 respectively. r1 = 1&Omega; and r2 = 1&Omega;.</li>
+		<li>The slider can be tuned by pressing the arrow buttons on keyboard.</li>.
+	  <br><br><br><br><br><br>
+	</ol>
+	</div>
+  <br>
+
+</div>
+	
+	
+  
+<script>
+	var modal = document.getElementById("myModal");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	
+	var msep = 6.5;
+	rho = 0.04;
+	alpha = 4.29e-3; //for copper degree C^(-1)
+	rtemp = 20;
+	temp = 273+rtemp;
+	res_0 = 1;
+	function draw(){
+		rbv = Number(rb.value);
+		slv = Number(sld.value);
+		contex.clearRect(0,0,867,439);
+		//contex.drawImage(imgst, 0, 0, 867, 439, 0, 0, 867, 439);
+		res_t =  res_0*(1+alpha*temp);
+		if (powr.checked == true){
+			contex.drawImage(imgglo, 0, 0, 24, 24, 363, 191, 20, 20);
+			temp = 273+100;
+		}
+		else{temp = 273+rtemp;}
+		if (optn.checked == false){
+			if (flo.checked == false){
+				contex.drawImage(imgst, 0, 0, 867, 439, 0, 0, 867, 439);
+				contex.drawImage(imgstrp, 0, 0, 867, 439, 0, 0, 867, 439);
+				gvar = 500*(1/2-rho*(100-slv)/(rho*100+rbv));//Number(sld.value)-50;
+			}
+			else{
+				contex.drawImage(imgstr, 0, 0, 867, 439, 0, 0, 867, 439);
+				contex.drawImage(imgstrpr, 0, 0, 867, 439, 0, 0, 867, 439);
+				gvar = 500*(1/2-(rho*(100-slv)+rbv)/(rho*100+rbv));
+			}
+		}
+		else if (optn.checked == true){
+			if (flo.checked == false){
+				contex.drawImage(imgst, 0, 0, 867, 439, 0, 0, 867, 439);
+				gvar = 500*(1/2-(rho*(100-slv)+res_t)/(rho*100+rbv+res_t));
+			}
+			else{
+				contex.drawImage(imgstr, 0, 0, 867, 439, 0, 0, 867, 439);
+				gvar = 500*(1/2-(rho*(100-slv)+rbv)/(rho*100+rbv+res_t));
+			}
+		}
+		if (powr.checked == true){
+			contex.drawImage(imgglo, 0, 0, 24, 24, 363, 191, 20, 20);
+			temp = 273+100;
+		}
+		else{temp = 273+rtemp;}
+		contex.font = "15px Arial";
+		contex.fillStyle = "#FFFFFF";
+		for (vi=0;vi<=100;vi++){
+			contex.fillRect(80+msep*vi, 390, 1, 10);
+		}
+		for (vi=0;vi<10;vi++){
+			contex.fillRect(80+10*msep*vi, 390, 1, 20);
+			contex.fillText(String(vi*10), 83+10*msep*vi, 415);
+		}
+		if (gvar>=-45 && gvar<=45){
+			ggx = 743+70*Math.sin(Math.PI*gvar/180);
+			ggy = 158-70*Math.cos(Math.PI*gvar/180);
+		}
+		else if(gvar<-45){
+			ggx = 743+70*Math.sin(Math.PI*-45/180);
+			ggy = 158-70*Math.cos(Math.PI*-45/180);
+		}
+		else{
+			ggx = 743+70*Math.sin(Math.PI*45/180);
+			ggy = 158-70*Math.cos(Math.PI*45/180);
+		}
+		contex.strokeStyle = "#FF0000";
+		contex.beginPath();
+		contex.moveTo(743,158);
+		contex.lineTo(ggx, ggy);
+		contex.stroke();
+		contex.drawImage(imgjky, 0, 0, 52, 32, Number(sld.value)*msep+62, 370, 40, 25);
+	}
+
+	
+	var inf = document.getElementById("info")
+	var powr = document.getElementById("powr")
+	var optn = document.getElementById("optn")
+	var sld = document.getElementById("sld")
+	var rb = document.getElementById("res")
+	var flo = document.getElementById("flow")
+	
+	
+	var canvas = document.getElementById("canvas");
+	var contex = canvas.getContext("2d"); 
+	var imgst = document.getElementById("setup");
+	var imgstr = document.getElementById("setupr");
+	var imgglo = document.getElementById("glo");
+	var imgstrp = document.getElementById("strp");
+	var imgstrpr = document.getElementById("strpr");
+	var imgjky = document.getElementById("jky");
+	
+	var canvassw = document.getElementById("canvassw");
+	var contexsw = canvassw.getContext("2d");  
+	
+	contexsw.fillStyle = "#000000";
+	contexsw.fillRect(0,0,200,150);
+	contexsw.font = "20px Arial";
+	contexsw.fillStyle = "#00FF00";
+	contexsw.fillText("Temperature in  C",25,125);
+	contexsw.font = "10px Arial";
+	contexsw.fillText("o",162,115);
+	contexsw.font = "50px Arial";
+	contexsw.fillText(String(rtemp.toFixed(2)),20,75);
+	contexsw.font = "10px Arial";
+	contexsw.fillStyle = "#00FF00";
+	contexsw.fillText("Stable",20,20);
+		
+	var tcount = 0;
+	var timerID = -1;
+	var timeElapsed = 0;
+	
+	
+	l = 20;
+	v = 1;
+	nu = 0.01;
+	g = 980;
+	r = 0.1;
+	rho = 0.04;
+	
+	function tick() {
+	draw()
+		if (powr.checked == true){
+			t1 = rtemp;
+			t2 = 100;
+		}
+		else{
+			t1 = 100;
+			t2 = rtemp;
+		}
+		document.getElementById("powr").disabled = true;
+		var id = setInterval(drawm, 50);
+		var ts = t1;
+		var tsep = (t2-t1)/100
+		function drawm() {
+			if (Math.abs(ts-t2)<=0.005){
+				contexsw.clearRect(0,0,200,100);
+				contexsw.fillStyle = "#000000";
+				contexsw.fillRect(0,0,200,100);
+				contexsw.font = "50px Arial";
+				contexsw.fillStyle = "#00FF00";
+				contexsw.fillText(String(ts.toFixed(2)),20,75);
+				contexsw.font = "10px Arial";
+				contexsw.fillStyle = "#00FF00";
+				contexsw.fillText("Stable",20,20);
+				clearInterval(id);
+				document.getElementById("powr").disabled = false;
+			}
+			else{
+				var tsep = (t2-ts)/100
+				contexsw.clearRect(0,0,200,100);
+				contexsw.fillStyle = "#000000";
+				contexsw.fillRect(0,0,200,100);
+				contexsw.font = "50px Arial";
+				contexsw.fillStyle = "#00FF00";
+				contexsw.fillText(String(ts.toFixed(2)),20,75);
+				ts = ts+tsep;
+			}
+		}
+	}
+
+	window.onload = function () {
+		modal.style.display = "block";
+		draw()
+	}
+	
+	powr.onchange = function () {
+		draw()
+		tick()
+	}
+	
+	optn.onchange = function () {
+		draw()
+	}
+	
+	flo.onchange = function () {
+		draw()
+	}
+	
+	info.onclick = function () {
+		modal.style.display = "block";
+	}
+	
+	sld.onchange = function () {			
+		draw()	
+	}
+
+</script> 
+	
+	
+	
+</body>
+
+
+</html>
