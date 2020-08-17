@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://openphys.in/</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://openphys.in/spectrometer/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/biprism/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/newton/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/mu_lambda/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/grating/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/thermocouple/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/young/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/moi/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/surface_t/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/viscosity/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/temp_coeff/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://openphys.in/stefan/main</loc>
+  <lastmod>2020-08-17T12:23:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
