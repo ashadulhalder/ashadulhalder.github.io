@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<title>Openphys</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+<div class="navbarpos">
+  <div class="navbar" id="myNavbar">
+    <a href="#home" class="navhead">&nbsp;Openphys</a>
+    <div style="float:right" class="vanishsmall">
+      <a href="#vlab" class="nitem"> Virtual Lab</a>
+      <a href="#nu" class="nitem"> Natural Unit</a>
+      <a href="#con" class="nitem"> Contact</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="right vanishlarge" onclick="m_open()">
+      <img src="image/itm.png" style="width:30px">
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="sbar vanishlarge" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="m_close()" class="nitem2">Close x</a><br>
+  <a href="#vlab" onclick="m_close()" class="nitem1">Virtual Lab</a><br>
+  <a href="#nu" onclick="m_close()" class="nitem1">Natural Unit</a><br>
+  <a href="#con" onclick="m_close()" class="nitem1">Contact</a><br>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bg1" id="home">
+  <div class="centleft" style="padding:48px">
+    <span class="h001">Physics Jindabad</span><br>
+    <span class="h002">Physics 002</span>
+    <p><a href="#con" class="btnstnsp">Learn more</a></p>
+  </div> 
+
+</header>
+
+<!-- Virtual lab-->
+<div class="vlbhead" id="vlab">
+	<br><br><br>
+	<h1 class="h003">Virtual lab</h1>
+	<br><br>
+	<div align="center">
+    <span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<span class="style1">Virtual lab</span>
+    <br>
+	<br><br><br>
+  </div>
+	<table style="width:100%">
+	  <tr>
+		<td>
+		  <div align="center">
+		  <div class="dropup">
+			  <button class="dropbtn">B.Sc. Pass Sem I</button>
+			  <div class="dropup-content" align="center">
+				  <a href="young/main" target="_blank">Young's Modulus</a>
+				  <a href="moi/main" target="_blank">Rigidity Modulus and Moment of Inertia</a>
+				  <a href="surface_t/main" target="_blank">Surface Tension</a>
+				  <a href="viscosity/main" target="_blank">Coefficient of Viscosity</a>
+				  <a href="temp_coeff/main" target="_blank">Temperature Coefficient of Resistance</a>
+				  <a href="stefan/main" target="_blank">Stefan's Law</a>
+			  </div>
+		  </div>
+		  </div>
+		</td>
+	  </tr>
+	</table>
+</div>
+
+
+
+<!-- Natural unit-->
+<div class="nathead" style="width=50%" id="nu">
+  <br><br>
+  <h1 class="h003">Natural Unit Conversion</h1>
+  <br><br>
+  <form metdod="" action="">
+    <table border="0"  align="center" widtd="800">
+      <tr>
+        <td >&nbsp;</td>
+        <td align="center"><span class="style2">&nbsp;&nbsp;&nbsp; Natural Unit &nbsp;&nbsp;&nbsp;</span></td>
+        <td align="center"><span class="style2">&nbsp;&nbsp;&nbsp; MKSA Unit &nbsp;&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr height="5">
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><span class="style1">Length</span></td>
+        <td><span class="style1"><input name="lengthn" size="15" class="search_1" onChange="document.forms[0].lengthsi.value=(eval(lengthn.value)*1.9732705e-7).toExponential(4);" type="text"> 1/eV </span></td>
+        <td><span class="style1"> = <input name="lengthsi" size="15" class="search_1" onChange="document.forms[0].lengthn.value=(eval(lengthsi.value)/1.9732705e-7).toExponential(4);" type="text"> m</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Mass</span></td>
+        <td><span class="style1"><input name="massn" size="15" class="search_1" onChange="document.forms[0].masssi.value=(eval(massn.value)*1.7826627e-36).toExponential(4);" type="text"> eV </span></td>
+        <td><span class="style1"> = <input name="masssi" size="15" class="search_1" onChange="document.forms[0].massn.value=(eval(masssi.value)/1.7826627e-36).toExponential(4);" type="text"> kg</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Time</span></td>
+        <td><span class="style1">
+        <input name="tin" size="15" class="search_1" onChange="document.forms[0].tisi.value=(eval(tin.value)*6.582122e-16).toExponential(4);" type="text"> 1/eV </span></td>
+        <td><span class="style1"> = <input name="tisi" size="15" class="search_1" onChange="document.forms[0].tin.value=(eval(tisi.value)/6.582122e-16).toExponential(4);" type="text"> s</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Frequency</span></td>
+        <td><span class="style1"><input name="frn" size="15" class="search_1" onChange="document.forms[0].frsi.value=(eval(frn.value)*1.5192669e15).toExponential(4);" type="text"> eV </span></td>
+        <td><span class="style1"> = <input name="frsi" size="15" class="search_1" onChange="document.forms[0].frn.value=(eval(frsi.value)/1.5192669e15).toExponential(4);" type="text"> Hz</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Force</span></td>
+        <td><span class="style1"><input name="forn" size="15" class="search_1" onChange="document.forms[0].forsi.value=(eval(forn.value)*8.1194003e-13).toExponential(4);" type="text"> eV <sup>2</sup></span></td>
+        <td><span class="style1"> = <input name="forsi" size="15" class="search_1" onChange="document.forms[0].forn.value=(eval(forsi.value)/8.1194003e-13).toExponential(4);" type="text"> N</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Energy</span></td>
+        <td><span class="style1"><input name="energyn" size="15" class="search_1" onChange="document.forms[0].energysi.value=(eval(energyn.value)*1.6021773e-19).toExponential(4);" type="text"> eV </span></td>
+        <td><span class="style1"> = <input name="energysi" size="15" class="search_1" onChange="document.forms[0].energyn.value=(eval(energysi.value)/1.6021773e-19).toExponential(4);" type="text"> J</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Energy Density (&epsilon;)</span></td>
+        <td><span class="style1"><input name="nrgdn" size="15" class="search_1" onChange="document.forms[0].nrgdsi.value=(eval(nrgdn.value)*1.6021773e-19/1.9732705e-7/1.9732705e-7/1.9732705e-7).toExponential(4);" type="text"> eV<sup>4</sup>  </span></td>
+        <td><span class="style1"> = <input name="nrgdsi" size="15" class="search_1" onChange="document.forms[0].nrgdn.value=(eval(nrgdsi.value)/(1.6021773e-19/1.9732705e-7/1.9732705e-7/1.9732705e-7)).toExponential(4);" type="text"> N/m<sup>3</sup> </span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Pressure (P)</span></td>
+        <td><span class="style1"><input name="psrn" size="15" class="search_1" onChange="document.forms[0].psrsi.value=(eval(psrn.value)*8.1194003e-13/1.9732705e-7/1.9732705e-7).toExponential(4);" type="text"> eV<sup>4</sup> </span></td>
+        <td><span class="style1"> = <input name="psrsi" size="15" class="search_1" onChange="document.forms[0].psrn.value=(eval(psrsi.value)/(8.1194003e-13/1.9732705e-7/1.9732705e-7)).toExponential(4);" type="text"> Pascal</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Charge</span></td>
+        <td><input name="crgn" type="text" onChange="document.forms[0].crgsi.value=(eval(crgn.value)*1.8755468e-18).toExponential(4);" size="15" class="search_1"> </td>
+        <td><span class="style1"> = <input name="crgsi" size="15" class="search_1" onChange="document.forms[0].crgn.value=(eval(crgsi.value)/1.8755468e-18).toExponential(4);" type="text"> C</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Magnetic induction (B)</span></td>
+        <td><span class="style1"><input name="mbn" size="15" class="search_1" onChange="document.forms[0].mbsi.value=(eval(mbn.value)*1.4440271e-3).toExponential(4);" type="text">  eV<sup>2</sup> </span></td>
+        <td><span class="style1"> = <input name="mbsi" size="15" class="search_1" onChange="document.forms[0].mbn.value=(eval(mbsi.value)/1.4440271e-3).toExponential(4);" type="text"> Tesla</span></td>
+      </tr>
+      <tr>
+        <td><span class="style1">Electric potential (&phi;)</span></td>
+        <td><span class="style1"><input name="epn" size="15" class="search_1" onChange="document.forms[0].epsi.value=(eval(epn.value)*85.424546e-3).toExponential(4);" type="text"> eV </span></td>
+        <td><span class="style1"> = <input name="epsi" size="15" class="search_1" onChange="document.forms[0].epn.value=(eval(epsi.value)/85.424546e-3).toExponential(4);" type="text"> V</span></td>
+      </tr>
+    </table>
+    <br>
+    <div align="center">
+     <button type="reset" value="Reset" class="button">Clear</button>
+    </div>
+  </form>
+  <div align="center">
+  <div align="center" style="width:90%">
+    <span class="style1">The natural unit system is widely used in the fields of particle physics, defined by c=&hbar;=k<sub>B</sub>=1.
+    <br>
+    Where c is the speed of light, &hbar; is the reduced Planck constant and k<sub>B</sub> is the Boltzmann constant.</span>
+    <br><br><br><br>
+  </div></div>
+</div>
+
+<!-- Team Section -->
+<div class="teamhead" id="Contact" align="center">
+  <br><br>
+  <h3 class="h003">Contact</h3>
+  <div class="team" style="margin-top:64px" align="center">
+	<div class="teamele">
+      <div class="crd" align="center">
+        <img src="image/sba.jpg" alt="SBa" style="width:50%; border-radius: 50%; padding:10px " align="center">
+        <div class="cbox">
+          <h3 align="center">Shibaji Banerjee</h3>
+          <p><button class="cbutton" align="center" onclick="conFunction()">Contact</button></p>
+        </div>
+      </div>
+    </div>
+	<div class="teamele" align="center">
+      <div class="crd" align="center">
+        <img src="image/asha.png" alt="Asha" style="width:50%; border-radius: 50%; padding:10px " align="center">
+        <div class="cbox">
+          <h3>Ashadul Halder</h3>
+          <p><button class="cbutton" align="center" onclick="conFunction()">Contact</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <a href="#home" class="totop">To the top</a>
+  <p>Powered by <b>"Power Cut"<b></p>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function m_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function m_close() {
+    mySidebar.style.display = "none";
+}
+function conFunction() {
+  alert("Secret");
+}
+</script>
+
+</body>
+</html>

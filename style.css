@@ -1,0 +1,98 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {height: 100%; line-height: 1.8;}
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+button,input,select,textarea,optgroup{font:inherit;margin:0}optgroup{font-weight:bold}
+legend{color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}
+
+/* Full height image header */
+.bg1 {background-position: center;background-size: cover; background-image: url("image/bg.jpg"); min-height: 100%;}
+.btnstnsp{background-color:#FFFFFF; opacity:0.5; padding: 20px 20px; text-decoration: none; font-size:20px; color: #000055;}
+
+.nathead{ background-image:url("image/nat.jpg");background-position: center;background-size: cover; min-height: 100%;}
+.vlbhead{background-color:#000000; min-height: 100%;}
+.teamhead{background-color:#EEEEEE; min-height: 100%;}
+.team{padding:0 8px;display:table;clear:both;width:50%;}
+.teamele{margin-bottom:16px; width:50%; padding:12px 16px;float:left}
+.cbutton{white-space:normal;width:100%;text-align:left;padding:8px 16px; text-align:center; border:none}
+.cbutton:hover{color:#000000!important;background-color:#CCCCCC!important}
+.cbox{padding:0.01em 16px}
+.crd{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+
+.style1 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044;font-size:20px;}
+.style2 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044; background-color:#000033; border-bottom:6px solid #111166; border-radius:5px; align; padding-top:5px; padding-bottom:5px;font-size:20px;}
+.button {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044; background-color:#000033; border-radius:20px; align; padding-top:5px; padding-bottom:7px;}
+.search_1{width:150px; height:30px; padding-left:5px; border-radius:6px; border:none; color:#000000; font-weight:500;background-color:#DDFFDD;
+-webkit-box-shadow:
+0 2px 4px 0 #BBBBBB inset,
+0 -1px 1px 0 #EEEEEE inset,
+0 15px 15px 0 rgba(40, 40, 40, 0.1) inset;
+-moz-box-shadow:
+0 2px 4px 0 #BBBBBB inset,
+0 -1px 1px 0 #EEEEEE inset,
+0 15px 15px 0 rgba(40, 40, 40, 0.1) inset;
+box-shadow:
+0 2px 4px 0 #BBBBBB inset,
+0 -1px 1px 0 #EEEEEE inset,
+0 15px 15px 0 rgba(40, 40, 40, 0.1) inset;
+}
+
+
+
+.navbarpos{position:fixed;width:100%;z-index:1;top:0}
+.navbar{color:#DDDDFF;background-image:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%);}
+.navhead{text-decoration: none; letter-spacing:4px; font-size:30px; color: #FFFFFF; text-shadow: 1px 1px 2px #000000, 0 0 25px #0000FF, 0 0 5px #0000CC;}
+.nitem{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.nitem:hover{color:#000000;background-color:#CCCCFF}
+.nitem:disabled{cursor:not-allowed;opacity:0.3}
+
+.nitem1{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap; width:100%}
+.nitem1:hover{color:#000000;background-color:#CCCCFF}
+.nitem1:disabled{cursor:not-allowed;opacity:0.3}
+
+.nitem2{font-size:20px; border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+
+.sbar{height:100%;width:200px;background-color:#000000;color:#DDDDFF;position:fixed!important;z-index:1;overflow:auto;text-align:center;box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
+
+.h001{font-size:72px; color: #FFFFFF; text-shadow: 1px 1px 2px #000000, 0 0 25px #0000FF, 0 0 5px #000088;}
+.h002{font-size:30px; color: #FFFFFF; text-shadow: 1px 1px 2px #000000, 0 0 25px #0000FF, 0 0 5px #000088;}
+.h003{font-size:42px; color: #FFFFFF; text-shadow: 1px 1px 2px #000000, 0 0 25px #0000FF, 0 0 5px #0000BB; text-align:center; line-height: 100%;}
+
+.centleft{position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+.right{float:right; padding:10px 10px 10px 10px}
+.dropbtn {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044; background-image: linear-gradient(#000066, #5588BB); padding: 16px;font-size: 16px;text-decoration: none; border-radius:30px;}
+.dropup {position: relative; display: inline-block;}
+.dropup-content {display: none; position: absolute; background-color: #f1f1f1; min-width: 260px; bottom: 50px; left: -50px; z-index: 1;}
+.dropup-content a {color: black; padding: 12px 25px;text-decoration: none; display: block;}
+.dropup-content a:hover {background-color: #CCCCCC}
+.dropup:hover .dropup-content {display: block;}
+.dropup:hover .dropbtn {background-color: #2980B9;}
+
+.footer{text-align:center;background-color:#000000;color:#DDDDFF;padding-top:40px;padding-bottom:40px}
+.totop{color:#000000;background-color:#CCCCFF;border:none;padding:8px 16px;vertical-align:middle;text-decoration:none;text-align:center;cursor:pointer;white-space:nowrap; width:100%}
+@media only screen and (min-width: 600px) {
+	.vanishlarge{display:none!important}
+}
+@media only screen and (max-width: 600px) {
+	.h001{font-size:40px; color: #FFFFFF; text-shadow: 1px 1px 2px #000000, 0 0 25px #0000FF, 0 0 5px #000088;}
+	.h002{font-size:20px; color: #FFFFFF; text-shadow: 1px 1px 2px #000000, 0 0 25px #0000FF, 0 0 5px #000088;}
+	.vanishsmall{display:none!important}
+	.style1 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044;font-size:10px;}
+	.style2 {font-weight: bold; color: #FFFFFF; text-shadow: 3px 2px 6px #000044; background-color:#000033; border-bottom:6px solid #111166; border-radius:5px; align; padding-top:5px; padding-bottom:5px;font-size:10px;}
+	.search_1{width:65px; height:15px; padding-left:5px; border-radius:6px; border:none; color:#000000; font-weight:500;background-color:#DDFFDD;
+	-webkit-box-shadow:
+	0 2px 4px 0 #BBBBBB inset,
+	0 -1px 1px 0 #EEEEEE inset,
+	0 15px 15px 0 rgba(40, 40, 40, 0.1) inset;
+	-moz-box-shadow:
+	0 2px 4px 0 #BBBBBB inset,
+	0 -1px 1px 0 #EEEEEE inset,
+	0 15px 15px 0 rgba(40, 40, 40, 0.1) inset;
+	box-shadow:
+	0 2px 4px 0 #BBBBBB inset,
+	0 -1px 1px 0 #EEEEEE inset,
+	0 15px 15px 0 rgba(40, 40, 40, 0.1) inset;
+	}
+	.team{padding:0 8px;display:table;clear:both;width:100%;}
+	.teamele{margin-bottom:16px; width:85%; padding:0.01em 16px}
+}
