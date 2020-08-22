@@ -31,12 +31,13 @@
 	  100% { transform: rotate(360deg); }
 	}
 	.anim{
-		width: 400px;height: 400px; overflow: auto;
+		width: 400px;height: 400px; overflow:visible;
 	}
 	.animbox{
 		overflow: auto; background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block
 	}
-	@media only screen and (max-width: 400px) {@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 400px) {
+		.anim{width: 300px;height: 300px; overflow: visible;float:left;padding-left: 50px;}
 		.animbox{overflow: auto; background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block; align:left}
 	}
 </style>
