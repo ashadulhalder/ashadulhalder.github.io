@@ -11,7 +11,34 @@
 	<script src="rt.js"></script>
 </head>
 
+<style>
+	.loader {z
+	  border: 5px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-top: 5px solid #3498db;
+	  width: 80%;
+	  height: 80%;
+	  -webkit-animation: spin 5s linear infinite; /* Safari */
+	  animation: spin 5s linear infinite;
+	}
+
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+</style>
+<script>
+	$(document).ready(function() {
+	setTimeout(function(){ document.getElementById("msg").style.display="none";}, 6000);});
+</script>
 <body>
+    <div style="background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block" align="center" id="msg"><div style="width: 400px;height: 400px;  position: absolute;-ms-transform: translateY(-50%); transform: translateY(-50%);top: 20%;-ms-transform: translateX(-50%); transform: translateX(-50%);left: 50%;"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div></div></div></div></div><b>Loading...<b></div></div>
     <div class="container">
 		<h1 class="styleh" align="center">Determination of Rigidity Modulus and Moment of Inertia</h1>
 		<table width="800"  border="0" align="center">
