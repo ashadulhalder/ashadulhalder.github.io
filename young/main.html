@@ -10,8 +10,34 @@
 
     <link rel="stylesheet" href="stl.css" />
     <script src="rt.js"></script>
+<style>
+	.loader {z
+	  border: 5px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-top: 5px solid #3498db;
+	  width: 80%;
+	  height: 80%;
+	  -webkit-animation: spin 5s linear infinite; /* Safari */
+	  animation: spin 5s linear infinite;
+	}
 
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		document.getElementById("msg").style.display="none";});
+</script>
 <body>
+    <div style="width: 400px;height: 400px; color:#4488FF;font-size:30px" align="center" id="msg"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div></div></div></div></div><b>Loading...<b></div>
     <div class="container">
 		<h1 class="styleh" align="center">Young's Modulus</h1>
 		<table width="1300" border="0" align="center">
