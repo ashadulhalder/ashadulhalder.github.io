@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -10,7 +11,40 @@
     	<link rel="stylesheet" href="stl.css" />
     	<script src="rt.js"></script>
 </head>
+<style>
+	.loader {z
+	  border: 5px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-top: 5px solid #3498db;
+	  width: 80%;
+	  height: 80%;
+	  -webkit-animation: spin 5s linear infinite; /* Safari */
+	  animation: spin 5s linear infinite;
+	}
+
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	.anim{
+		width: 400px;height: 400px; overflow:visible;
+	}
+	.animbox{
+		overflow: auto; background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block
+	}
+	@media only screen and (max-width: 400px) {
+		.anim{width: 300px;height: 300px; overflow: visible;float:left;padding-left: 50px;}
+		.animbox{overflow: auto; background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block; align:left}
+	}
+</style>
 <body>
+    <div class="animbox" align="center" id="msg"><div class="anim"><br><br><br><br><br><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div></div></div></div></div><b>Loading...<b></div></div>
     <div class="container">
       <h1 class="styleh" align="center">&mu;-&lambda;</h1>
 	  <table width="800" border="0" align="center">
@@ -35,6 +69,10 @@
 					<br>
 					<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="0" step="0.01" oninput="numpr.value=sldpr.value" >
 					<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="0" step="0.001" oninput="sldpr.value=numpr.value" >
+					<div>&nbsp;</div>
+					<div align="center">
+						<button class="button" id="info">Info</button>
+					</div>
 				</div>
 			</td>
 		 </tr>
@@ -186,7 +224,8 @@
 	
 	//spectra(0,0)
 	window.onload = function () {
-		modal.style.display = "block";
+		//modal.style.display = "block";
+		document.getElementById("msg").style.display="none";
 		draw()
 	}
 
@@ -204,6 +243,10 @@
 	
 	numr2.onchange = function () {
 		draw()
+	}
+	
+	info.onclick = function () {
+		modal.style.display = "block";
 	}
 </script> 
 	
