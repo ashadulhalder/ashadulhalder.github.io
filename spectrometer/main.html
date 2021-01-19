@@ -1,20 +1,52 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="author" content="Ashadul Halder">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="google" content="notranslate" />
-	<title>i-&Delta;</title>
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    	<script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="stl.css" />
+    <script src="rt.js"></script>
 
-    	<link rel="stylesheet" href="stl.css" />
-    	<script src="rt.js"></script>
-</head>
+    <style type="text/css">
+<!--
+.style2 {color: #FFFFFF}
+-->
+    </style>
+<style>
+	.loader {z
+	  border: 5px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-top: 5px solid #3498db;
+	  width: 80%;
+	  height: 80%;
+	  -webkit-animation: spin 5s linear infinite; /* Safari */
+	  animation: spin 5s linear infinite;
+	}
 
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	.anim{
+		width: 400px;height: 400px; overflow:visible;
+	}
+	.animbox{
+		overflow: auto; background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block
+	}
+	@media only screen and (max-width: 400px) {
+		.anim{width: 300px;height: 300px; overflow: visible;float:left;padding-left: 50px;}
+		.animbox{overflow: auto; background-color:#000000; color:#FF0000;font-size:largest;display: block;position: fixed;z-index: 15; left: 0;top: 0;width: 100%;height: 100%; color:#4488FF;font-size:30px;display:block; align:left}
+	}
+</style>
 <body>
+   <div class="animbox" align="center" id="msg"><div class="anim"><br><br><br><br><br><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div></div></div></div></div><b>Loading...<b></div></div>
     <div class="container">
-      <h1 class="styleh" align="center">i-&Delta;</h1>
+      <h1 class="styleh" align="center">Spectrometer</h1>
 	  <table width="800" border="0" align="center">
   		<tr>
 			<th scope="col"><span class="style1">Spectrometer</span></th>
@@ -26,16 +58,26 @@
 					<img id="image0" src="rsrc/table.png" alt="Picture" class="table"/>
 					<img id="image1" src="rsrc/base.png" alt="Picture" class="base"/>
 					<img id="image2" src="rsrc/prism.png" alt="Picture" class="prism"/>
-			  </div>
-     		</td>
+					<img id="spectscl" src="rsrc/spectscl.png" alt="Picture" class="spectscl"/>
+					<!--stack-overflow.jpg-->
+			  </div>			</td>
 			<td>
 				<div class="image-frame">
 				<canvas id="spectCanvas" width="400" height="400"
 					style="border:1px solid #c3c3c3;background-color: #000000">
 					Your browser does not support the canvas element.
 				</canvas>
-			  </div>
-			</td>
+			  </div>			</td>
+		 </tr>
+		 <tr>
+			<td>
+				<br>
+				<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-150" max="150" value="0" step="0.02" oninput="numbs.value=sldbs.value" >
+				<input id="numbs" class="image-rotate1" type="text" name="rangeInput"value="0" step="0.02" oninput="sldbs.value=numbs.value" >			</td>
+			<td>
+				<br>
+				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="50" step="0.02" oninput="numpr.value=sldpr.value" >
+				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="50" step="0.02" oninput="sldpr.value=numpr.value" >			</td>
 		 </tr>
 		 <tr>
 			<td>
@@ -43,21 +85,10 @@
 			<td>
 				<p align="center" class="style2">Prismtable</p>			</td>
 		 </tr>
-
-		 <tr>
-			<td>
-				<br>
-				<input id="sldbs" class="image-rotate1" type="range" name="rangeInput" min="-150" max="150" value="0" step="0.01" oninput="numbs.value=sldbs.value" >
-				<input id="numbs" class="image-rotate1" type="text" name="rangeInput"value="0" step="0.001" oninput="sldbs.value=numbs.value" >
-			</td>
-			<td>
-				<br>
-				<input id="sldpr" class="image-rotate2" type="range" name="rangeInput" min="-180" max="180" value="0" step="0.0001" oninput="numpr.value=sldpr.value" >
-				<input id="numpr" class="image-rotate2" type="text" name="rangeInput"value="0" step="0.0001" oninput="sldpr.value=numpr.value" >
-			</td>
-		 </tr>
-
 </table>
+</div>
+<div align="center">
+	<button class="button" id="info">Info</button>
 </div>
 <div id="myModal" class="modal">
 
@@ -76,8 +107,12 @@
   </div>
 
 </div>
+
+	
+	
+	
   
-<script>
+ <script>
 	var modal = document.getElementById("myModal");
 	var span = document.getElementsByClassName("close")[0];
 	span.onclick = function() {
@@ -122,7 +157,8 @@
 
 	//spectra(0,0)
 	window.onload = function () {
-		modal.style.display = "block";
+		//modal.style.display = "block";
+		document.getElementById("msg").style.display="none";
 		if (sldr2.value >=-120 && sldr2.value<=60){
 			var r1 = 2*(Number(sldr2.value)+30)-180;
 			r1 = ((r1+180+360)%360)-180;
@@ -470,6 +506,10 @@
 			spectra()
 		}
 }
+
+	info.onclick = function () {
+		modal.style.display = "block";
+	}
 
 </script> 
 	
