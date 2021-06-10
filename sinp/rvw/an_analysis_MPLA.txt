@@ -1,0 +1,63 @@
+Ref.:  Ms. No. MPLA-D-20-00011
+IceCube PeV Neutrino Events from the Decay of Superheavy Dark Matter; an Analysis
+Modern Physics Letters A
+
+Dear Mr. Halder,
+
+Reviewers have now commented on your paper, providing mixed reviews. Comments of reviewer 3 indicate to us that revision would not avail a positive outcome. However, we prefer to withhold the editorial call in case you should disagree with reviewer 3 and be able to give a point-by-point rebuttal.  Hence, the editorial call as of now is Revise. If you are prepared to undertake the work required to respond or revise accordingly, I would be pleased to reconsider my decision. 
+
+For your guidance, reviewer's comments are appended below.
+
+If you decide to revise the work, please submit a list of changes or a rebuttal against each point which is being raised when you submit the revised manuscript. Please also highlight in colour all changes made to the text or type all changes in a coloured font. Failure to do so might result in the manuscript being sent back to the author.
+
+Your revision is due in 30 days.
+
+To submit a revision, go to https://www.editorialmanager.com/mpla/ and log in as an Author.  You will see a menu item - Submission Needing Revision.  You will find your submission record there.
+
+Yours sincerely,
+MPLA Editors
+WSPC Journal Office
+Modern Physics Letters A
+
+Reviewer's comments:
+
+Reviewer #1: The authors have analyzed the IceCube ultra-hight energy events against the hypothesis of superheavy dark matter decay, including both hadronic and leptonic decay channels. The paper is well written and the $\chi^2$-analysis seems solid. However, I would like them to address the following points, before the article could be recommended for publication:
+
+1. They have used the 6-year dataset. Why not use the latest 7.5-year dataset (from Neutrino 2018)? https://zenodo.org/record/1286919#.Xjm1sC2ZOa4
+
+2. There are no events beyond 10 PeV. So why do they include the bins up to 50 PeV in their fit? 
+
+3. There is a small (~2\sigma) excess around 100 TeV and they don't address it.
+
+4. It is not entirely clear to me why the 3 and  4-flavour neutrino analyses look the same in Fig. 7. Some more explanations are needed. 
+
+5. Fig. 1: The \nu_\mu flux shown here is from a throughgoing analysis, which is very different from the HESE analysis (see e.g. 1801.07277). In Figures 2-6, did they also check that their new solutions are compatible with the throughgoing data?
+
+6. Below Eq. (5), the maximum R of 260 kpc seems to be on the larger extreme for the size of Milky Way. A more typical value would be 100 kpc.
+
+7. Superheavy dark matter decay in the context of IceCube was also discussed in 1303.7320 and 1612.05638. Should be included along with their Refs. [6-32]. 
+
+8. p. 2, 2nd paragraph: The possibility of a second component to fit the HESE data was also discussed in 1411.5658 and 1801.07277, which should be cited along with Ref. [35].
+
+9. Eqs. (2) can be moved to an Appendix for better readability of the main text.
+
+10. Why the tau flavor is not considered in Eqs. (2)?
+
+11. Found a few typos:
+(a) p. 2: a \chi^2 analyses
+(b) Section 5.1: 1.!Range
+(c) Ref. 35: Cintributed
+
+
+
+Reviewer #3: In this paper has been studied the possibility to fit astrophysical neutrino observed by IceCube by means of a flux coming from heavy decay dark matter on the top of a power law spectrum with parameters taken from IceCube 6-years fit.
+
+I cannot recommend such a paper to be publish because I think it is not sufficiently innovative and is probably misleading for the following motivations:
+
+1)my main objection is that the points above 5 PeV are just exclusion and not observation; this is why the error bars do not have a lower bound.
+
+2)If the authors reproduce the IceCube fit as an exercise, they will understand the point. This kind of exercise is mandatory if one approaches such a field.
+
+3)Once that the fit is corrected, I think that the authors will find a result very similar to most of the already published papers on the same subject. Right now a comparison is missing.
+
+4)Then, the authors have to justify why the paper with a similar result using the same idea of other similar works must be published.

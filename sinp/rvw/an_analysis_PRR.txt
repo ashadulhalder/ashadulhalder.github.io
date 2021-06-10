@@ -1,0 +1,106 @@
+Re: WJ10050
+    IceCube PeV neutrino events from the decay of superheavy dark matter:
+    An analysis
+    by Madhurima Pandey, Debasish Majumdar, and Ashadul Halder
+
+Dear Madhurima Pandey,
+
+The above manuscript has been reviewed by one of our referees.
+Comments from the report appear below.
+
+These comments suggest that the present manuscript is not suitable for
+publication in the Physical Review.
+
+Yours sincerely,
+
+Ansar Fayyazuddin
+Associate Editor
+Physical Review Research
+Email: prresearch@aps.org
+https://journals.aps.org/prresearch/
+@PhysRevResearch on Twitter
+
+----------------------------------------------------------------------
+Report of the Referee -- WJ10050/Pandey
+----------------------------------------------------------------------
+
+The submitted manuscript studies the possible contribution of decaying
+heavy dark matter to the high energy neutrino flux observed by the
+IceCube experiment. This subject is under active investigation by
+several researchers and is one of the main topics in neutrino
+astronomy.
+
+Although the subject is scientifically sound, the performed analysis
+by the authors is way behind the existing literature on this subject.
+There are several studies, for example by Bhattacharya et al and
+Chianese et al, doing the same analysis in a much more elaborate and
+complete way. First of all, the analysis has to be done for the
+“number of events”, and not by using the IceCube published limit of
+the flux. The IceCube results apply to the case where the only
+contribution is coming from astrophysical sources. In the presence of
+dark matter contributions the limits change. Comparing with the
+existing analyses by the mentioned groups, what is new in the
+submitted manuscript? the authors can consult several papers by the
+mentioned groups where they study exactly the same subject, the same
+data set, the same theoretical modeling, but by performing a fit of
+all of the contributions, taking the branching ratio into account, and
+doing the fit for the number of events.
+
+Based on the above points, I do not find the submitted manuscript
+appropriate for publication in PRR. The manuscript is written poorly
+(there are several typos, wrong statements, several repetitions, etc)
+and I do not see any new result from this analysis. In the following I
+summarize a few points, but the shortcomings are not limited to this
+list.
+
+A few flaws (a complete list would be longer than this):
+
+1- In the first paragraph of introduction the authors write: “...
+several neutrino events with energies ranging between few hundred GeV
+upto...”. IceCube never reported astrophysical neutrinos with few
+hundreds of GeV. The lowest reported energy (though controversial due
+to the large background contamination) is 1 TeV, in the cascade
+dataset, not in HESE.
+
+2- The possibility of GRBs being the source of IceCube neutrinos is
+mentioned in the introduction, along with ref [36]. This possibility
+is completely ruled out now.
+
+3- In the introduction: “the event data at IceCube for the neutrino
+energies greater than 20 TeV are categorized as high energy starting
+event (HESE) data”. This is not the definition of HESE dataset and in
+none of the updates on this dataset does the energy go to 20 TeV.
+
+4- Above 5 PeV, there are no observed events. The reported points by
+IceCube are upper limits. Using these values as in Table 1 (although
+there is a typo there also, it should be 10^-9, etc) is meaningless.
+
+5- A long section, with several formulae, is written about neutrino
+oscillations; decoherent oscillation and something well-known in the
+literature. And at the end, the authors just take the 1:1:1 flux ratio
+between the flavors. What is the point of writing and discussing
+neutrino oscillations?
+
+6- The authors claim that they performed a MC to calculate the EW
+corrections, citing ref [54]. Which code has been used? what is the
+neutrino flux that they obtain?
+
+7- The astrophysical flux is fixed to Eq. (3) and (4). But these are
+fits obtained by IceCube assuming that the only contribution to the
+observed neutrinos is from astrophysical power-law flux. In the
+presence of a new contribution, here the dark matter, these fits will
+change both in normalization and index. Using Eq. (3) and (4) in the
+fit is meaningless; one has to perform a fit including the
+normalization and index as free parameters (and on the number of
+events, not the flux).
+
+8- The authors assume leptonic and hadronic decay channels for dark
+matter. What is the branching ratio? Dark matter cannot decay to both
+channels with 100% branching ratio! And within leptonic and hadronic
+channels, each sub-channel has a different spectral feature: light
+quarks, b quark, top quark, neutrinos, gauge bosons, Higgs, e, mu,
+tau. Each of these channels has a different neutrino flux.
+
+As I mentioned, the list can continue with several more items. All in
+all, the submitted manuscript does not match the criteria of
+publication in PRR.

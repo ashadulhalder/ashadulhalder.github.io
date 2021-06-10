@@ -1,0 +1,60 @@
+The above manuscript has been reviewed by one of our referees.
+Comments from the report appear below.
+
+These comments suggest that the present manuscript is not suitable for
+publication in the Physical Review.
+
+Yours sincerely,
+
+Dr. Alin Tirziu
+Associate Editor
+Physical Review D
+Email: prd@aps.org
+https://journals.aps.org/prd/
+
+NEWS FROM THE PHYSICAL REVIEW JOURNALS
+
+Eight Physical Review journals introduce Letters, retire
+Rapid Communications
+http://go.aps.org/3pWrlUS
+
+Promoting Inclusive and Respectful Communications
+http://go.aps.org/2IU1psq
+
+APS paying all APC fees for fully open access PRX Quantum in 2021
+http://go.aps.org/2WjdH0H
+
+----------------------------------------------------------------------
+Report of the Referee -- DC12952/Halder
+----------------------------------------------------------------------
+
+This paper tries to place the anomalously low brightness temperature
+detected by the EDGES 21-cm experiment in the context of a model that
+simultaneously includes primordial black holes (PBH),
+dark-matter-baryon coupling (DMBC) and interacting dark energy (IDE).
+
+Sadly, this work has major shortcomings which make it not suitable for
+publication in PRD. I cannot recommend it for publication.
+
+Broadly, what question are the authors trying to answer and what have
+the authors concluded from their study? Are the authors trying to
+explain the EDGES anomaly (encapsulated in a single delta_T number)
+with a model that includes all three of PBH, DMBC and IDE (with many
+free parameters)? Previous works have looked at the influence of each
+of these in isolation on the brightness temperature. Do the authors
+find that such a combination model is preferred over a simpler
+interpretation? Are the authors simply calculating the effects of
+three somewhat unrelated new physics models and throwing it into a
+calculation, and then loosely translating it into “bounds” on various
+sub-parameters? Why is that interesting? Does that tell us anything
+about these new physics models in the context of other experimental
+constraints on those models? The abstract, results and
+summary/discussions sections do not state any of this, so it is
+unclear what the major findings or interpretation are and it is
+unclear what this paper would contribute to the scientific literature
+related to the EDGES anomaly or to the literature on PBH, DMBC or IDE.
+
+The paper simply seems incomplete. As a reader, I am not sure what to
+take away from the fact that the authors have solved some coupled
+equations and plotted bounds while keeping some parameters fixed at
+values that are simply not motivated.

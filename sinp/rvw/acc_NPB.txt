@@ -1,0 +1,52 @@
+Ms. Ref. No.:  NPB-D-20-00447R1
+Title: The Violation of Equivalence Principle and Four Neutrino Oscillations
+for Long Baseline Neutrinos
+Nuclear Physics B
+
+
+
+Dear Author,
+
+Please find the attached referee report on your above mentioned
+submission. In view of this report, unfortunately we regret to inform you
+that NPB is unable to publish your manuscript.
+
+Thank you for giving us the opportunity to consider your work.
+
+Yours sincerely,
+
+Hong-Jian He,
+Professor of Physics
+Editor, Nuclear Physics B
+
+===================================================================
+Referee Report:
+--------------------
+
+This manucript is devoted to the effects of violation of the equivalence
+principle (VEP) in neutrino oscillations, which can induce an additional
+phase of different energy and baseline dependence. In general this is an
+interesting topic for possible new physics. But I think the current
+manuscript is not suitable for publication in NPB, with the following
+comments:
+
+1) The framework used in this work is a 3(active) + 1(sterile) mixing in
+the presence of VEP, but the mass-squared difference delta m^{2}_{41} is
+taken as 10^{-3} eV^2, which is not well motivated from the point of view
+of neutrino oscillation experiments. Additional delta m^{2}_{41} at
+10^{-3} eV^2 must confront with the global neutrino oscillation data,
+including the atmospheric neutrinos, reactor neutrinos and long baseline
+accelerator neutrinos. There should be no indication for such a scenario.
+Indications for light sterile neutrinos are only observed at short
+baseline oscillations with  delta m^{2}_{41} at around 1 eV^2.
+
+2) The analysis of this work itself is also incomplete. The authors only
+discussed the new physics effects in the oscillation probability level,
+and roughly calculated the total event numbers. No statistical analysis on
+the sensitivity of such detector configurations is provided, which should
+be a standard and central content for the similar phenomenological
+studies.
+
+In summary, with the above drawbacks I don't think this work meets the
+standards of this journal.
+======================================================================

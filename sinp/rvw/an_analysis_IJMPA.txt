@@ -1,0 +1,65 @@
+Appended are comments on your article. We have to return the submission to you because the present article cannot be considered further without a major revision.
+
+If you decide to resubmit the article, please ensure a thorough improvement is carried out according to all comments of the reviewers. To submit a revision, go to https://www.editorialmanager.com/ijmpa/ and log in as Author. You'll see a menu item called "Submission Needing Revision" and find your submission record there. A point-by-point response to the comments is required for re-submission. The revision is due in 1 month. If more time is needed for revision, please contact the Journal Office.
+
+Sincerely,
+Journal Office
+International Journal of Modern Physics A
+
+-----------------------------------------------------------
+Comments from the Reviewer(s):
+
+Reviewer #1: Dear Editor,
+
+in this paper the authors discuss the possibility that the high-energy neutrinos observed by IceCube can be accounted for by the decays of superheavy dark matter. To this aim, they compute the neutrino spectra in hadronic and leptonic decay channels of dark matter particles by means of a hybrid approach considering both the DGLAP equations and numerical MC simulations. After describing the expected flux from astrophysical sources and dark matter (galactic and extragalactic components) in the 3 and 3+1 scenarios for neutrino oscillations, they perform a chi-squared analysis of IceCube data to estimate the favorable regions of the dark matter parameter space.
+
+The paper presents some critical shortcomings that prevent its publication in the present form in IJMPA. In particular, I have the following major comments:
+
+- The description of IceCube data in the Introduction seems to be not correct. The authors claim that the 6-year HESE events provide a best-fit power-law with spectral index 2.19, however it is 2.9 as reported in their reference [35]. The power-law with spectral index 2.19 is instead the best-fit for the Through-Going (TG) muon neutrino data. In particular, the pink band shown in the plots of the IceCube Collaboration refers to the statistical uncertainty affecting the TG best-fit power-law and not to a direct measurement of the experiment. I think that the Introduction should be re-written including a more detailed description of the data considered in the analysis, distinguishing between HESE and TG samples.
+
+- The major shortcoming is the chi-squared analysis performed. First of all, the additional 12 "data" points from the TG pink band are extremely artificial since, as discussed before, they do not correspond to a direct IceCube observation but rather to an IceCube fit of TG data under the hypothesis of a single astrophysical power-law flux. Taking into account this artificial data events invalidates the whole statistical analysis and in particular the contours reported in the plots. Including an arbitrary large number of data would reduce notably the statistical uncertainty affecting the dark matter parameters. On the other hand, the true IceCube measurements (the black data points) would result in a larger (but true) uncertainty on them. Moreover, to make more robust the statistical treatment and the statements concerning the dark matter component, I would suggest to consider as free parameters the normalization and the spectral index of the astrophysical power-law. I think
+this is necessary if the authors want to seriously examine the hypothesis of two-component neutrino flux.
+
+- In this regard, could the authors quantify the contribution of the fixed astrophysical power-law to the neutrino flux observed by IceCube? One possibility could be to show the different contributions (hadronic, leptonic, and astrophysical flux) with different lines in all the plots.
+
+- In the whole paper, I find very confusing the statements regarding the flavour composition of the neutrino flux expected at the source and at the Earth. This makes me wonder about the correctness of the analysis. For astrophysical sources where neutrinos are produced through pion decays, the flavour ratio at the source is (1:2:0) while at the Earth is roughly (1:1:1) due the standard neutrino oscillations. For dark matter, the flavour ratio at the source depends on the decay channel under consideration. Then, when performing the chi-squared analysis, the authors only consider the electron flux (at the source or at the Earth?), while the IceCube measurements are per neutrino flavour. Could the author please clarify this point?
+
+
+I would also ask the authors to address the following minor comments:
+
+- Could the authors discuss the gamma-ray limits to the dark matter parameters and clarify if the scenario they propose is excluded or in tension with gamma-ray measurements?
+
+- Could the authors show in a dedicated plot the neutrino spectra they compute? This could be very useful, especially to compare their calculation with the other present in the literature.
+
+- In section 2, the authors mention the word "supersymmetric". Could the authors clarify if a supersymmetric model is considered or not?
+
+------------------------------------------------
+
+Reviewer #2: Dear editor:
+
+Thank you for bringing this contribution to my attention. In this article the authors study the possibility of PeV dark matter making part of the observed high-energy neutrino spectra measured by IceCube. This topic has a long history and has been discussed in several prior publications. The latest work of this been:
+
+Atri Bhattacharya et al.
+https://arxiv.org/abs/1903.12623
+
+Calculation of the yield of dark matter into hadronic and leptonic channels for PeV dark matter has also recently been revisited. See, e.g.:
+
+Christian W. Bauer et al.
+https://arxiv.org/abs/2007.15001
+Qinrui Liu et al.
+https://arxiv.org/abs/2007.15010
+
+for recent references, which the authors do not cite/discuss.
+
+The authors also seem to be unaware that the data set that they are using has been recently published:
+
+IceCube Collaboration
+https://arxiv.org/abs/2011.03545
+
+where the "data points" they are using are given. For some reason the authors make reference to proceeding (talks) contributions that are outdated. Also, their use of the northern sky muon-neutrino single power-law fit as "data points," is incorrect. Those error bars are do not represent bin-by-bin uncertainties on the neutrino flux but are only valid on a single power-law hypothesis. A hypothesis and assumption which the authors explicitly not use.
+
+Beyond the issues raised above. The results obtained by the authors does not seem to support their claim. As can be noted in Table II, the worst chi^2 value is obtained on the dark matter only hypothesis. The other cases yield a better fit, which is not surprising, as they include a power-law astrophysical component; which is how the authors have manufactured part of their data.
+
+It is also not clear what uncertainties are been taken into account on the astrophysical model and also how robust their claim is on the single power-law assumption.
+
+For the reason mentioned above. I do not consider that the current version is valid for publication, as this was already extensively discussed in the literature. The manuscript will improved significantly if: 1) the authors used published data by the experimental collaborations, and 2) the authors clearly single out which are the novel contributions of their work.

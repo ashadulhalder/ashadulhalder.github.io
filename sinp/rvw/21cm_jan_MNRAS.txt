@@ -1,0 +1,45 @@
+Copied below are the comments on your manuscript entitled "Probing the eﬀects of PBH on 21-cm EDGES signal along with interacting dark energy and dark matter - baryon scattering", ref. MN-21-1616-MJ, which you submitted to Monthly Notices of the Royal Astronomical Society.
+
+Major revision of your manuscript is requested before it is reconsidered for publication.
+
+You should submit your revised version, together with your response to any comments from the editor and reviewer at https://mc.manuscriptcentral.com/mnras. The deadline for this is six months from today.
+
+Enter your Author Centre, where you will find your manuscript title listed under "Manuscripts with Decisions". Under "Actions," click on "Create a Revision". Please ensure that you also respond to any comments from the editor or assistant editor.
+
+IMPORTANT: do not submit your revised manuscript as a new paper!
+
+When submitting your revised manuscript, you should provide details of any changes you make to the original manuscript. Changes to the manuscript should also be highlighted (e.g. in bold or colour), to assist the referee and editor.
+
+We look forward to receiving your revised manuscript.
+
+Regards,
+
+Pamela
+
+Dr Pamela Rowden
+Assistant Editor (MNRAS)
+
+cc: all listed co-authors.
+
+
+Assistant Editor's Comments:
+Comments to the Author:
+Please spell out the acronym PBH in the title.
+
+
+
+Reviewer's Comments:
+Reviewer: 1
+
+Comments to the Author
+The authors consider the interactive dark energy model along with baryon-dark matter scattering and primordial black hole radiation scenarios, and investigate the impact on the projected global 21cm signal in light of the recent EDGES result. For temperature evolution, IDE's energy transfer to/from baryonic and dark matter is combined with the baryon-DM soft collision and the heating effect from black hole's radiation. Compatible parameter space for three IDE parametrizations are derived in the presence of Hawking radiation's heating at chosen primordial black hole mass and initial abundance. The physics question is interesting and relevant to current dark matter research. However, there are several major issues that need to be addressed before this paper can be recommended for publication.
+
+(1) Formula consistency checks. In Section 3, for instance:  Eq. 5,6 assume relatively long lived black holes that black hole mass (and temperature) evolution during the age of universe can be ignored. Thus Eq. 5,6 are not good approximations for the chosen PBH masses in the paper (~10^14 g), where the black hole are short-lived and they evaporate away long before reionization. Thus the injection rate needs to be truncated at the time when the BH lifetime is reached. Also, as the emission channel of heavier SM particles open up, their photon and electron contribution in the subsequent cascade decays are significant and need to be included, too. The authors may consider a heavier black hole mass range where fewer emission channels are dominant.
+
+Besides, the M_{BH} in Eq. 3 needs to be a `reduced ' mass by dividing out a reference black hole mass. The expression for T_{BH} below Eq. 4 seems to miss an inverse.  Eq.5 and 6 need a negative sign as the black hole loses mass over time. Formulas in the rest of the paper need to be thoroughly checked.
+
+(2) The authors  adopt a GeV-scale wimp mass for the \sigma~v^-4 model for soft-scattering enhanced wimp-baryon interaction. This typically involves a very light force mediator that evades 5th-force limits, and leads to nontrivial phenomenology in a particle physics model. The \sigma~v^-4 model has been under substantial scrutiny from various experimental bounds (see 1807.11482) that constrain such wimp to occupy only sub-unity fractions of the relic density (also see 1806.06857, 1904.10000, 2011.08186, etc.). Authors need to comment on why a GeV scale wimp mass is chosen, and if this IDE analysis applies to more realistic parameter regions of the dark matter model.
+
+(3) It would be welcome to discuss the result of wimp temperature evolution after introducing IDE. Understandably that this paper is not about how to implement the IDE paradigm into a specific wimp model. Assuming such implementation is realizable, the authors still need to justify their wimp temperature evolution with existing dark matter limits, esp. structure formation requirements, as the \lambda range in Fig. 3 and Fig. 6 indicate for a not-small amount of energy transfer between DM and DE.
+
+(4) References: the PBH and IDE references in the introduction section are relatively recent. References to early PBH papers need to be included. I believe there are also a few IDE papers on 21cm following the 2018 announcement of EDGES result, and also need to be included.

@@ -1,0 +1,85 @@
+Re: DD13001
+    Violation of equivalence principle and four neutrino oscillations for
+    long baseline neutrinos
+    by Madhurima Pandey, Debasish Majumdara, Amit Dutta Banik, et al.
+
+Dear Madhurima Pandey,
+
+The above manuscript has been reviewed by one of our referees.
+Comments from the report appear below.
+
+These comments suggest that the present manuscript is not suitable for
+publication in the Physical Review.
+
+Yours sincerely,
+
+Ansar Fayyazuddin, Ph.D. (he/him/his)
+Associate Editor
+Physical Review D
+Email: prd@aps.org
+https://journals.aps.org/prd/
+
+NEWS FROM THE PHYSICAL REVIEW JOURNALS
+
+Eight Physical Review journals introduce Letters, retire
+Rapid Communications
+http://go.aps.org/3pWrlUS
+
+Promoting Inclusive and Respectful Communications
+http://go.aps.org/2IU1psq
+
+APS paying all APC fees for fully open access PRX Quantum in 2021
+http://go.aps.org/2WjdH0H
+
+----------------------------------------------------------------------
+Report of the Referee -- DD13001/Pandey
+----------------------------------------------------------------------
+
+I am refereeing the paper by Pandey et al. “The Violation of
+Equivalence Principle and Four Neutrino Oscillations for Long Baseline
+Neutrinos”, where the authors study the situation when different types
+of neutrinos are coupled to a gravitational field differently. The
+impact of this fact on neutrino flavor oscillations is considered in
+the case of (3+1) framework. This idea is interesting but its
+technical implementation is incorrect. I cannot recommend this
+manuscript for the publication in Physical Review D. My main objection
+is the following.
+
+1. The contribution of gravity to neutrino flavor oscillations in the
+unnumbered equation between Eqs. (15) and (16) is incorrect. To get
+it, the authors refer to Refs. [6,7]. However, the authors are
+unfamiliar with multiple works, where neutrino flavor oscillations in
+curved spacetime are studied. The solution of this problem involves
+the analysis of the Hamilton-Jacobi equation for a neutrino mass
+eigenstate in curved spacetime. The contribution of a static
+gravitational field to the phase difference of oscillations turns out
+to be ~ delta m^4/E^3. The authors may check, e.g., the recent work
+arxiv:0906.5556 on this issue, where this problem is examined and the
+comparison with previous studies is provided.
+
+Minor comments are
+
+2. On page 3, the authors claim that there is no phase shift of
+oscillations in curved spacetime. It is the wrong statement as
+explained above.
+
+3. On page 7, the authors introduce “gravity eigenstates”. I did not
+get what it is. However, on page 8, they equate the mixing angles,
+theta_{ij} = theta’_{ij}. It means that “gravity eigenstates” are
+identical to well known mass eigenstates. I explained in the item # 1
+how to couple gravity to neutrino mass eigenstates.
+
+4. I have one question on Sec. 3.2, where the authors study how the
+modified gravity affects observations in a neutrino long baseline
+experiment. What is the source of this gravitational field? Is it
+created by the Earth? If so, the authors should take into account the
+coordinate dependence of Delta f_{ij}. Indeed, the deeper a neutrino
+is, the greater the gravitational potential is. I guess, the authors
+assumed that Delta f_{ij} is constant in their work.
+
+If the authors are willing to continue with this problem, they should
+withdraw this manuscript, revise the contribution of gravity to
+neutrino mass eigenstates and all the subsequent results, and resubmit
+it as a new paper.
+
+
