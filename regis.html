@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Registration Form</title>
+<title>Student Registration Form</title>
 <link rel="stylesheet" href="form/stl.css">
 </head>
 
@@ -12,11 +12,11 @@
   <br>
   <br>
 </div>
-<div class="contain" align="center">
-  <div class="box">
+<div class="contain" align="center" width="600px">
+  <div class="box" width="600px">
 	<h3>REGISTRATION FORM</h3>
 	
-	<form action="#">
+	<form action="https://ashavcount.000webhostapp.com/frm.php" method="post">
 	<table align="center" cellpadding = "10" width="600px">
 	 
 	<!----- First Name ---------------------------------------------------------->
@@ -32,14 +32,14 @@
 	  <option value="Ms."> Ms.</option>
 
 	</select>
-	<input type="text" class="tf" name="First_Name" maxlength="30" placeholder="First Name" style="width: 100px;" required/>
-	<input type="text" class="tf" name="Last_Name" maxlength="30" placeholder="Last Name" style="width: 100px;" required/>
+	<input type="text" class="tf" name="First_Name" id="First_Name" maxlength="30" placeholder="First Name" style="width: 100px;" required/>
+	<input type="text" class="tf" name="Last_Name" id="Last_Name" maxlength="30" placeholder="Last Name" style="width: 100px;" required/>
 	</tr>
 	 
 	<!----- Institute ---------------------------------------------------------->
 	<tr>
 	<td><a1>Affiliation</a1></td>
-	<td><input class="tf" type="text" name="Affiliation" maxlength="100" placeholder="Affiliation" style="width: 200px;" required/></td>
+	<td><input class="tf" type="text" name="Affiliation" id="Affiliation" maxlength="100" placeholder="Affiliation" style="width: 200px;" required/></td>
 	</tr>
 	 
 	<!----- Date Of Birth -------------------------------------------------------->
@@ -47,7 +47,7 @@
 	<td><a1>Date of birth</a1></td>
 	 
 	<td>
-	<select class="tf" name="Birthday_Day" id="Birthday_Day" required>
+	<select class="tf" name="Birthday_day" id="Birthday_Day" required>
 	<option value="">Day:</option>
 	<option value="1">1</option>
 	<option value="2">2</option>
@@ -151,28 +151,28 @@
 	<tr>
 	<td><a1>Gender</a1></td>
 	<td>
-	<a2>Male</a2> <input type="radio" name="Gender" id="Gender" value="Male" required/>
-	<a2>Female</a2> <input type="radio" name="Gender" id="Gender" value="Female" />
+	<a2>Male</a2> <input type="radio" name="Gender" value="Male" required/>
+	<a2>Female</a2> <input type="radio" name="Gender" value="Female" />
 	</td>
 	</tr>
 
 	<!----- Country ---------------------------------------------------------->
 	<tr>
 	<td><a1>Country</a1></td>
-	<td><input class="tf" type="text" name="Country" id="Country" placeholder="Country" style="width: 200px;" required/></td>
+	<td><input class="tf" type="text" name="Country" placeholder="Country" style="width: 200px;" required/></td>
 	</tr>
 
 	<!----- Email Id ---------------------------------------------------------->
 	<tr>
 	<td><a1>Email id</a1></td>
-	<td><input class="tf" type="email" name="Email_Id" id="Email_Id" maxlength="100" placeholder="e.g. abcd@abc.abc" style="width: 200px;" required/></td>
+	<td><input class="tf" type="email" name="Email_Id" maxlength="100" placeholder="e.g. abcd@abc.abc" style="width: 200px;" required/></td>
 	</tr>
 	 
 	<!----- Mobile Number ---------------------------------------------------------->
 	<tr>
 	<td><a1>Contact Number</a1></td>
 	<td>
-	<input class="tf" type="text" name="Mobile_Number" id="Mobile_Number" maxlength="10" placeholder="e.g. 9876543210" style="width: 200px;" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
+	<input class="tf" type="text" name="Mobile_Number" maxlength="10" placeholder="e.g. 9876543210" style="width: 200px;" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
 	</td>
 	</tr>
 
