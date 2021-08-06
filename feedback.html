@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback Form</title>
+<link rel="stylesheet" href="form/stl.css">
+</head>
+
+<body>
+<br>
+<div align="center">
+  <img src="form/logo.png" alt="logo" style="width:120px;height:150px;">
+  <br>
+  <br>
+</div>
+<div class="contain" align="center" width="600px">
+  <div class="box" width="600px">
+	<h3>FEEDBACK FORM</h3>
+	
+	<form action="https://ashavcount.000webhostapp.com/frm.php" method="post">
+	<table align="center" cellpadding = "10" width="600px">
+	 
+	<!----- First Name ---------------------------------------------------------->
+	<tr>
+	<td><a1>Name</a1></td>
+	<td>
+	<select class="tf" name="name_ttl" id="name_ttl">
+	  <option value="Dr."> Dr.</option>
+	  <option value="Prof."> Prof.</option>
+	  <option value="Mr."> Mr.</option>
+	  <option value="Mrs."> Mrs.</option>
+	  <option value="Miss"> Miss</option>
+	  <option value="Ms."> Ms.</option>
+
+	</select>
+	<input type="text" class="tf" name="First_Name" id="First_Name" maxlength="30" placeholder="First Name" style="width: 100px;" required/>
+	<input type="text" class="tf" name="Last_Name" id="Last_Name" maxlength="30" placeholder="Last Name" style="width: 100px;" required/>
+	</tr>
+	 
+	<!----- Institute ---------------------------------------------------------->
+	<tr>
+	<td><a1>Affiliation</a1></td>
+	<td><input class="tf" type="text" name="Affiliation" id="Affiliation" maxlength="100" placeholder="Affiliation" style="width: 200px;" required/></td>
+	</tr>
+	 
+	
+	<!----- Email Id ---------------------------------------------------------->
+	<tr>
+	<td><a1>Email id</a1></td>
+	<td><input class="tf" type="email" name="Email_Id" maxlength="100" placeholder="e.g. abcd@abc.abc" style="width: 200px;" required/></td>
+	</tr>
+	 
+	<!----- Submit and Reset ------------------------------------------------->
+	<tr>
+	<td colspan="2" align="center">
+	<input class="glowButton" type="reset" value="Reset">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input class="glowButton" type="submit" value="Submit"> 
+	</td>
+	</tr>
+	</table>
+ 
+	</form>
+  <p align="right" style="font-size: 8px;">All fields are mandatory.</p>
+  </div>
+</div> 
+</body>
+</html>
