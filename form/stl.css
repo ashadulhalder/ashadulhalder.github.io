@@ -46,6 +46,7 @@ a2 {
   &:focus{
     outline-color : blue !important;
 } 
+}
 
 .tf1 {
   background-image: linear-gradient( 180deg, #ddffff, #ffffff );
