@@ -47,7 +47,7 @@
 	<td><a1>Date of birth</a1></td>
 	 
 	<td>
-	<select class="tf" name="Birthday_day" id="Birthday_Day" required>
+	<select class="tf" name="Birthday_Day" id="Birthday_Day" required>
 	<option value="">Day:</option>
 	<option value="1">1</option>
 	<option value="2">2</option>
@@ -151,28 +151,28 @@
 	<tr>
 	<td><a1>Gender</a1></td>
 	<td>
-	<a2>Male</a2> <input type="radio" name="Gender" value="Male" required/>
-	<a2>Female</a2> <input type="radio" name="Gender" value="Female" />
+	<a2>Male</a2> <input type="radio" name="Gender" id="Gender" value="Male" required/>
+	<a2>Female</a2> <input type="radio" name="Gender" id="Gender" value="Female" />
 	</td>
 	</tr>
 
 	<!----- Country ---------------------------------------------------------->
 	<tr>
 	<td><a1>Country</a1></td>
-	<td><input class="tf" type="text" name="Country" placeholder="Country" style="width: 200px;" required/></td>
+	<td><input class="tf" type="text" name="Country" id="Country" placeholder="Country" style="width: 200px;" required/></td>
 	</tr>
 
 	<!----- Email Id ---------------------------------------------------------->
 	<tr>
 	<td><a1>Email id</a1></td>
-	<td><input class="tf" type="email" name="Email_Id" maxlength="100" placeholder="e.g. abcd@abc.abc" style="width: 200px;" required/></td>
+	<td><input class="tf" type="email" name="Email_Id" id="Email_Id" maxlength="100" placeholder="e.g. abcd@abc.abc" style="width: 200px;" required/></td>
 	</tr>
 	 
 	<!----- Mobile Number ---------------------------------------------------------->
 	<tr>
 	<td><a1>Contact Number</a1></td>
 	<td>
-	<input class="tf" type="text" name="Mobile_Number" maxlength="10" placeholder="e.g. 9876543210" style="width: 200px;" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
+	<input class="tf" type="text" name="Mobile_Number" id="Mobile_Number" maxlength="10" placeholder="e.g. 9876543210" style="width: 200px;" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
 	</td>
 	</tr>
 
