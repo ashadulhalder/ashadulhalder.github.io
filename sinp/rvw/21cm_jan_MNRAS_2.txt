@@ -11,3 +11,25 @@ IMPORTANT: do not submit your revised manuscript as a new paper!
 When submitting your revised manuscript, you should provide details of any changes you make to the original manuscript. Changes to the manuscript should also be highlighted (e.g. in bold or colour), to assist the referee and editor.
 
 We look forward to receiving your revised manuscript.
+
+Regards,
+
+Pamela
+
+Dr Pamela Rowden
+Assistant Editor (MNRAS)
+
+cc: all listed co-authors.
+
+
+Reviewer's Comments:
+Reviewer: 1
+
+Comments to the Author
+We authors responded to the questions appropriately. There are a few questions relating to the study before recommending for publication.
+
+1.  Authors need to provide explicit reference on the chosen direct detection limit of \sigma_0 ~ 1e-41 cm^-2 in case of strong velocity dependence. Direct detection limits are usually provided directly for cross-sections. Given the Earth's v~10^-4 to 10^-3 relative velocity to the galactic halo, the chosen value of \sigma_0 will become colossally enhanced at direction detection sites.  See 0705.4298 for an earlier study of experimental limits for very large DM-baryon cross-sections.
+
+2. The evolution of DM temperature, even w/o IDE effect, shows an abrupt rise of DM temperature after recombination. This indicates the chosen infrared-enhanced scattering cross-section holds DM to some minimal temperature that evolves with T_gas and T_CMB. And likely so even prior to recombination unless the IR enhancement miraculously disappears for scattering with ionized gas. The authors should comment on whether this become a problem for seeding structure growth for low DM mass range.
+
+3. fix the dimensionality mismatch in Eq. 5.
