@@ -18,7 +18,7 @@
         document.getElementById("sortfloat").innerHTML = fltchng;
         var people = [];
         
-        $.getJSON('https://inspirehep.net/api/literature?sort=mostrecent&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20D.Majumdar.1', function(data) {
+        $.getJSON('https://inspirehep.net/api/literature?sort=mostrecent&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20Shibaji.Banerjee.1', function(data) {
             $.each(data.hits.hits, function(i, f) {
                     if (("dois" in f.metadata) == false) {
                         var doi = "  "
@@ -53,7 +53,7 @@
         var fltchng = "<i class='my-float' onclick='resrt()''>Sort by date</i>";
         document.getElementById("sortfloat").innerHTML = fltchng;
         var people = [];
-        $.getJSON('https://inspirehep.net/api/literature?sort=mostcited&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20D.Majumdar.1', function(data) {
+        $.getJSON('https://inspirehep.net/api/literature?sort=mostcited&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20Shibaji.Banerjee.1', function(data) {
             $.each(data.hits.hits, function(i, f) {
                     if (("dois" in f.metadata) == false) {
                         var doi = "  "
@@ -87,8 +87,8 @@
 
 <body>
     <div class="header">
-        <h2>Prof. Debasish Majumdar</h2>
-        <p>SAHA INSTITUTE OF NUCLEAR PHYSICS</p>
+        <h2>Dr. Shibaji Banerjee</h2>
+        <p>St. Xaviers' College (Autonomous), Kolkata</p>
     </div>
       
     <div id="navbar" class="nvv">
