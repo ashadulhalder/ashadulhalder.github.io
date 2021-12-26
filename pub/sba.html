@@ -1,0 +1,132 @@
+<html>
+<head>
+    <meta name="Pub list" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script>
+        function resrt() {
+        $('#userdata tbody').empty();
+        var fltchng = "<i class='my-float' onclick='ctsrt()''>Sort by citation</i>";
+        document.getElementById("sortfloat").innerHTML = fltchng;
+        var people = [];
+        
+        $.getJSON('https://inspirehep.net/api/literature?sort=mostrecent&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20D.Majumdar.1', function(data) {
+            $.each(data.hits.hits, function(i, f) {
+                    if (("dois" in f.metadata) == false) {
+                        var doi = "  "
+                    } else {
+                        var doi = "<p class='doihl'>DOI: <a class='doi' href='https://doi.org/" + f.metadata.dois[0].value + "'><u>" + f.metadata.dois[0].value + "</u></a></p>";
+                    }
+                    if (f.metadata.authors.length>=4){
+                        var auth = f.metadata.authors[0].first_name + " " + f.metadata.authors[0].last_name + ", " + f.metadata.authors[1].first_name + " " + f.metadata.authors[1].last_name + ", " + f.metadata.authors[2].first_name + " " + f.metadata.authors[2].last_name + ", " + f.metadata.authors[3].first_name + " " + f.metadata.authors[3].last_name + ", " + "et. al.";
+                    } else{
+                        var auth = f.metadata.authors[0].first_name + " " + f.metadata.authors[0].last_name;
+                        for (let ii = 1; ii < f.metadata.authors.length; ii++) {
+                            auth += ", " + f.metadata.authors[ii].first_name + " " + f.metadata.authors[ii].last_name;
+                        }
+                    }
+                    if (("publication_info" in f.metadata) == false) {
+                        var pubinf = "<p class='publ'>(" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
+                    } else {
+                        var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + f.metadata.publication_info[0].artid + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                    }
+                    var authr = "<p class='aur'><b>" + auth + "</b></p>"
+                    var cite = "<div class='citediv'><p style='text-align:center; padding-top:10pt; margin:0;'>" + f.metadata.citation_count + "<p class='zerosize' style='text-align:center'>Citation</p></div>";
+                    var ttl = "<p class='ttl'><a class='hrttl' href='https://inspirehep.net/literature/" + f.id + "'><b>" + f.metadata.titles[0].title + "</b></a></p>";
+                    
+                    var tblRow = "<tr>" + "<td style='vertical-align:top'><p class='ttl'>" + (i+1) +". </p></td>" + "<td style='width: 650px; vertical-align:top'>" + ttl + authr + pubinf + doi + "</td>" + "<td>" + cite + "</td>" + "</tr>";
+                    $(tblRow).appendTo("#userdata tbody");
+                });
+            });
+        };
+
+        function ctsrt() {
+        $('#userdata tbody').empty();
+        var fltchng = "<i class='my-float' onclick='resrt()''>Sort by date</i>";
+        document.getElementById("sortfloat").innerHTML = fltchng;
+        var people = [];
+        $.getJSON('https://inspirehep.net/api/literature?sort=mostcited&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20D.Majumdar.1', function(data) {
+            $.each(data.hits.hits, function(i, f) {
+                    if (("dois" in f.metadata) == false) {
+                        var doi = "  "
+                    } else {
+                        var doi = "<p class='doihl'>DOI: <a class='doi' href='https://doi.org/" + f.metadata.dois[0].value + "'><u>" + f.metadata.dois[0].value + "</u></a></p>";
+                    }
+                    if (f.metadata.authors.length>=4){
+                        var auth = f.metadata.authors[0].first_name + " " + f.metadata.authors[0].last_name + ", " + f.metadata.authors[1].first_name + " " + f.metadata.authors[1].last_name + ", " + f.metadata.authors[2].first_name + " " + f.metadata.authors[2].last_name + ", " + f.metadata.authors[3].first_name + " " + f.metadata.authors[3].last_name + ", " + "et. al.";
+                    } else{
+                        var auth = f.metadata.authors[0].first_name + " " + f.metadata.authors[0].last_name;
+                        for (let ii = 1; ii < f.metadata.authors.length; ii++) {
+                            auth += ", " + f.metadata.authors[ii].first_name + " " + f.metadata.authors[ii].last_name;
+                        }
+                    }
+                    if (("publication_info" in f.metadata) == false) {
+                        var pubinf = "<p class='publ'>(" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
+                    } else {
+                        var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + f.metadata.publication_info[0].artid + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                    }
+                    var authr = "<p class='aur'><b>" + auth + "</b></p>"
+                    var cite = "<div class='citediv'><p style='text-align:center; padding-top:10pt; margin:0;'>" + f.metadata.citation_count + "<p class='zerosize' style='text-align:center'>Citation</p></div>";
+                    var ttl = "<p class='ttl'><a class='hrttl' href='https://inspirehep.net/literature/" + f.id + "'><b>" + f.metadata.titles[0].title + "</b></a></p>";
+                    
+                    var tblRow = "<tr>" + "<td style='vertical-align:top'><p class='ttl'>" + (i+1) +". </p></td>" + "<td style='width: 650px; vertical-align:top'>" + ttl + authr + pubinf + doi + "</td>" + "<td>" + cite + "</td>" + "</tr>";
+                    $(tblRow).appendTo("#userdata tbody");
+                });
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h2>Prof. Debasish Majumdar</h2>
+        <p>SAHA INSTITUTE OF NUCLEAR PHYSICS</p>
+    </div>
+      
+    <div id="navbar" class="nvv">
+        <p class="nvbr">List of publication</p>
+    </div>
+    <div class="animbox" align="center" id="msg"><div class="anim"><br><br><br><br><br><br><br><br><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div></div></div></div></div></div></div>
+    <div>
+        <div class="center">
+            <table id= "userdata">
+                <tbody>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>
+    <script>
+        window.onload = function () {
+            resrt();
+		    document.getElementById("msg").style.display="none";
+	}
+    </script>
+    <a href="#" class="float hrttl" id="sortfloat">
+        <i class="my-float" onclick="ctsrt()">Sort by citation</i>
+    </a>
+</body>
+</html>
