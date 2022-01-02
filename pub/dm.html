@@ -3,7 +3,7 @@
     <meta name="Pub list" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript"
-            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+            src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
     </script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
@@ -18,7 +18,7 @@
         document.getElementById("sortfloat").innerHTML = fltchng;
         var people = [];
         
-        $.getJSON('//inspirehep.net/api/literature?sort=mostrecent&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20D.Majumdar.1', function(data) {
+        $.getJSON('https://inspirehep.net/api/literature?sort=mostrecent&fields=titles,citation_count,dois,authors.last_name,authors.first_name,publication_info,earliest_date&size=400&q=a%20D.Majumdar.1', function(data) {
             $.each(data.hits.hits, function(i, f) {
                     if (("dois" in f.metadata) == false) {
                         var doi = "  "
@@ -33,10 +33,23 @@
                             auth += ", " + f.metadata.authors[ii].first_name + " " + f.metadata.authors[ii].last_name;
                         }
                     }
-                    if (("publication_info" in f.metadata) == false) {
-                        var pubinf = "<p class='publ'>(" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
+                    if (("publication_info" in f.metadata) == true) {
+                        if(("artid" in f.metadata.publication_info[0]) == true){
+                            var pgg = f.metadata.publication_info[0].artid;
+                            var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + pgg + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                        }
+                        else if(("page_start" in f.metadata.publication_info[0]) == true){
+                            var pgg = f.metadata.publication_info[0].page_start;
+                            var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + pgg + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                        }
+                        else if(("cnum" in f.metadata.publication_info[0]) == true){
+                            var pubinf = "<p class='publ'>Conference No. <a class='hrttl' href='https://inspirehep.net/literature/" + f.id + "'><b>" + f.metadata.publication_info[0].cnum + "</b></a> (" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
+                        }
+                        else{
+                            var pubinf = "<p class='publ'>&nbsp;</p>";
+                        }
                     } else {
-                        var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + f.metadata.publication_info[0].artid + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                        var pubinf = "<p class='publ'>(" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
                     }
                     var authr = "<p class='aur'><b>" + auth + "</b></p>"
                     var cite = "<div class='citediv'><p style='text-align:center; padding-top:10pt; margin:0;'>" + f.metadata.citation_count + "<p class='zerosize' style='text-align:center'>Citation</p></div>";
@@ -68,10 +81,23 @@
                             auth += ", " + f.metadata.authors[ii].first_name + " " + f.metadata.authors[ii].last_name;
                         }
                     }
-                    if (("publication_info" in f.metadata) == false) {
-                        var pubinf = "<p class='publ'>(" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
+                    if (("publication_info" in f.metadata) == true) {
+                        if(("artid" in f.metadata.publication_info[0]) == true){
+                            var pgg = f.metadata.publication_info[0].artid;
+                            var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + pgg + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                        }
+                        else if(("page_start" in f.metadata.publication_info[0]) == true){
+                            var pgg = f.metadata.publication_info[0].page_start;
+                            var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + pgg + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                        }
+                        else if(("cnum" in f.metadata.publication_info[0]) == true){
+                            var pubinf = "<p class='publ'>Conference No. <a class='hrttl' href='https://inspirehep.net/literature/" + f.id + "'><b>" + f.metadata.publication_info[0].cnum + "</b></a> (" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
+                        }
+                        else{
+                            var pubinf = "<p class='publ'>&nbsp;</p>";
+                        }
                     } else {
-                        var pubinf = "<p class='publ'><i>" + f.metadata.publication_info[0].journal_title + "</i> <b>" + f.metadata.publication_info[0].journal_volume + "</b>, " + f.metadata.publication_info[0].artid + ", (" + f.metadata.publication_info[0].year + ")</p>";
+                        var pubinf = "<p class='publ'>(" + f.metadata.earliest_date.substring(0, 4) + ")</p>";
                     }
                     var authr = "<p class='aur'><b>" + auth + "</b></p>"
                     var cite = "<div class='citediv'><p style='text-align:center; padding-top:10pt; margin:0;'>" + f.metadata.citation_count + "<p class='zerosize' style='text-align:center'>Citation</p></div>";
