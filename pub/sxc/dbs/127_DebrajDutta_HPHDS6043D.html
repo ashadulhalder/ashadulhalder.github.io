@@ -11,6 +11,45 @@
         });
     </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script>
+        $.getJSON('jsons/debraj.json', function(data) {
+            var nn = Object.keys(data.students).length;
+            names = "";
+            phto = "";
+            //pdfbtn = "";
+            if(nn>1){
+                for (let i = 0; i < nn-2; i++) {
+                    names += "<auth>" + data.students[i].name + "</auth>, ";
+                } 
+                names += "<auth>" + data.students[nn-2].name + "</auth> and <auth>" + data.students[nn-1].name + "</auth> <br> under the guidance of <auth>" + data.supervisor + "</auth><h2>Abstract</h2>";
+            }
+            else{
+                names += "<auth>" + data.students[nn-1].name + "</auth> under the guidance of <auth>" + data.supervisor + "</auth><h2>Abstract</h2>";
+            }
+
+            for (let i = 0; i < nn; i++) {
+                phto += "<img src='images/stdnt/" + data.students[i].ph + "' class='dp'>";
+            } 
+            
+            //for (let i = 0; i < nn; i++){
+            //    pdfbtn += "Download: <a target='_blank' href='pdfs/" +  + "'><button class='btn'>Pdf copy " + (i+1) + "</button></a>";
+            //}
+            if (data.cat=="UG Project"){
+                var catprj = "<a href='../ug_projects.html' class='float p1' id='sortfloat'><p class='my-float'>UG Project</p>";
+            }
+            else if (data.cat=="PG Project"){
+                var catprj = "<a href='../pg_projects.html' class='float p1' id='sortfloat'><p class='my-float'>PG Project</p>";
+            }
+            document.getElementById("sup_img").innerHTML = "<img src='images/" + data.sup_photo + "' class='dp'>";
+            document.getElementById("std_img").innerHTML = phto;
+            //document.getElementById("cat").innerHTML = catprj;
+            document.getElementById("ttl").innerHTML = data.title;
+            document.getElementById("yr").innerHTML = "(" + data.year + ")";
+            document.getElementById("abs").innerHTML = data.abstract;
+            document.getElementById("fln").innerHTML = "Download: <a target='_blank' href='pdfs/" + data.fl_nm + "'><button class='btn'>Pdf copy </button></a>";
+            document.getElementById("names").innerHTML = names;
+        })
+    </script> 
 </head>
 
 <body>
@@ -68,45 +107,7 @@
     <div class="footer">
         <p>St. Xaviers' College (Autonomous), Kolkata</p>
     </div>
-    <script>
-        $.getJSON('jsons/debraj.json', function(data) {
-            var nn = Object.keys(data.students).length;
-            names = "";
-            phto = "";
-            //pdfbtn = "";
-            if(nn>1){
-                for (let i = 0; i < nn-2; i++) {
-                    names += "<auth>" + data.students[i].name + "</auth>, ";
-                } 
-                names += "<auth>" + data.students[nn-2].name + "</auth> and <auth>" + data.students[nn-1].name + "</auth> <br> under the guidance of <auth>" + data.supervisor + "</auth><h2>Abstract</h2>";
-            }
-            else{
-                names += "<auth>" + data.students[nn-1].name + "</auth> under the guidance of <auth>" + data.supervisor + "</auth><h2>Abstract</h2>";
-            }
-
-            for (let i = 0; i < nn; i++) {
-                phto += "<img src='images/stdnt/" + data.students[i].ph + "' class='dp'>";
-            } 
-            
-            //for (let i = 0; i < nn; i++){
-            //    pdfbtn += "Download: <a target='_blank' href='pdfs/" +  + "'><button class='btn'>Pdf copy " + (i+1) + "</button></a>";
-            //}
-            if (data.cat=="UG Project"){
-                var catprj = "<a href='../ug_projects.html' class='float p1' id='sortfloat'><p class='my-float'>UG Project</p>";
-            }
-            else if (data.cat=="PG Project"){
-                var catprj = "<a href='../pg_projects.html' class='float p1' id='sortfloat'><p class='my-float'>PG Project</p>";
-            }
-            document.getElementById("sup_img").innerHTML = "<img src='images/" + data.sup_photo + "' class='dp'>";
-            document.getElementById("std_img").innerHTML = phto;
-            //document.getElementById("cat").innerHTML = catprj;
-            document.getElementById("ttl").innerHTML = data.title;
-            document.getElementById("yr").innerHTML = "(" + data.year + ")";
-            document.getElementById("abs").innerHTML = data.abstract;
-            document.getElementById("fln").innerHTML = "Download: <a target='_blank' href='pdfs/" + data.fl_nm + "'><button class='btn'>Pdf copy </button></a>";
-            document.getElementById("names").innerHTML = names;
-        })
-    </script>
+    
     <script>
         window.onload = function () {
             resrt();
