@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta name="Pub list" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+</head>
+
+<body>
+    <ul class="nvb">
+        <li><a class="nv" href="../home.html">Home</a></li>
+        <li><a class="nv" href="../ug_projects.html">UG Projects</a></li>
+        <li><a class="nv" href="../pg_projects.html">PG Projects</a></li>
+        <li style="float:right"><a class="nv active" href="#about">About</a></li>
+    </ul>
+    
+    <div>
+    
+    <div>
+         <table style="margin: auto; padding-bottom: 80px;">
+            <tr><td>
+                <div class="ttl" id="ttl"></div>
+            </td></tr>
+            <tr><td>
+            <table style="width:100%">
+                <tr><td class="tc1" id="sup_img"></td>
+                <td style="width:20px">&nbsp;</td>
+                <td class="tc2">
+                    <div class="yr" id="yr"></div>
+                    <div style="text-align:center;" id="names"></div>
+                    <div class="abs" id="abs"></div>
+                    <div style="text-align: center;" id="fln"></div>
+                </td>
+                <td style="width:20px">&nbsp;</td>
+                <td class="tc1" id="std_img"></td>
+                </tr>
+            </table>
+            </td></tr>
+         </table>
+    </div> 
+    </div>
+
+    <div class="footer_containear"><div class="footer_cont_lyr">
+        <div style="width: 1000; margin: auto;">
+            <div class="container"><ul>
+                <li><a class="p1" href="https://www.sxccal.edu/faculty-physics/">Faculty</a></li>
+            </ul></div>
+            <div class="container"><ul>
+                <li><a class="p1" href="https://www.sxccal.edu/b-sc-physics-department/">UG Physics Department</a></li>
+                <li><a class="p1" href="https://www.sxccal.edu/m-sc-physics/">PG Physics Department</a></li>
+            </ul></div>
+            <div class="container">
+                <a class="ft2">Department of Physics</a> <br>
+                <a class="ft2">St. Xavier's College (Autonomous)</a> <br>
+                <a class="ft1">30 Mother Teresa Sarani</a> <br>
+                <a class="ft1">Kolkata-700016</a> <br>
+                <a class="ft1">West Bengal, India</a>
+            </div>
+        </div>
+    </div></div>
+
+    <div class="footer">
+        <p>St. Xaviers' College (Autonomous), Kolkata</p>
+    </div>
+    <script>
+        $.getJSON('jsons/debraj.json', function(data) {
+            var nn = Object.keys(data.students).length;
+            names = "";
+            phto = "";
+            //pdfbtn = "";
+            if(nn>1){
+                for (let i = 0; i < nn-2; i++) {
+                    names += "<auth>" + data.students[i].name + "</auth>, ";
+                } 
+                names += "<auth>" + data.students[nn-2].name + "</auth> and <auth>" + data.students[nn-1].name + "</auth> <br> under the guidance of <auth>" + data.supervisor + "</auth><h2>Abstract</h2>";
+            }
+            else{
+                names += "<auth>" + data.students[nn-1].name + "</auth> under the guidance of <auth>" + data.supervisor + "</auth><h2>Abstract</h2>";
+            }
+
+            for (let i = 0; i < nn; i++) {
+                phto += "<img src='images/stdnt/" + data.students[i].ph + "' class='dp'>";
+            } 
+            
+            //for (let i = 0; i < nn; i++){
+            //    pdfbtn += "Download: <a target='_blank' href='pdfs/" +  + "'><button class='btn'>Pdf copy " + (i+1) + "</button></a>";
+            //}
+            if (data.cat=="UG Project"){
+                var catprj = "<a href='../ug_projects.html' class='float p1' id='sortfloat'><p class='my-float'>UG Project</p>";
+            }
+            else if (data.cat=="PG Project"){
+                var catprj = "<a href='../pg_projects.html' class='float p1' id='sortfloat'><p class='my-float'>PG Project</p>";
+            }
+            document.getElementById("sup_img").innerHTML = "<img src='images/" + data.sup_photo + "' class='dp'>";
+            document.getElementById("std_img").innerHTML = phto;
+            //document.getElementById("cat").innerHTML = catprj;
+            document.getElementById("ttl").innerHTML = data.title;
+            document.getElementById("yr").innerHTML = "(" + data.year + ")";
+            document.getElementById("abs").innerHTML = data.abstract;
+            document.getElementById("fln").innerHTML = "Download: <a target='_blank' href='pdfs/" + data.fl_nm + "'><button class='btn'>Pdf copy </button></a>";
+            document.getElementById("names").innerHTML = names;
+        })
+    </script>
+    <script>
+        window.onload = function () {
+            resrt();
+		    document.getElementById("msg").style.display="none";
+	}
+    </script>
+</body>
+</html>
