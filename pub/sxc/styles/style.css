@@ -61,7 +61,7 @@ body {
 
 
 
-.lgo{padding: top 0 !important;height:50px !important;}
+.lgo{padding: top 0 !important;width:100% !important;}
 
 .header_1{
     vertical-align: middle;
@@ -86,7 +86,8 @@ body {
     display: block;
     width: 100%;
     margin: auto;
-    padding: 30px;
+    padding-top: 30px;
+	padding-bottom: 30px;
     background: url(../images/footer_bg.jpg) center center no-repeat;
     background-size: cover;
 }
@@ -130,7 +131,8 @@ body {
     box-shadow: 0px 5px 16px 0px rgba(0,0,0,0.29),0px 5px 16px 0px rgba(0,0,0,0.29);
 }
 .nbrd_width{min-width:500px !important;padding-top: 20px;margin-left:auto;margin-right:auto;}
-.col-sm{min-width:350px;max-width:500px;padding-top: 20px;margin-left:auto;margin-right:auto;}
+.col-sm{min-width:350px;max-width:500px !important;padding-top: 20px;margin-left:auto;margin-right:auto;}
+.nbrd_width{min-width:350px;}
 .nbrd_w{
     padding:10px;
     background: rgba(255,255,255,0.4) !important;
@@ -156,6 +158,7 @@ body {
 
 .ugpgbrd{
     height:500px;
+	padding-top:40px;
 }
 
 .mnu_h1,.mnu_h2{
@@ -246,11 +249,12 @@ p.pra{text-align: justify;}
     color: white;
 }
 .navbar-brand{padding-left: 10px !important;}
-@media (min-width: 768px){.navbar-brand{padding-left: 50 !important;}.lgo{height: 65px !important;padding-left:0px;}.govrlp{display: block !important;}.govrlp_1{display: block !important;}.govrlp_2{display: block !important;}.glry{height:auto !important;width:100% !important;}}
-@media (min-width: 1100px){.lgo{height: 75px !important;padding-left:20 !important;}}
-@media (max-width: 767px){.w-100{height:100%;width:fit-content !important;margin:0 auto !important}}
+@media (min-width: 768px){.navbar-brand{padding-left: 50 !important;}.lgo{width:auto !important;height: 65px !important;padding-left:0px;}.govrlp{display: block !important;}.govrlp_1{display: block !important;}.govrlp_2{display: block !important;}.glry{height:auto !important;width:100% !important;}}
+@media (min-width: 1100px){.lgo{width:auto !important;height: 75px !important;padding-left:20 !important;}}
+@media (max-width: 767px){.w-100{height:100%;width:fit-content !important;margin:0 auto !important}.nbrd_w{width:100% !important;}.nbrd{width:100% !important;}.brd2{width:100% !important;}.flogo{width:80% !important;}.row>*{padding-left:0 !important;padding-right:0 !important;}.nbrd_width{min-width:100% !important;}}
 .brd3{height:500px;min-width: 300px !important}
-
+.h2abtus{padding-left:10px;padding-top:15px}
+.flogo{padding:0;width:400px;}
 .footer{
     display: block;
     float: left;

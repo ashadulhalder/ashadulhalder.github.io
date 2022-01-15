@@ -118,3 +118,6 @@ details[open] summary ~ * {
 @media (min-width: 768px){.ddbr{width:75%}.ttl_h{font-size: 18px;}}
 
 details{padding-bottom: 10px;}
+
+.ugpgpgtw{position: relative;padding: 40px;padding-top: 100px;}
+@media (max-width: 767px){.ugpgpgtw{padding-left: 0 !important; padding-right:0 !important;padding-top: 40px;padding-top: 100px;}auth{font-size:10pt !important}}
