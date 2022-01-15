@@ -254,7 +254,7 @@ p.pra{text-align: justify;}
 @media (max-width: 767px){.w-100{height:100%;width:fit-content !important;margin:0 auto !important}.nbrd_w{width:100% !important;}.nbrd{width:100% !important;}.brd2{width:100% !important;}.flogo{width:80% !important;}.row>*{padding-left:0 !important;padding-right:0 !important;}.nbrd_width{min-width:100% !important;}}
 .brd3{height:500px;min-width: 300px !important}
 .h2abtus{padding-left:10px;padding-top:15px}
-.flogo{padding:0;width:400px !important;}
+.flogo{padding:0;width:400px;}
 .footer{
     display: block;
     float: left;
