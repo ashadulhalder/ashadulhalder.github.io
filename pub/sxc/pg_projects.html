@@ -1,0 +1,276 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PG Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/icon" href="images/favicon.png"/> 
+
+    <!---------- CSS ------------>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style_hm.css">
+
+    <!--<link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css"> -->
+
+    <!---------- JS ------------>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+
+    <!--<script type="text/javascript" src="styles/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="styles/jquery.min.js"> </script>
+    <script type="text/javascript" src="styles/MathJax.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script> -->
+    <script>
+        $.getJSON('pg.json', function(data) {
+            $.each(data.hits[0].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";            
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2021 tbody");
+            });
+        });
+        $.getJSON('pg.json', function(data) {
+            $.each(data.hits[1].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";              
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2020 tbody");
+            });
+        });
+        $.getJSON('pg.json', function(data) {
+            $.each(data.hits[2].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";               
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2019 tbody");
+            });
+        });
+        $.getJSON('pg.json', function(data) {
+            $.each(data.hits[3].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";       
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2018 tbody");
+            });
+        });
+        $.getJSON('pg.json', function(data) {
+            $.each(data.hits[4].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";            
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2017 tbody");
+            });
+        });
+    </script>
+</head>
+<!--==============================================================-->
+<body>
+  <header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark  navbar-bg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="padding:2px;"><img class="lgo" src="images/logo.png" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color:#fff"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="padding-right: 20px;" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Student Activities</a>
+              <ul class="dropdown-menu navbar-bg" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="ug_projects.html">UG Projects</a></li>
+                <li><a class="dropdown-item" href="pg_projects.html">PG Projects</a></li>
+              </ul>
+            </li>
+			<li class="nav-item"><a class="nav-link" href="#">Teaching Activities</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Research</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>      
+  </header>
+
+    <!--============================== photo/text ================================-->
+    <section class="hdr_pra_cont" style="background: url(images/PG-Physics-Group-2019.jpg) center center no-repeat;background-size: cover;box-shadow: 2px 5px 16px 0px rgba(0,0,0,0.29);">
+        <div class="ugpgpgtw">
+          <div class="nbrd" style="padding:30px">
+            <div style="padding-top: 10px;"><h2 style="text-align: center; color:#000000;font-weight: bold;"><u><i>Department of Physics</i></u></h2></div>
+            <p class="hdr_pra">The Dept of Physics is one of the oldest and prestigious Departments of our Institution. Founded under the pioneering guidance of renowned Jesuits like Fr. Lafonte in the middle of nineteenth century and contributions over years like Fr. Verstraeten, Fr. Bonhom & others, the department has grown into the present structure with both UG and PG sections and furthermore, a lot of research activities. Recently, the Department has been engaged in the new Curriculum restructuring process (UG) with mutual feedback taken from other science Departments, leading to a very effective coursework to be offered to the Physics major students from the academic year 2013. The present faculty members are highly dedicated for quality physics education with innovative methods of theory teaching & practices and inspiring & guided laboratory classes.</p>
+          </div>
+      </div>
+    </section>
+
+    <!--================================ Main =================================-->
+    <section style="padding-top: 50px;padding-bottom: 60px;"></section>
+    <div style="padding-top: 10px;">
+        <h2 style="text-align: center; color:#000000;font-weight: bold;"><u><i>PG Projects</i></u></h2>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2021</div></summary>
+            <div class="lst">
+                <table id= "pg_2021" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2020</div></summary>
+            <div class="lst">
+                <table id= "pg_2020" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2019</div></summary>
+            <div class="lst">
+                <table id= "pg_2019" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2018</div></summary>
+            <div class="lst">
+                <table id= "pg_2018" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2017</div></summary>
+            <div class="lst">
+                <table id= "pg_2017" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    
+<!---------------------------------------------------------------------------------------------------------------->
+  <section class="ftr">
+    <div class="footer_containear">
+    <div class="container" style="padding-bottom: 40px;padding-top: 40px;">
+      <div class="row ft1">
+        <div class="col-sm">
+          <h3 style="padding-left: 20px;">Department</h3>
+          <ul style="list-style-type: none;">
+            <li><a class="p1" href="https://www.sxccal.edu/faculty-physics/"><h6 class="p1">Faculty</h6></a></li>
+            <li><a class="p1" href="https://www.sxccal.edu/b-sc-physics-department/"><h6 class="p1">UG Physics Department</h6></a></li>
+            <li><a class="p1" href="https://www.sxccal.edu/m-sc-physics/"><h6 class="p1">PG Physics Department</h6></a></li>
+          </ul>
+        </div>
+        <div class="col-sm">
+          <h3><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Department of Physics</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;St. Xavier's College (Autonomous)</h3>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30 Mother Teresa Sarani</h6>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kolkata-700016</h6>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;West Bengal, India</h6>
+        </div>
+        <div class="col-sm">
+            <div class="single_footer_widget">
+              <h3>Social Links</h3>
+              <ul class="footer_social">
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div style="position: relative;">
+      <div class="footer-accent-triangle_1"></div>
+      <div class="footer-accent-triangle"></div>
+      <div class="footer"><img class="flogo" src="images/f_logo.png" alt="logo"></div>
+    </div>
+</section>
+</body>
+</html>
