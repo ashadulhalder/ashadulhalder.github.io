@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PG Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/icon" href="../images/favicon.png"/> 
+
+    <!---------- CSS ------------>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/style_hm.css">
+    <link rel="stylesheet" href="../styles/style_ind.css">
+
+    <!---------- JS ------------>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+
+    <script>
+        $.getJSON('jsons/2021_ug_127.json', function(data) {
+            var nn = Object.keys(data.student).length;
+            names = "";
+            phto = "";
+            if(data.supervisor=="ic"){supvr = "Dr. Indranath Chaudhuri"; sup_ph = "ic.jpg";}
+            else if(data.supervisor=="so"){supvr = "Dr. Soma Ghosh"; sup_ph = "so.jpg";}
+            else if(data.supervisor=="sp"){supvr = "Dr. Saunak Palit"; sup_ph = "sp.jpg";}
+            else if(data.supervisor=="td"){supvr = "Dr. Tapati Dutta"; sup_ph = "td.jpg";}
+            else if(data.supervisor=="sg"){supvr = "Dr. Sarbari Guha"; sup_ph = "sg.jpg";}
+            else if(data.supervisor=="sgh"){supvr = "Dr. Subhankar Ghosh"; sup_ph = "sgh.jpg";}
+            else if(data.supervisor=="sba"){supvr = "Dr. Shibaji Banerjee"; sup_ph = "sba.jpg";}
+            else if(data.supervisor=="src"){supvr = "Dr. Suparna Roy Chowdhury"; sup_ph = "src.jpg";}
+            else if(data.supervisor=="tb"){supvr = "Dr. Tanaya Bhattacharyya"; sup_ph = "tb.jpg";}
+            else if(data.supervisor=="sr"){supvr = "Dr. Sudipto Roy"; sup_ph = "sr.jpg";}
+            else if(data.supervisor=="snr"){supvr = "Prof. Sailendra Narayan Roy Choudhury"; sup_ph = "snr.jpg";}
+            else if(data.supervisor=="gb"){supvr = "Prof. Gayatri Banerjee"; sup_ph = "gb.jpg";}
+            else if(data.supervisor=="ag"){supvr = "Dr. Aditi Ghosh"; sup_ph = "ag.jpg";}
+            else if(data.supervisor=="sd"){supvr = "Dr. Sanghamitra Das"; sup_ph = "sd.jpg";}
+            else if(data.supervisor=="gpd"){supvr = "Prof. Gour P. Das"; sup_ph = "gpd.jpg";}
+            if(nn>1){
+                for (let i = 0; i < nn-2; i++) {
+                    names += "<auth>" + data.student[i].name + "</auth>, ";
+                } 
+                names += "<auth>" + data.student[nn-2].name + "</auth> and <auth>" + data.student[nn-1].name + "</auth> <br> under the guidance of <auth>" + supvr + "</auth><h2 style='padding-top:10px'>Abstract</h2>";
+            }
+            else{
+                names += "<auth>" + data.student[nn-1].name + "</auth> under the guidance of <auth>" + supvr + "</auth><h2 style='padding-top:10px'>Abstract</h2>";
+            }
+
+            for (let i = 0; i < nn; i++) {
+                phto += "<div style='padding:10px'><img src='images/stdnt/" + data.student[i].ph + "' class='dp'></div>";
+            } 
+            
+            //for (let i = 0; i < nn; i++){
+            //    pdfbtn += "Download: <a target='_blank' href='pdfs/" +  + "'><button class='btn'>Pdf copy " + (i+1) + "</button></a>";
+            //}
+            if (data.cat=="UG Project"){
+                var catprj = "<h2 style='float:left' class='tb'><span><i class='fa fa-reply-all' aria-hidden='true'></i> <a class='p2' href='../ug_projects.html'>&nbsp;UG Projects </a></span> &nbsp;</h2>";
+            }
+            else if (data.cat=="PG Project"){
+                var catprj = "<h2 style='float:left' class='tb'><span><i class='fa fa-reply-all' aria-hidden='true'></i> <a class='p2' href='../pg_projects.html'>&nbsp;PG Projects </a></span> &nbsp;</h2>";
+            }
+            document.getElementById("sup_img").innerHTML = "<div style='padding:10px'><img src='images/" + sup_ph + "' class='dp'></div>";
+            document.getElementById("std_img").innerHTML = phto;
+            //document.getElementById("hed_cat").innerHTML = catprj;
+            document.getElementById("ttl").innerHTML = data.title;
+            document.getElementById("yr").innerHTML = "(" + data.year + ")";
+            document.getElementById("abs").innerHTML = data.abstrt;
+            document.getElementById("fln").innerHTML = " <a target='_blank' href='pdfs/" + data.fl_nm + "'><button class='btn'>Download Pdf </button></a>";
+            document.getElementById("names").innerHTML = names;
+        })
+    </script>
+</head>
+
+<!--==============================================================-->
+<body>
+  <header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark  navbar-bg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="padding:2px;"><img class="lgo" src="../images/logo.png" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color:#fff"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="padding-right: 20px;" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Student Activities</a>
+              <ul class="dropdown-menu navbar-bg" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="../ug_projects.html">UG Projects</a></li>
+                <li><a class="dropdown-item" href="../pg_projects.html">PG Projects</a></li>
+              </ul>
+            </li>
+			<li class="nav-item"><a class="nav-link" href="#">Teaching Activities</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Research</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>      
+  </header>
+    
+    <section>
+    <div>
+    <div style="padding-top:80px;padding-bottom: 10px;">
+         <table style="margin: auto; padding-bottom: 40px;">
+            <tr><td>
+                <div class="ttl" id="ttl"></div>
+            </td></tr>
+            <tr><td>
+            <table style="width:100%;padding-bottom: 10px;">
+                <tr><td class="tc1" id="sup_img"></td>
+                <td style="width:20px">&nbsp;</td>
+                <td class="tc2">
+                    <div class="yr" id="yr"></div>
+                    <div style="text-align:center;padding-bottom: 15px;" id="names"></div>
+                    <div class="abs" id="abs"></div>
+                    <div style="text-align: center;" id="fln"></div>
+                </td>
+                <td style="width:20px">&nbsp;</td>
+                <td class="tc1" id="std_img"></td>
+                </tr>
+            </table>
+            </td></tr>
+         </table>
+    </div> 
+    </div>
+    </section>
+
+<!---------------------------------------------------------------------------------------------------------------->
+<section class="ftr">
+    <div class=" footer_containear">
+    <div class="container" style="padding-bottom: 40px;padding-top: 40px;">
+      <div class="row ft1">
+        <div class="col-sm">
+          <h3 style="padding-left: 20px;">Department</h3>
+          <ul style="list-style-type: none;">
+            <li><a class="p1" href="https://www.sxccal.edu/faculty-physics/"><h6 class="p1">Faculty</h6></a></li>
+            <li><a class="p1" href="https://www.sxccal.edu/b-sc-physics-department/"><h6 class="p1">UG Physics Department</h6></a></li>
+            <li><a class="p1" href="https://www.sxccal.edu/m-sc-physics/"><h6 class="p1">PG Physics Department</h6></a></li>
+          </ul>
+        </div>
+        <div class="col-sm">
+          <h3><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Department of Physics</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;St. Xavier's College (Autonomous)</h3>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30 Mother Teresa Sarani</h6>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kolkata-700016</h6>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;West Bengal, India</h6>
+        </div>
+        <div class="col-sm">
+            <div class="single_footer_widget">
+              <h3>Social Links</h3>
+              <ul class="footer_social">
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a class="soc_tooltip p1" href="#"><i class="fa fa-youtube"></i></a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div style="position: relative;">
+      <div class="footer-accent-triangle_1"></div>
+      <div class="footer-accent-triangle"></div>
+      <div class="footer"><p style="font-size: 15px !important;font-weight: bold;padding: 0 !important;">Postgraduate and Research Department of Physics<br>St. Xavier's College (Autonomous), Kolkata</p><!--<img class="flogo" src="images/f_logo.png" alt="logo">-->
+	  </div>
+    </div>
+</section>
+</body>
+</html>
