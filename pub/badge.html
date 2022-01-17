@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+.rt{
+    width:300px !important;
+    height:300px !important;
+    -webkit-animation:spin 5s linear infinite;
+    -moz-animation:spin 5s linear infinite;
+    animation:spin 5s linear infinite;
+}
+.petals {
+  position:relative;
+  width:300px !important;
+  height:300px !important;
+  transform: rotate(30deg);
+  filter: hue-rotate(30deg);
+}
+.petals_inn,.petals_lst {
+  background-image: linear-gradient(45deg, #fff, #00f);
+  width:130px !important;
+  height:130px !important;
+  border-radius: 50% 50% 17% 83% / 43% 86% 14% 57%;
+}
+.petals_lst {
+  background-image: linear-gradient(45deg, #fff, #88f 51.5%, rgba(255,255,0,0) 52%) !important;
+}
+@-moz-keyframes spin {100% { -moz-transform: rotate(360deg);}}
+@-webkit-keyframes spin {100% { -webkit-transform:rotate(360deg);}}
+@keyframes spin {
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg),translate(0,150px);
+    } 
+}
+</style>
+</head>
+<body>
+<div style="padding:30px;">
+<div class="rt"><div style="padding-left:-50px;width:200px;height:200px;background-color:#ff0;border-radius: 100% 0% 0% 100% / 100% 47% 53% 0%;">
+	<div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_inn"><div class="petals"><div class="petals_lst"></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+</div>
+
+
+</body>
+</html>
+
