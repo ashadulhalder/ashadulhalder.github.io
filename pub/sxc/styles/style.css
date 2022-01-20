@@ -322,3 +322,5 @@ p.pra{text-align: justify;}
     display: block;
 }
 @media (max-width: 979px){.dropdown-menu .dropdown-submenu {left: 20%!important;}}
+.brd_ul{font-size: 12pt;}
+.brd_li{padding:10px;}
