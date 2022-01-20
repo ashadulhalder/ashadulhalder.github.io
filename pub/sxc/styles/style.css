@@ -324,3 +324,22 @@ p.pra{text-align: justify;}
 @media (max-width: 979px){.dropdown-menu .dropdown-submenu {left: 20%!important;}}
 .brd_ul{font-size: 12pt;}
 .brd_li{padding:10px;}
+.exp{
+	position:fixed;
+	bottom:40px;
+	right:40px;
+    padding:5px;
+    width:120px;
+	background-color:#802;
+	color:#FFF;
+    font-weight: bold;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+    text-decoration: none;
+    z-index: 100000;
+}
+.exp:hover{color:#FFF;}
+.my-float{
+	margin-top:22px;
+}

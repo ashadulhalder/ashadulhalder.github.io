@@ -1,0 +1,46 @@
+#MainImages {
+    width: 100%;
+    height: 100%;
+}
+#MainImages img {
+    cursor: zoom-in;
+    height: 100%;
+}
+#Fullscreen {
+     width: 100%;
+     display: none;
+     position:fixed;
+     top:0;
+     right:0;
+     bottom:0;
+     left:0;
+     margin: auto;
+     padding:30px;
+     /* I made a 50% opacity black tile background for this 
+     div so it would seem more... modal-y*/
+     background-color: rgba(0,0,0,0.5);
+     cursor: zoom-out;
+     z-index: 100000000;
+}
+#Fullscreen img {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+}
+.myImg{width: 100%;height: 100%;}
+.glry_txt{margin:auto;color:#300;font-size:12pt;font-weight: bold;}
+.glry_txt_dv{height:15%;width:100%;margin:auto;text-align: center;}
+.glry_img_bx{height:85%;width:100%;margin:auto;}
+.glry_cntr{
+    display: block;
+    width:250px !important;
+    height:160px !important;
+    padding:10px;
+    margin:8px;
+    background: rgba(255,255,255,0.5) !important;
+    box-shadow: 2px 5px 25px 0px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border: #ffffff63 solid 2px;
+}
+@media(max-width:550px){.glry_txt{font-size:10pt;font-weight: normal;}.glry_cntr{height:auto !important;}}
+/*@media(max-width:250px){.glry_txt{font-size:8pt;font-weight: normal;}.glry_cntr{height:auto !important;}}*/
