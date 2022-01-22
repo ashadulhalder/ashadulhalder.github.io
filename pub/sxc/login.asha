@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup</title>
+  <script type="text/javascript" src="https://sdk.userbase.com/2/userbase.js"></script>
+</head>
+
+<body>
+  <!-- Loading View -->
+  <div id="loading-view">Loading...</div>
+
+  <!-- Auth View -->
+  <div id="auth-view">
+    <h1>Login</h1>
+    <form id="login-form">
+      <input id="login-username" type="text" required placeholder="Username">
+      <input id="login-password" type="password" required placeholder="Password">
+      <input type="submit" value="Sign in">
+    </form>
+    <div id="login-error"></div>
+  </div>
+
+  <!-- To-dos View -->
+  <div id="todo-view">
+    <div id="username"></div>
+    <input type="button" value="Logout" id="logout-button">
+    <div id="logout-error"></div>
+  </div>
+
+  <!-- application code -->
+  <script type="text/javascript">
+    userbase.init({ appId: '73eaa452-5e6f-40b4-85cb-428bdac3e38d' })
+      .then((session) => session.user ? showTodos(session.user) : showAuth())
+      .catch(() => showAuth())
+      .finally(() => document.getElementById('loading-view').style.display = 'none')
+
+    function handleLogin(e) {
+      e.preventDefault()
+
+      const username = document.getElementById('login-username').value
+      const password = document.getElementById('login-password').value
+
+      userbase.signIn({ username, password, rememberMe: 'local' })
+        .then((user) => showTodos(user))
+        .catch((e) => document.getElementById('login-error').innerHTML = e)
+    }
+
+    function handleLogout() {
+      userbase.signOut()
+        .then(() => showAuth())
+        .catch((e) => document.getElementById('logout-error').innerText = e)
+    }
+
+    function showTodos(user) {
+      document.getElementById('auth-view').style.display = 'none'
+      document.getElementById('todo-view').style.display = 'block'
+    }
+
+    function showAuth() {
+      document.getElementById('todo-view').style.display = 'none'
+      document.getElementById('auth-view').style.display = 'block'
+      document.getElementById('login-username').value = ''
+    }
+
+    document.getElementById('login-form').addEventListener('submit', handleLogin)
+    document.getElementById('logout-button').addEventListener('click', handleLogout)
+    document.getElementById('todo-view').style.display = 'none'
+    document.getElementById('auth-view').style.display = 'none'
+  </script>
+</body>
+</html>

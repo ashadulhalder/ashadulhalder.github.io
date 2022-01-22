@@ -1,0 +1,459 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dept. of Phys. | St. Xavier's College (Autonomous) Kolkata</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/icon" href="images/favicon.png"/> 
+
+    <!---------- CSS ------------>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!--<link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css"> -->
+    <script type="text/javascript" src="https://sdk.userbase.com/2/userbase.js"></script>
+    <!---------- JS ------------>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+
+    <!--<script type="text/javascript" src="styles/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="styles/jquery.min.js"> </script>
+    <script type="text/javascript" src="styles/MathJax.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script> -->
+    <script>
+        $.getJSON('h_jsn/home.json', function(data) {
+            for (let i = 0; i < 10; i++) {
+            //$.each(data.hits[0].info, function(i, f) {
+                var f =  data.hits[0].info[i];
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += f.students[i].name;
+                    } 
+                    names += f.students[nn-2].name + f.students[nn-1].name + " and " + f.supervisor;
+                }
+                else{
+                    names += f.students[nn-1].name + " and " + f.supervisor;
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = names;
+                var yr = " (" + f.year + ").";
+                var ttl = "<p><a class='p3' href='dbs/" + str + "php'><b>" + f.title + "</b> by " + authr + yr + "</a>";
+                var tblRow = "<tr><td class='p3' style='width:5%; vertical-align: text-top;'>" + (i+1) + "</td><td class='p3'style='width:90%'>" + ttl + "</td></tr>";
+                $(tblRow).appendTo("#ug tbody");
+            };
+        });
+
+        $.getJSON('h_jsn/home.json', function(data) {
+            for (let i = 0; i < 10; i++) {
+            //$.each(data.hits[0].info, function(i, f) {
+                var f =  data.hits[1].info[i];
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += f.students[i].name;
+                    } 
+                    names += f.students[nn-2].name + f.students[nn-1].name + " and " + f.supervisor;
+                }
+                else{
+                    names += f.students[nn-1].name + " and " + f.supervisor;
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = names;
+                var yr = " (" + f.year + ").";
+                var ttl = "<p><a class='p3' href='dbs/" + str + "php'><b>" + f.title + "</b> by " + authr + yr + "</a>";
+                var tblRow = "<tr><td class='p3' style='width:5%; vertical-align: text-top;'>" + (i+1) + "</td><td class='p3'style='width:90%'>" + ttl + "</td></tr>";
+                $(tblRow).appendTo("#pg tbody");
+            };
+        });
+    </script>
+	<script>
+		$(function(){$("#hdr").load("hdr_ftr/nav.html");});
+		$(function(){$("#ftr").load("hdr_ftr/ftr.html");});
+	</script>
+</head>
+
+<!--==============================================================-->
+<body>
+    <!-- Loading View -->
+    <div id="loading-view">Loading...</div>
+
+    <!-- Auth View -->
+    <div id="auth-view" class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form id="login-form" class="row g-3">
+                        <h4>Log in</h4>
+                        <p>The entire website is under construction.. <br>It is not published yet....</p>
+                        <div class="col-12">
+                            <label>Username</label>
+                            <input id="login-username" type="text" required placeholder="Username">
+                        </div>
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input id="login-password" type="password" required placeholder="Password">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe"> Remember me</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <input type="submit" value="Sign in">
+                        </div>
+                    </form>
+                    <div id="login-error"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div id="todo-view"> 
+    <div class='explg'>
+        <div id="username"></div>
+		<input type="button" value="Logout" id="logout-button" class="lbutton">
+		<div id="logout-error"></div>
+    </div>
+        <header class="header" id="hdr"></header>
+  
+        <!--=========== END HEADER SECTION ================-->
+        <section id="photo">
+        <div style="position: relative;">
+          <div id="carouselExampleDark" class="carousel carousel-dark slide glry" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 7"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7" aria-label="Slide 8"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="8" aria-label="Slide 9"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="9" aria-label="Slide 10"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="10" aria-label="Slide 11"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img src="images/dept_01.jpg" class="d-block w-100" alt="..."> <!--  1240 x 480  -->
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Department of Physics</h5>
+                  <p class="crld">St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/fr.jpg" class="d-block w-100" alt="..."> <!--  1240 x 480  -->
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Principal Rev. Fr. Dr. Dominic Savio, SJ</h5>
+                  <p class="crld">St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/01.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Golden Jubilee of SXC-70 Physics Batch celebration</h5>
+                  <p class="crld">21<sup>st</sup> January, 2020</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/001.jpg" class="d-block w-100" alt="..."> <!--  1240 x 480  -->
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Father Eugene Lafont Observatory (FELO)</h5>
+                  <p class="crld">St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/rrl.jpg" class="d-block w-100" alt="..."> <!--  1240 x 480  -->
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Dr. Ranjan Ray Lab for Computational Physics</h5>
+                  <p class="crld">St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/02.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Dr. Ranjan Ray Commemoration Lecture</h5>
+                  <p class="crld">8<sup>th</sup> February, 2020</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/03.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Departmental Colloquium</h5>
+                  <p class="crld">Department of Physics, St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/07.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Scientific Observation from College Observatory (FELO)</h5>
+                  <p class="crld">Department of Physics, St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/05.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Physics Practical in Hybrid Mode</h5>
+                  <p class="crld">Department of Physics, St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/08.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">Faculties</h5>
+                  <p class="crld">Department of Physics, St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="images/002.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 class="crlu">National and International Webinar</h5>
+                  <p class="crld">Department of Physics, St. Xavier's College (Autonomous), Kolkata</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="govrlp_2"></div>
+          <div class="govrlp_1"></div>
+          <div class="govrlp"></div>
+      </div>
+        </section>
+      
+        <!--=========== First 3 boards ================-->
+      <section class="frst3">
+          <div>
+              <div class="container">
+                  <div class="row ft1">
+                      <div class="col-sm">
+                          <div class="nbrd brd3">
+                              <h3 class="mnu_h1">Student activities</h3>
+                              <div style="padding-top: 30px;padding-left: 10px;padding-right: 10px;">
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#"></a>-->
+                                          Sarbari Guhaand Samarjit Chakraborty, published a paper on 24th March 2020 in International Journal of Modern Physics D (Vol. 29, issue 05 (2020) pp. 2050034.)</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">Something....</a>-->
+                                          Samarjit Chakraborty and Sarbari Guha, published a paper on 27thNovember 2019 in General Relativity and Gravitation ( 51, issue 11 (2019) pp. 158)</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">Something....</a>-->
+                                          Gayatri Banerjee, published a paper on 30th August 2019 in Materials Today Proceedings (Volume 18, Part 2, Pages 494 – 500)</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">Something....</a>-->
+                                          Sarbari Guha and Sucheta Datta, Axial Gravitational Waves in Bianchi I Universe, International Journal of Modern Physics D, 29, (2020) 2050116</p>
+                                      </div>
+                                  </div>
+                                  <div><a class="p3 seemore" href="#">See more...</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                                    
+                      <div class="col-sm">
+                          <div class="nbrd brd3">
+                              <h3 class="mnu_h1">Stuff Activities</h3>
+                              <div style="padding-top: 30px;padding-left: 10px;padding-right: 10px;">
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">-->
+                                          <b>"A one-day international workshop on coarse geometry"</b> was organized on 16th August 2019<br> 
+                                          Dr. Atish J. Mitra<br>
+                                          of Department of Mathematics, Montana Tech, USA.
+                                          </a></p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#"></a>-->
+                                          <b>"Role of DFT in predicting electronic structures and reaction pathway"</b><br>
+                                          Prof. Swapan K. Pati of JNCASR and Dr. Anoop Ayyappan of Dept. of Chemistry, IIT Kharagpur.<br>
+                                          On 29th August 2019</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="b3_hl"></a>-->
+                                          <b>"Application of Statistics in Natural Sciences"</b><br>
+                                          16th and 17th December 2019 Department of Physics along Department of Physics and Statistics in collaboration with IUCAA.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+      
+                      <div class="col-sm">
+                          <div class="nbrd brd3">
+                              <h3 class="mnu_h1">Research Activities</h3>
+                              <div style="padding-top: 30px;padding-left: 10px;padding-right: 10px;">
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#"></a>-->
+                                          Sarbari Guhaand Samarjit Chakraborty, published a paper on 24th March 2020 in International Journal of Modern Physics D (Vol. 29, issue 05 (2020) pp. 2050034.)</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">Something....</a>-->
+                                          Samarjit Chakraborty and Sarbari Guha, published a paper on 27thNovember 2019 in General Relativity and Gravitation ( 51, issue 11 (2019) pp. 158)</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">Something....</a>-->
+                                          Gayatri Banerjee, published a paper on 30th August 2019 in Materials Today Proceedings (Volume 18, Part 2, Pages 494 – 500)</p>
+                                      </div>
+                                  </div>
+                                  <div class="b3_ele">
+                                      <div class="b3_txt"><p style="padding:0;margin:0"><!--<a class="news_hl" href="#">Something....</a>-->
+                                          Sarbari Guha and Sucheta Datta, Axial Gravitational Waves in Bianchi I Universe, International Journal of Modern Physics D, 29, (2020) 2050116</p>
+                                      </div>
+                                  </div>
+                                  <div><a class="p3 seemore" href="#">See more...</a>
+                                  </div>
+                              </div>
+                          </div>                  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+        <!--====================================== About us ========================================-->
+        <section class="aboutUs">
+        <div class="container">
+            <div class="row">
+            <!-- Start about us area -->
+            <div class="col-lg-6 col-md-6 col-sm-6 nbrd_width">
+              <div class="nbrd_w">
+                <h2 class="h2abtus">About Us</h2>
+                <div style="padding-left:20px;padding-right:20px;font-weight:bold">
+                <p class="pra">The Dept of Physics is one of the oldest and prestigious Departments of our Institution. Founded under the pioneering guidance of renowned Jesuits like Fr. Lafonte in the middle of nineteenth century and contributions over years like Fr. Verstraeten, Fr. Bonhom & others, the department has grown into the present structure with both UG and PG sections and furthermore, a lot of research activities. Recently, the Department has been engaged in the new Curriculum restructuring process (UG) with mutual feedback taken from other science Departments, leading to a very effective coursework to be offered to the Physics major students from the academic year 2013. The present faculty members are highly dedicated for quality physics education with innovative methods of theory teaching & practices and inspiring & guided laboratory classes.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 nbrd_width">
+              <div class="nbrd_w">
+                <h2 class="h2abtus">News</h2>
+                <div style="padding-left:20px;padding-right:20px;display: inline-block;">
+                  <div class="news_ele">
+                    <div class="news_img"><img style="width:100%;height:100%;box-shadow: 0 0 5pt #fff;" src="images/news/rnjn.jpg" alt="img"></div>
+                    <div class="news_txt"><p class="pra"><a class="news_h0" href="#"><font size="3pt">Dr. Ranjan Ray Commemoration</font><br>Space Science Exploration Programme in ISRO<br>4th February, 2022, 4:30 pm onwards</a></p></div>
+                  </div>
+                  <div class="news_ele">
+                    <div class="news_img"><img style="width:100%;height:100%;box-shadow: 0 0 5pt #fff;" src="images/news/spect.jpg" alt="img"></div>
+                    <div class="news_txt"><p class="pra"><a class="news_h0" href="#"><font size="3pt">Spectrum</font><br>Annual program of the physics department <br>St. Xavier's College (Autonomous), Kolkata</a></p></div>
+                  </div>
+                  <div class="news_ele">
+                    <div class="news_img"><img style="width:100%;height:100%;" src="images/news/news.png" alt="img"></div>
+                    <div class="news_txt"><p class="pra"><a class="news_h0" href="#"><font size="3pt">&nbsp;</font><br>&nbsp;<br>&nbsp;</a></p></div>
+                    </div>
+                  <div class="news_ele">
+                    <div class="news_img"><img style="width:100%;height:100%;" src="images/news/news.png" alt="img"></div>
+                    <div class="news_txt"><p class="pra"><a class="news_h0" href="#"><font size="3pt">&nbsp;</font><br>&nbsp;<br>&nbsp;</a></p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+      
+        <!--====================================== UG PG Projects ========================================-->
+        <section class="sec_ugpgproj">
+          <div>
+              <div class="container">
+                  <div class="row ft1">
+                    <div class="col-lg-6 col-md-6 col-sm-6 nbrd_width">
+                      <div class="nbrd ugpgbrd">
+                        <h2 style="text-align: center;">UG Projects</h2>
+                          <div class="mnu_b tbllst">
+                              <table id= "ug" style="width: 90%;margin: auto;">
+                                  <tr><td style="width:5%"></td><td style="width:95%"></td></tr>
+                              </table>
+                          </div>
+                          <div><a class="p3 seemore" href="ug_projects.html">See more...</a></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 nbrd_width">
+                      <div class="nbrd ugpgbrd">
+                          <h2 style="text-align: center;">PG Projects</h2>
+                          <div class="mnu_b tbllst">
+                              <table id= "pg" style="width: 95%;margin: auto;">
+                                  <tr><td style="width:5%"></td><td style="width:95%"></td></tr>
+                              </table>
+                          </div>
+                          <div><a class="p3 seemore" href="pg_projects.html">See more...</a></div>
+                      </div>                  
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </section>
+          <!--============================ Footer ========================================-->
+        <section class="ftr" id="ftr"></section>
+      </div>
+
+
+      <!-- application code -->
+      <script type="text/javascript">
+        userbase.init({ appId: '73eaa452-5e6f-40b4-85cb-428bdac3e38d' })
+          .then((session) => session.user ? showTodos(session.user) : showAuth())
+          .catch(() => showAuth())
+          .finally(() => document.getElementById('loading-view').style.display = 'none')
+      
+        function handleLogin(e) {
+          e.preventDefault()
+      
+          const username = document.getElementById('login-username').value
+          const password = document.getElementById('login-password').value
+      
+          userbase.signIn({ username, password, rememberMe: 'local' })
+            .then((user) => showTodos(user))
+            .catch((e) => document.getElementById('login-error').innerHTML = e)
+        }
+      
+        function handleLogout() {
+          userbase.signOut()
+            .then(() => showAuth())
+            .catch((e) => document.getElementById('logout-error').innerText = e)
+        }
+      
+        function showTodos(user) {
+          document.getElementById('auth-view').style.display = 'none'
+          document.getElementById('todo-view').style.display = 'block'
+        }
+      
+        function showAuth() {
+          document.getElementById('todo-view').style.display = 'none'
+          document.getElementById('auth-view').style.display = 'block'
+          document.getElementById('login-username').value = ''
+        }
+      
+        document.getElementById('login-form').addEventListener('submit', handleLogin)
+        document.getElementById('logout-button').addEventListener('click', handleLogout)
+        document.getElementById('auth-view').style.display = 'none'
+        var divsToHide = document.getElementById('todo-view');
+        for(var i = 0; i < divsToHide.length; i++){
+            console.log(i);
+            divsToHide[i].style.display = "none !important";
+        }
+      </script>
+      </body>
+      </html>
+      

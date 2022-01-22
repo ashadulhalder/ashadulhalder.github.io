@@ -1,0 +1,306 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PG Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/icon" href="images/favicon.png"/> 
+
+    <!---------- CSS ------------>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style_hm.css">
+
+    <!--<link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css"> -->
+    <script type="text/javascript" src="https://sdk.userbase.com/2/userbase.js"></script>
+    <!---------- JS ------------>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+
+    <!--<script type="text/javascript" src="styles/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="styles/jquery.min.js"> </script>
+    <script type="text/javascript" src="styles/MathJax.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script> -->
+    <script>
+        $.getJSON('h_jsn/pg.json', function(data) {
+            $.each(data.hits[0].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";            
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2021 tbody");
+            });
+        });
+        $.getJSON('h_jsn/pg.json', function(data) {
+            $.each(data.hits[1].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";              
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2020 tbody");
+            });
+        });
+        $.getJSON('h_jsn/pg.json', function(data) {
+            $.each(data.hits[2].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";               
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2019 tbody");
+            });
+        });
+        $.getJSON('h_jsn/pg.json', function(data) {
+            $.each(data.hits[3].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";       
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2018 tbody");
+            });
+        });
+        $.getJSON('h_jsn/pg.json', function(data) {
+            $.each(data.hits[4].info, function(i, f) {
+                var nn = Object.keys(f.students).length;
+                names = "";
+                if(nn>1){
+                    for (let i = 0; i < nn-2; i++) {
+                        names += "<auth>" + f.students[i].name + "</auth>, ";
+                    } 
+                    names += "<auth>" + f.students[nn-2].name + "</auth> and <auth>" + f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                else{
+                    names += "<auth>" +f.students[nn-1].name + "</auth> under the guidance of <auth>" + f.supervisor + "</auth>";
+                }
+                var str = f.fl_nm;
+                str = str.substring(0, str.length-3);
+                var authr = "<p class='auth_h'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" + names + "</b></p>"
+                var ttl = "<p class='ttl_h'><a class='hrttl_h' href='dbs/" + str + "html'><b>" + (i+1) + ".&nbsp;&nbsp;&nbsp;&nbsp;" + f.title + "</b></a></p>";            
+                //var tblRow = "<tr>" + "<td class='h_col_1'>" + (i+1) +". </td>" + "<td style='width: 650px;'>" + ttl + authr + "</td></tr>";
+                var tblRow = "<tr style='padding:50px'>" + "<td class='ctnritm'><div>" + ttl + authr + "</div></td></tr>";
+                $(tblRow).appendTo("#pg_2017 tbody");
+            });
+        });
+    </script>
+	<script>
+		$(function(){$("#hdr").load("hdr_ftr/nav.html");});
+		$(function(){$("#ftr").load("hdr_ftr/ftr.html");});
+	</script>
+</head>
+<!--==============================================================-->
+<body>
+    <!-- Loading View -->
+    <div id="loading-view">Loading...</div>
+
+    <!-- Auth View -->
+    <div id="auth-view" class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form id="login-form" class="row g-3">
+                        <h4>Log in</h4>
+                        <p>The entire website is under construction.. <br>It is not published yet....</p>
+                        <div class="col-12">
+                            <label>Username</label>
+                            <input id="login-username" type="text" required placeholder="Username">
+                        </div>
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input id="login-password" type="password" required placeholder="Password">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe"> Remember me</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <input type="submit" value="Sign in">
+                        </div>
+                    </form>
+                    <div id="login-error"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div id="todo-view"> 
+    <div class='explg'>
+        <div id="username"></div>
+		<input type="button" value="Logout" id="logout-button" class="lbutton">
+		<div id="logout-error"></div>
+    </div>
+  <header class="header" id="hdr"></header>
+
+    <!--============================== photo/text ================================-->
+    <section class="hdr_pra_cont" style="background: url(images/PG-Physics-Group-2019.jpg) center center no-repeat;background-size: cover;box-shadow: 2px 5px 16px 0px rgba(0,0,0,0.29);">
+        <div class="ugpgpgtw">
+          <div class="nbrd" style="padding:30px">
+            <div style="padding-top: 10px;"><h2 style="text-align: center; color:#000000;font-weight: bold;"><u><i>Department of Physics</i></u></h2></div>
+            <p class="hdr_pra">The Dept of Physics is one of the oldest and prestigious Departments of our Institution. Founded under the pioneering guidance of renowned Jesuits like Fr. Lafonte in the middle of nineteenth century and contributions over years like Fr. Verstraeten, Fr. Bonhom & others, the department has grown into the present structure with both UG and PG sections and furthermore, a lot of research activities. Recently, the Department has been engaged in the new Curriculum restructuring process (UG) with mutual feedback taken from other science Departments, leading to a very effective coursework to be offered to the Physics major students from the academic year 2013. The present faculty members are highly dedicated for quality physics education with innovative methods of theory teaching & practices and inspiring & guided laboratory classes.</p>
+          </div>
+      </div>
+    </section>
+
+    <!--================================ Main =================================-->
+    <section style="padding-top: 50px;padding-bottom: 60px;"></section>
+    <div style="padding-top: 10px;">
+        <h2 class="pg_head" style="text-align: center"><u><i>PG Projects</i></u></h2>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2021</div></summary>
+            <div class="lst">
+                <table id= "pg_2021" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2020</div></summary>
+            <div class="lst">
+                <table id= "pg_2020" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2019</div></summary>
+            <div class="lst">
+                <table id= "pg_2019" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2018</div></summary>
+            <div class="lst">
+                <table id= "pg_2018" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    <div class="ddbr">
+        <details>
+            <summary><div class="drpdwn">Academic year 2017</div></summary>
+            <div class="lst">
+                <table id= "pg_2017" class="tbh_h hm">
+                    <th><td></td><td></td></th>
+                </table>
+            </div>
+        </details>
+    </div>
+    
+<!--============================ Footer ========================================-->
+  <section class="ftr" id="ftr"></section>
+</div>
+
+
+<!-- application code -->
+<script type="text/javascript">
+  userbase.init({ appId: '73eaa452-5e6f-40b4-85cb-428bdac3e38d' })
+    .then((session) => session.user ? showTodos(session.user) : showAuth())
+    .catch(() => showAuth())
+    .finally(() => document.getElementById('loading-view').style.display = 'none')
+
+  function handleLogin(e) {
+    e.preventDefault()
+
+    const username = document.getElementById('login-username').value
+    const password = document.getElementById('login-password').value
+
+    userbase.signIn({ username, password, rememberMe: 'local' })
+      .then((user) => showTodos(user))
+      .catch((e) => document.getElementById('login-error').innerHTML = e)
+  }
+
+  function handleLogout() {
+    userbase.signOut()
+      .then(() => showAuth())
+      .catch((e) => document.getElementById('logout-error').innerText = e)
+  }
+
+  function showTodos(user) {
+    document.getElementById('auth-view').style.display = 'none'
+    document.getElementById('todo-view').style.display = 'block'
+  }
+
+  function showAuth() {
+    document.getElementById('todo-view').style.display = 'none'
+    document.getElementById('auth-view').style.display = 'block'
+    document.getElementById('login-username').value = ''
+  }
+
+  document.getElementById('login-form').addEventListener('submit', handleLogin)
+  document.getElementById('logout-button').addEventListener('click', handleLogout)
+  document.getElementById('auth-view').style.display = 'none'
+  var divsToHide = document.getElementById('todo-view');
+  for(var i = 0; i < divsToHide.length; i++){
+      console.log(i);
+      divsToHide[i].style.display = "none !important";
+  }
+</script>
+</body>
+</html>
