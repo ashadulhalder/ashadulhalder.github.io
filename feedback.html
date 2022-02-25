@@ -35,17 +35,50 @@
 	<input type="text" class="tf" name="First_Name" id="First_Name" maxlength="30" placeholder="First Name" style="width: 100px;" required/>
 	<input type="text" class="tf" name="Last_Name" id="Last_Name" maxlength="30" placeholder="Last Name" style="width: 100px;" required/>
 	</tr>
-	 
-	<!----- Dept. ---------------------------------------------------------->
-	<tr>
-	<td><a1>Department</a1></td>
-	<td><input class="tf" type="text" name="dept" id="dept" maxlength="100" placeholder="e.g. Dept. of Physics" style="width: 200px;" required/></td>
-	</tr>
+
 	
 	<!----- Institute ---------------------------------------------------------->
 	<tr>
 	<td><a1>Institute</a1></td>
 	<td><input class="tf" type="text" name="Affiliation" id="Affiliation" maxlength="100" placeholder="Institute" style="width: 200px;" required/></td>
+	</tr>
+	
+	<!----- Dept. ---------------------------------------------------------->
+	<tr>
+	<td style="display: block;"><a1>Department</a1></td>
+	<td><input class="tf" type="text" name="dept" id="dept" maxlength="100" placeholder="e.g. Dept. of Physics" style="width: 200px;display: block;" required/></td>
+	</tr>
+	 
+	<!----- Position ------------------------------------------------------>
+	<tr>
+	<td><a1>Position</a1></td>
+	<td>
+	  <select class="tf" name="pos" id="pos" onchange="nstd()">
+	    <option value="factlty"> Faculty</option>
+	    <option value="UG"> UG Student</option>
+	    <option value="PG"> PG Student</option>
+	    <option value="PhD"> PhD Student</option>
+	    <option value="Others"> Others</option>
+	  </select>
+	</td>
+	</tr>
+	
+	<!----- Class -------------------------------------------------------->
+	<tr>
+	<td id="tcls" style="display: block;"><a1>Class</a1></td>
+	<td><input class="tf" type="text" name="cls" id="cls" maxlength="100" placeholder="e.g. B.Sc. 1st Sem" style="width: 200px;display: block;"/></td>
+	</tr>
+	
+	<!----- Academic Year ------------------------------------------------->
+	<tr>
+	<td id="tyear" style="display: block;"><a1>Academic Year</a1></td>
+	<td><input class="tf" type="text" name="year" id="year" maxlength="100" placeholder="e.g. 2022" style="width: 200px;display: block;"/></td>
+	</tr>
+		
+	<!----- Roll No. ---------------------------------------------------------->
+	<tr>
+	<td id="troll" style="display: block;"><a1>Roll No.</a1></td>
+	<td><input class="tf" type="text" name="roll" id="roll" maxlength="100" placeholder="e.g. 123" style="width: 200px;display: block;"/></td>
 	</tr>
 	 
 	
@@ -73,6 +106,31 @@
 	</form>
   <p align="right" style="font-size: 8px;">All fields are mandatory.</p>
   </div>
-</div> 
+</div>
+
+<script>
+    var n1 = document.getElementById("cls");
+    var n2 = document.getElementById("year");
+    var n3 = document.getElementById("roll");
+    var t1 = document.getElementById("tcls");
+    var t2 = document.getElementById("tyear");
+    var t3 = document.getElementById("troll");
+    window.onload = function(){
+        document.getElementById("pos").value = "1";
+        n1.style.display = "none";n2.style.display = "none";n3.style.display = "none";
+        t1.style.display = "none";t2.style.display = "none";t3.style.display = "none";
+    }
+    function nstd() {
+        var inp = document.getElementById("pos").value
+        if (inp === "UG" || inp === "PG"){
+            n1.style.display = "block";n2.style.display = "block";n3.style.display = "block";
+            t1.style.display = "block";t2.style.display = "block";t3.style.display = "block";
+        }
+        else{
+            n1.style.display = "none";n2.style.display = "none";n3.style.display = "none";
+            t1.style.display = "none";t2.style.display = "none";t3.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
