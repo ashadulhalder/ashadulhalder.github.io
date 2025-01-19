@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spectrum 2025 - Physics Department Annual Event</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+    <link href="styles/anm_styles.css" rel="stylesheet">
+
+    <script src="scripts/call.js"></script>
+
+    <style>
+
+        .block {
+
+            position: fixed;
+
+            margin: 300px auto 0;
+
+            width: 500px;
+
+            height: 500px;
+
+            filter: blur(50px);
+
+            transform: scaleY(0.03);
+
+            justify-content: center !important;
+
+        }
+
+        .block:before, .block:after {
+
+            content: '';
+
+            position: absolute;
+
+            left: -2px;
+
+            top: -2px;
+
+            background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+
+                #0000ff, #00ff00,#ffff00, #ff0000);
+
+            background-size: 400%;
+
+            width: calc(100% + 4px);
+
+            height: calc(100% + 4px);
+
+            border-radius: 50%;
+
+            z-index: -1;
+
+            animation: steam 20s linear infinite;
+
+        }
+
+        @keyframes steam {
+
+            0% {background-position: 0 0;}
+
+            50% {background-position: 400% 0;}
+
+            100% {background-position: 0 0;}
+
+        }
+
+        .block:after {
+
+            filter: blur(50px) brightness(2);
+
+        }
+
+
+
+button {
+
+  padding: 15px 30px;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  background-color: #007bff;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 5px;
+
+}
+
+
+
+button:hover {
+
+  background-color: #0056b3;
+
+}
+
+
+
+/* Fullscreen Modal Styles */
+
+.modal {
+
+  display: none; /* Hidden by default */
+
+  position: fixed; /* Positioned fixed to the screen */
+
+  top: 0;
+
+  left: 0;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  background: linear-gradient(to bottom, #025, #000);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 9999;
+
+  transition: opacity 1s ease-out;
+
+}
+
+.htxt1 {
+
+    font-family: "Audiowide", serif;
+
+    font-optical-sizing: auto;
+
+    color: #cff;
+
+    font-style: italic;
+
+    font-weight: 200;
+
+    font-size: 40pt;
+
+    text-shadow: 0 0 1px #00ffff, 0 0 2px #00ffff, 0 0 3px #0000ff, 0 0 6px #0000ff;
+
+}
+
+
+
+/* Mobile responsiveness: Adjust the modal content size */
+
+@media screen and (max-width: 600px) {
+
+  .modal-content {
+
+    width: 90%;
+
+    padding: 20px;
+
+  }
+
+}
+
+    </style>
+
+    <script>
+
+        let canvas, ctx, w, h;
+
+        let particles = [];
+
+        const totalParticles = 70;
+
+        const positions = [];
+
+        const rainbowHues = [0, 60, 120, 180, 240, 300, 360]; // Rainbow colors
+
+
+
+        function init() {
+
+            canvas = document.querySelector("#canvas");
+
+            ctx = canvas.getContext("2d");
+
+            resizeReset();
+
+            setInitialPosition();
+
+        }
+
+
+
+        function resizeReset() {
+
+            w = canvas.width = window.innerWidth;
+
+            h = canvas.height = window.innerHeight;
+
+            positions.length = 0;
+
+
+
+            // Define fixed positions for 7 particle groups (starting from block position)
+
+            for (let i = 0; i < totalParticles; i++) {
+
+                positions.push({
+
+                    x: w * (i + 1) / (totalParticles + 1),
+
+                    y: h / 2
+
+                });
+
+            }
+
+        }
+
+
+
+        function setInitialPosition() {
+
+            const block = document.querySelector('.block');
+
+            const rect = block.getBoundingClientRect();
+
+            const blockCenterX = rect.left + rect.width / 2;
+
+            const blockCenterY = rect.top + rect.height / 2;
+
+
+
+            // Update positions to start from the center of the .block div
+
+            for (let i = 0; i < totalParticles; i++) {
+
+                positions[i] = {
+
+                    x: blockCenterX + (Math.random() - 0.5) * rect.width,  // Spread horizontally
+
+                    y: blockCenterY
+
+                };
+
+            }
+
+        }
+
+
+
+        function startAnimation() {
+
+            createParticles();
+
+            animationLoop();
+
+        }
+
+
+
+        function animationLoop() {
+
+            ctx.globalCompositeOperation = "source-over";
+
+            ctx.clearRect(0, 0, w, h);
+
+
+
+            // Alternatively, if you're using a semi-transparent background, you can use:
+
+            //ctx.fillStyle = "rgba(0, 0, 0.9, 0.05)";  // Fully transparent fill
+
+            //ctx.fillRect(0, 0, w, h); // But clearRect is more effective for this
+
+
+
+            ctx.globalCompositeOperation = "lighter";
+
+            drawScene();
+
+            arrayCleanup();
+
+            if (particles.length > 0) {
+
+                requestAnimationFrame(animationLoop);
+
+            }
+
+        }
+
+
+
+        function drawScene() {
+
+            particles.map((particle) => {
+
+                particle.update();
+
+                particle.draw();
+
+            });
+
+        }
+
+
+
+        function arrayCleanup() {
+
+            particles = particles.filter(particle => particle.size > 0);
+
+        }
+
+
+
+        function createParticles() {
+
+            particles = []; // Clear previous particles
+
+            positions.forEach((position, index) => {
+
+                const { x, y } = position;
+
+                const hue = rainbowHues[index % rainbowHues.length];
+
+                const particleCount = 15; // Fixed count per group
+
+
+
+                for (let j = 0; j < particleCount; j++) {
+
+                    particles.push(new Particle(x, y, hue, j));
+
+                }
+
+            });
+
+        }
+
+
+
+        class Particle {
+
+            constructor(x, y, hue, i) {
+
+                this.x = x;
+
+                this.y = y;
+
+                this.hue = hue;
+
+                this.size = Math.random() * 3 + 2;
+
+                this.speed = Math.random() * 2 + 1;
+
+                this.angle = i * (360 / 15); // Spread evenly
+
+            }
+
+            draw() {
+
+                if (this.size > 0) {
+
+                    ctx.beginPath();
+
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+                    ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, 1)`;
+
+                    ctx.fill();
+
+                    ctx.closePath();
+
+                }
+
+            }
+
+            update() {
+
+                const radian = (Math.PI / 180) * this.angle;
+
+                this.x += this.speed * Math.sin(radian);
+
+                this.y += this.speed * Math.cos(radian);
+
+                this.size -= 0.05;
+
+            }
+
+        }
+
+
+
+        window.addEventListener("DOMContentLoaded", init);
+
+        window.addEventListener("resize", resizeReset);
+
+
+
+        window.onload = function () {
+
+            window.scrollTo(0, 0);
+
+            setTimeout(function () {
+
+                startAnimation();
+
+                setTimeout(function () {
+
+                    var modal = document.getElementById('fullscreenModal');
+
+                    if (modal) {
+
+                        modal.style.opacity = '0';
+
+                        setTimeout(function () {
+
+                            modal.style.display = 'none';
+
+                            var canvas = document.getElementById('canvas');
+
+                            if (canvas) {
+
+                                canvas.style.opacity = '0';
+
+                                setTimeout(function () {
+
+                                    canvas.style.display = 'none';
+
+                                }, 1000);
+
+                            }
+
+                        }, 1000);
+
+                    }
+
+                }, 1000);
+
+            }, 1000);
+
+        };
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+    <!-- Onload screen -->
+
+    <canvas id="canvas" style="z-index: 99800;"></canvas>
+
+    <div id="fullscreenModal" class="modal">
+
+        <h1 class="display-4 htxt1">Spectrum 2025</h1>
+
+        <div class="block"></div>
+
+      </div>      
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent">
+
+        <div class="container">
+
+            <a class="navbar-brand logotxt" href="#"><img src="images/sxclogo.png" class="logosxc">&nbsp;Spectrum 2025</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#events">Events</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#team">Team</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#sponsor">Sponsor</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#contact">Contact Us</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#photo">Photo Gallery</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Top Section -->
+
+    <header class="topsec">
+
+        <div class="container">
+
+            <div class="tsb">
+
+                <div class="background">
+
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+
+                </div>
+
+            </div>
+
+            <div class="tt">
+
+                <h1 class="display-4 htxt">Spectrum 2025</h1>
+
+                <p class="tl">Explore the wonders of physics and innovation</p>
+
+                <a href="#register" class="btn btn-light btn-lg">Register Now</a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- About Section -->
+
+    <section id="about" class="py-5">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6 justify-content-center align-items-center">
+
+                    <h2>About Spectrum 2025</h2>
+
+                    <p>Part of the rich legacy of the Post Graduate and Research Department of Physics, St. Xavier’s College (Autonomous), Kolkata has been celebrating and intermingling with Spectrum, the annual fest conducted by the department for the past twelve years.</p>
+
+                    <p>Put together the remarkable and ever-growing efforts, the bombilating energy, and the enthralling passion of every student of our department and you will get something as magnificent and spectacular as Spectrum, a new version every single year. We are happy to state that Spectrum is back in all its glory, mightier and more notable than it has ever been.</p>
+
+                    <p>The theme for our fest this year is “Ripples in Time.”  We will not only explore fascinating vistas and remarkable concepts but we will also be launching “Horizon”, our departmental magazine. Spectrum consists of a plethora of events each of which holds utmost significance in view of our rapidly evolving world.</p>
+
+                    <p>We, at the Department of Physics extend our heartfelt gratitude to all those who would  participate as well as to all the spectators in the elevation Spectrum 2025 is aiming to scale.</p>
+
+                </div>
+
+                <div class="col-lg-6 poster  d-flex justify-content-center align-items-center">
+
+                    <img src="images/poster.jpg" alt="About Spectrum 2025" class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+ <!-- Team Section -->
+
+<section id="team" class="team-section py-5 bgc">
+
+    <div class="container">
+
+      <h2 class="section-title text-center mb-5">Our Team</h2>
+
+      <div class="row justify-content-center g-4">
+
+        <!-- Team Member Card -->
+
+        <div class="col-md-6 col-lg-4">
+
+          <div class="team-card text-center">
+
+            <div class="team-image">
+
+              <img src="images/abhinab.jpg" alt="Abhinab Chandra">
+
+            </div>
+
+            <h5 class="team-name">Abhinab Chandra</h5>
+
+            <p class="team-role">Convenor</p>
+
+            <a href="tel:+1234567890" class="call-button">
+
+              <i class="fas fa-phone"></i> +1234567890
+
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Repeat the card for additional team members -->
+
+        <div class="col-md-6 col-lg-4">
+
+          <div class="team-card text-center">
+
+            <div class="team-image">
+
+              <img src="images/abhinab.jpg" alt="Abhinab Chandra">
+
+            </div>
+
+            <h5 class="team-name">Abhinab Chandra</h5>
+
+            <p class="team-role">Convenor</p>
+
+            <a href="tel:+1234567890" class="call-button">
+
+              <i class="fas fa-phone"></i> +1234567890
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>  
+
+      
+
+      <!--Event section-->
+
+      <section id="events" class="py-5 bg-light position-relative">
+
+        <div class="container">
+
+            <!-- To be Announced Text -->
+
+            <div class="ta-banner position-absolute w-100 h-100 d-flex justify-content-center align-items-center text-center" >
+
+                <div class="ta-text">
+
+                    Event list to be announced
+
+                </div>
+
+            </div>
+
+            <!-- Event Cards -->
+
+            <h2 class="text-center mb-5">Event Highlights</h2>
+
+            <div class="row justify-content-center g-4">
+
+                <!-- Event 1 -->
+
+                <div class="col-6 col-md-4 col-lg-2">
+
+                    <div class="card h-100 shadow-lg border-0 text-center card-b">
+
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                            <div class="icon mb-3" style="font-size: 2rem; color: #007bff;">
+
+                                <i class="fas fa-microphone"></i>
+
+                            </div>
+
+                            <h5 class="card-title">Event Title 1</h5>
+
+                            <p class="card-text">A brief description of the event. This event will cover fascinating aspects of physics and much more.</p>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0">
+
+                            <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Event 2 -->
+
+                <div class="col-6 col-md-4 col-lg-2">
+
+                    <div class="card h-100 shadow-lg border-0 text-center card-b">
+
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                            <div class="icon mb-3" style="font-size: 2rem; color: #28a745;">
+
+                                <i class="fas fa-flask"></i>
+
+                            </div>
+
+                            <h5 class="card-title">Event Title 2</h5>
+
+                            <p class="card-text">Join us for engaging discussions and exciting experiments. Don't miss out on this one!</p>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0">
+
+                            <a href="#" class="btn btn-success btn-sm">Learn More</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Event 3 -->
+
+                <div class="col-6 col-md-4 col-lg-2">
+
+                    <div class="card h-100 shadow-lg border-0 text-center card-b">
+
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                            <div class="icon mb-3" style="font-size: 2rem; color: #ffc107;">
+
+                                <i class="fas fa-lightbulb"></i>
+
+                            </div>
+
+                            <h5 class="card-title">Event Title 3</h5>
+
+                            <p class="card-text">Experience an event that combines creativity and science in an extraordinary way.</p>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0">
+
+                            <a href="#" class="btn btn-warning btn-sm">Learn More</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Event 4 -->
+
+                <div class="col-6 col-md-4 col-lg-2">
+
+                    <div class="card h-100 shadow-lg border-0 text-center card-b">
+
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                            <div class="icon mb-3" style="font-size: 2rem; color: #dc3545;">
+
+                                <i class="fas fa-rocket"></i>
+
+                            </div>
+
+                            <h5 class="card-title">Event Title 4</h5>
+
+                            <p class="card-text">Explore new frontiers in physics with exciting lectures and interactive activities.</p>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0">
+
+                            <a href="#" class="btn btn-danger btn-sm">Learn More</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Event 5 -->
+
+                <div class="col-6 col-md-4 col-lg-2">
+
+                    <div class="card h-100 shadow-lg border-0 text-center card-b">
+
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                            <div class="icon mb-3" style="font-size: 2rem; color: #007bff;">
+
+                                <i class="fas fa-laptop-code"></i>
+
+                            </div>
+
+                            <h5 class="card-title">Event Title 5</h5>
+
+                            <p class="card-text">Dive into thought-provoking discussions and hands-on activities.</p>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0">
+
+                            <a href="#" class="btn btn-info btn-sm">Learn More</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Event 6 -->
+
+                <div class="col-6 col-md-4 col-lg-2">
+
+                    <div class="card h-100 shadow-lg border-0 text-center card-b">
+
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+
+                            <div class="icon mb-3" style="font-size: 2rem; color: #ffc107;">
+
+                                <i class="fas fa-cogs"></i>
+
+                            </div>
+
+                            <h5 class="card-title">Event Title 6</h5>
+
+                            <p class="card-text">An event showcasing the future of science and technology.</p>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0">
+
+                            <a href="#" class="btn btn-warning btn-sm">Learn More</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    
+
+    
+
+
+
+    <!-- Footer -->
+
+    <footer class="text-white text-center py-3" style="padding-top: 100px!important;padding-bottom: 0!important;">
+
+        <div class="ft">
+
+            <div class="ocean">
+
+                <div class="wave"></div>
+
+                <div class="wave"></div>
+
+                <div class="wave"></div>
+
+                <div class="wave"></div>            
+
+                <p class="ft">&nbsp;</p>
+
+                <p class="ft">&nbsp;</p>
+
+                <p class="ft1">St. Xavier's College (Autonomous), Kolkata</p>
+
+                <p class="ft">&copy; 2025 Spectrum. All Rights Reserved.<br>Designed and Developed by Ashadul Halder & Abhinab Chandra</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        const navbar = document.querySelector('.navbar');
+
+
+
+        window.addEventListener('scroll', () => {
+
+            if (window.scrollY > 300) {
+
+                navbar.classList.remove('transparent');
+
+                navbar.classList.add('solid');
+
+            } else {
+
+                navbar.classList.add('transparent');
+
+                navbar.classList.remove('solid');
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+
+
+</html>
